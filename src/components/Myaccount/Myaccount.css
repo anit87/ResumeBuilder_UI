@@ -1,0 +1,106 @@
+.myacount-form .form-group label{
+font-size: 18px;
+line-height: 20px;
+color: #333333;
+font-weight: 500;
+margin-bottom: 14px;
+}
+.myacount-form .form-group label span{
+    color: #f15b2a;
+}
+.myacount-form .form-group input{
+width: 100%;
+height: 49px;
+border-radius: 4px;
+background-color: #f4f4f4;
+border: 1px solid #d6d6d6;
+margin-bottom: 30px;
+}
+.myacount-form h2{
+    font-size: 30px;
+line-height: 20px;
+color: #333333;
+font-weight: 500;
+padding-bottom: 15px;
+margin-bottom: 25px !important;
+position: relative;
+display: inline-block;
+}
+.myacount-form h2::before{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    height: 5px;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    background-color: #f25b2a;
+}
+.myacount-form {
+filter: drop-shadow(-0.488px 6.983px 24.5px rgba(0,0,0,0.07));
+box-shadow: 0px 0px 47px 10px #f0f0f0;
+background-color: #f4f4f4;
+border: 1px solid rgba(193,193,193,0.4);
+padding: 49px 60px 59px 38px;
+}
+.myacount_section{
+    padding: 97px 215px 97px 131px;
+}
+.myacount-image img {
+    width: 100%;
+}
+.myaccount_heading{
+    text-align: center;
+}
+.myaccount_save{
+    text-align: center;
+}
+.myaccount_save .myaccount_btn{
+    font-size: 18px;
+letter-spacing: 0px;
+line-height: 20px;
+text-transform: uppercase;
+color: #ffffff;
+font-weight: 400;
+font-family: "Noto Sans";
+width: 95%;
+height: 46px;
+border-radius: 4px;
+background-color: #f25b2a;
+}
+
+@media(max-width: 1599px){
+    .myacount_section {
+        padding: 97px 150px 97px 100px;
+    }
+}
+
+@media(max-width: 1399px){
+    .myacount_section {
+        padding: 97px 80px 97px 50px;
+    }
+}
+@media(max-width: 1199px){
+    .myacount_section {
+        padding: 97px 40px 97px 20px;
+    }
+}
+@media(max-width: 991px){
+    .myacount-form {
+        margin-top: 70px;
+        padding: 49px 30px 59px 30px;
+    }
+    .myacount_section {
+        padding: 97px 20px 97px 20px;
+    }
+    
+}
+@media(max-width:459px){
+    .myacount-form {
+        padding: 49px 20px 59px 20px;
+    }
+    .myacount-form h2 {
+        font-size: 26px;
+    }
+}

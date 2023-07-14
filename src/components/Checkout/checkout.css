@@ -1,0 +1,475 @@
+.thankyou h5 {
+    color: #f25b2a;
+    margin-top: 40px;
+    text-transform: capitalize;
+    font-size: 30px;
+}
+.thanyoudiv h3{
+margin-top: 15px;
+}
+.thankyouimg{
+    background-color: #fff;
+    border-radius: 50%;
+}
+.thanyoudiv {
+    text-transform: capitalize;
+    width: 397px;
+    height: 355px;
+    margin: auto;
+    background-color: #f25b2a;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.thankyou {
+    text-align: center;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    
+}
+ .quesstionaire-btn h6.open-questionaire {
+    font-size: 20px;
+    color: #f25b2a;
+    margin-bottom: 15px;
+}
+/* .questionnairediv{
+    margin-top: 35px;
+} */
+button.btn.chatdivorder {
+    border: 1px solid #f25b2a;
+    background-color: #f25b2a;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 17px;
+}
+button.btn.questionnairediv {
+    border: 1px solid #f25b2a;
+    background-color: #f25b2a;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 17px;
+    margin-top: 35px;
+    margin-left: 15px;
+
+}
+button.btn.chatdivchat {
+    border: 1px solid #f25b2a;
+    background-color: #f25b2a;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 17px;
+    margin-left: 60px;
+}
+.chatdiv {
+    text-align: center;
+    margin-top: 40px;
+}
+/* .front-order-details{
+    padding-left: 40px;
+    padding-right: 40px;
+} */
+.order-number {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.order-number h3 {
+    color: #333;
+    padding: 0px 1px;
+    margin-right: 33px;
+    font-family: 'Noto Sans', sans-serif !important;
+    
+    font-size: 22px;
+}
+.customer-details h3 {
+    color: #333;
+    padding: 0px 1px;
+    margin-right: 33px;
+    font-family: 'Noto Sans', sans-serif !important;
+    
+    font-size: 20px;
+}
+.customer-details-table {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    height: 250px;
+    overflow-x: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* customer-intakefrm-table */
+.customer-intakefrm-table{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+/* customer-intake-form */
+.customer-intake-form{
+    height: 300px;
+    overflow-x: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+}
+
+.div-wrapper {
+    margin-bottom: 36px;
+}
+
+.div-last-edited{
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.div-last-edited p{
+    font-size: 17px;
+    margin-left: 6px;
+}
+
+
+.div-wrapper h6 {
+    font-size: 18px;
+    color: #333;
+    font-family: 'Noto Sans', sans-serif !important;
+    margin-bottom: 10px !important;
+    font-weight: 400;
+}
+
+.div-wrapper span {
+    font-weight: 500;
+}
+
+.div-wrapper h4 {
+    font-size: 21px;
+    color: #333;
+    font-family: 'Noto Sans', sans-serif !important;
+    margin-bottom: 15px !important;
+}
+
+
+/* personal-info */
+.customer-intake-form .personal-info{
+    margin-bottom: 7px;
+
+}
+/* customer-data-heading */
+.customer-intake-form .customer-data-heading{
+    margin-bottom: 3px;
+
+}
+.customer-details-table .admin-order-table {
+    border: none !important;
+    color: #333;
+    padding: 0px 1px;
+    margin-right: 33px;
+    font-family: 'Noto Sans', sans-serif !important;
+    font-weight: 400;
+    font-size: 15px;
+}
+.front-order-details {
+    padding-top: 40px;
+    min-height: 75vh;
+}
+table.table.admin-order-table th {
+    font-weight: 600;
+    font-family: 'Noto Sans', sans-serif !important;
+}
+.manage_content td {
+    font-size: 18px;
+}
+
+.checkout-addon-name p {
+    padding-left: 12px;
+}
+.front-orderdetails-addon-name p+p {
+    margin-top: 5px;
+    padding-left: 9px;
+}
+
+
+
+
+
+.paypal-button{
+    position: relative;
+}
+.paypal-button div{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    opacity: 0;
+}
+.paypal-button button{
+    pointer-events: none;
+}
+
+.befor-submit-place{
+    background-color: #7c7575 !important;
+    
+    cursor: not-allowed !important;
+}
+
+.book_image img {
+    width: 30px;
+}
+.errormsgcheckout{
+    margin-bottom: 20px;
+}
+label.shipping_label span {
+    color: red;
+    margin-left: 5px;
+}
+label.firstname_checkout span {
+    color: red;
+    margin-left: 5px;
+}
+label.lastname_checkout span {
+    color: red;
+    margin-left: 5px;
+}
+
+
+
+
+
+
+.book_image {
+    padding: 13px 20px;
+    border: 1px solid #e1e1e1;
+    border-radius: 5px;
+}
+.book_details {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #e1e1e1;
+}
+.book_details+.book_details{
+    margin-top: 20px
+}
+
+.book_image_detail {
+    display: flex;
+}
+.book_name h3{
+    font-size: 15px;
+    line-height: 33px;
+    color: #333333;
+    font-weight: 600;
+    
+    padding-left: 12px;
+    text-transform: capitalize;
+}
+.book_price h4{
+    font-size: 14px;
+line-height: 33px;
+color: #333333;
+font-weight: 600;
+font-family: "Noto Sans";
+}
+.discount_div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 21px;
+    padding-bottom: 34px;
+    border-bottom: 1px solid #e1e1e1;
+}
+.discount_code input[type="text"] {
+    padding: 10px 20px;
+    font-size: 15px;
+line-height: 27px;
+color: #000;
+font-weight: 400;
+font-family: "Noto Sans";
+border: none;
+outline: none;
+}
+.discount_code {
+    border: 1px solid #e1e1e1;
+    width: 74%;
+    max-width: 100% !important;
+}
+.discount_button_div .discount_button {
+    font-size: 15px;
+    line-height: 27px;
+    color: #4b4b4b;
+    font-weight: 400;
+    font-family: "Noto Sans";
+    background-color: #c6c5c3;
+    padding: 10px 20px;
+}
+.subtotal_div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.subtotal_div h4{
+    font-size: 15px;
+line-height: 33px;
+color: #4b4b4b;
+font-weight: 400;
+font-family: "Noto Sans";
+}
+.shipping {
+    display: flex;
+    justify-content: space-between;
+}
+.shipping h4{
+    font-size: 15px;
+line-height: 33px;
+color: #4b4b4b;
+font-weight: 400;
+font-family: "Noto Sans";
+}
+.subtotal_maindiv{
+    padding-top: 21px;
+    padding-bottom: 34px;
+    border-bottom: 1px solid #e1e1e1;
+}
+.totalDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.totalDiv h4{
+    font-size: 18px;
+line-height: 33px;
+color: #333333;
+font-weight: 400;
+font-family: "Noto Sans";
+}
+.totalDiv{
+    padding-top: 21px;
+    padding-bottom: 34px;
+}
+
+/* ..............................sidbar css end................................ */
+
+
+/* .....................................main css start................ */
+
+.checkout_form_heading h4{
+    font-size: 23px;
+line-height: 33px;
+color: #333333;
+font-weight: 400;
+font-family: "Noto Sans";
+}
+.checkout_form_login h4{
+    font-size: 15px;
+    line-height: 33px;
+    color: #333333;
+    font-weight: 400;
+    font-family: "Noto Sans";
+}
+.form_heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.checkout_form_submit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+}
+.checkout_form_div label{
+    font-size: 15px;
+line-height: 33px;
+color: #333333;
+font-weight: 400;
+font-family: "Noto Sans";
+margin-bottom: 12px;
+}
+.checkout_form_div input{
+    margin-bottom: 30px;
+}
+.checkout_form_div select{
+    margin-bottom: 30px;
+    appearance: auto;
+}
+.checkbox_position{
+    position: relative;
+    top: 6px;
+    margin-right: 10px;
+}
+.checkout_form_section{
+    margin-bottom: 268px;
+    padding-top: 74px;
+}
+.checkout_form_submit .submit_btn {
+    font-size: 15px;
+    line-height: 29px;
+    color: #fff;
+    font-weight: 500;
+    padding: 6px 24px;
+    border-radius: 6px;
+    filter: drop-shadow(3.5px 6.062px 27px rgba(19,19,19,0.07));
+    background-color: #333;
+    border: 1px solid rgba(124,124,124,0.13);
+}
+.checkout_form {
+    padding-right: 60px;
+}
+.checkout_form_div .shipping_label{
+    width: 100% ;
+}
+.checkout_form_login a {
+    text-decoration: none;
+    color: #333333;
+}
+
+
+@media (max-width: 1199px){
+    .discount_code {
+        width: 71%;
+    }
+    .discount_code input[type="text"] {
+        width: 100%;
+    }
+    .checkout_form {
+        padding-right: 40px;
+        padding-left: 15px;
+    }
+    .checkout_sidebar {
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 991px){
+    .checkout_form {
+        margin-top: 50px;
+    }
+    .checkout_sidebar {
+        padding-left: 15px;
+    }
+    .checkout_form {
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 459px){
+    .discount_code {
+        width: 67%;
+    }
+    .checkout_form_submit {
+        flex-direction: column;
+    }
+    .form_heading {
+        flex-direction: column;
+    }
+    .checkout_form_login {
+        margin-top: 10px;
+    }
+    .checkout_form_submit .submit_btn {
+        margin-top: 10px;
+    }
+}

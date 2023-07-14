@@ -1,0 +1,158 @@
+*{
+  box-sizing: border-box;
+}
+
+.linkdin_heading h2{
+  color: var(--light_black_para);
+  font-size: 35px;
+  font-weight:700 ;
+  line-height: 58px;
+}
+.linkdin_text p{
+    font-size: var(--para);
+    font-weight: 500;
+    line-height: 35px;
+    color: var(--light_black_para);
+}
+.linkdin_heading button{
+    font-size: var(--smallPara);
+    font-weight: 500;
+}
+.my_linkedin_btn {
+  margin-top: 33px;
+}
+
+.my-linkedin-text p {
+  width: 740px;
+}
+
+.my-linkedin-heading h2 {
+  width: 800px;
+}
+.my-flewless-content {
+  padding-left: 135px;
+  padding-right: 150px;
+  
+}
+.my-flawless-layout{
+  display: flex;
+  
+}
+.my_linkedin_imgdiv{
+  flex-basis: 36%;
+}
+.my_linkedin_textdiv{
+  flex-basis: 64%;
+  padding-left: 10px;
+}
+.my-about-content{
+margin-bottom: 0px;
+}
+.my-linkedin-text p+p {
+  margin-top: 40px;
+}
+
+
+
+@media(min-width: 1800px){
+  .my-flewless-content {
+    padding-left: 290px;
+    padding-right: 150px;
+}
+.my_linkedin_imgdiv {
+  flex-basis: 32%;
+}
+.my_linkedin_textdiv {
+  flex-basis: 66%;
+}
+}
+
+@media (max-width: 1599px){
+  .my-flewless-content {
+    padding-left: 64px;
+    padding-right: 22px;
+}
+}
+
+@media(max-width: 1399px){
+  .my-flewless-content {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.my_linkedin_imgdiv {
+  flex-basis: 38% !important;
+}
+.my_linkedin_textdiv {
+  flex-basis: 62% !important;
+}
+.my-linkedin-heading h2 {
+  width: auto;
+  font-size: 31px;
+}
+.my-linkedin-text p {
+  width: auto;
+  font-size: 17px;
+}
+
+}
+
+@media (max-width: 1199px){
+  .my_linkedin_btn button{
+    padding: 6px 24px !important;
+}
+.about_img.flewless__img.my_linkedin_imgdiv img {
+  height: 100%;
+  width: 100%;
+}
+.my-linkedin-heading h2 {
+  font-size: 29px;
+}
+.my-linkedin-text p {
+  padding-bottom: 20px;
+}
+}
+
+@media (max-width: 991px){
+  .my_linkedin_textdiv{
+    margin-top: 50px;
+}
+.about_img.flewless__img.my_linkedin_imgdiv img {
+  height: auto;
+  width: 45% !important;
+}
+
+.linkdin_heading h2 {
+  font-size: 25px;
+  line-height: 38px;
+}
+.my_linkedin_btn button {
+  width: 258px;
+}
+.my-flawless-layout{
+  display: flex;
+  flex-direction: column;
+}
+.my-linkedin-text p+p {
+  margin-top: 15px;
+}
+}
+
+@media (max-width: 767px){
+  .about_img.flewless__img.my_linkedin_imgdiv img {
+    width: 65% !important;
+}
+.my_linkedin_btn button {
+  width: 175px !important;
+}
+}
+
+@media (max-width: 459px){
+  .about_img.flewless__img.my_linkedin_imgdiv img {
+    width: 80% !important;
+}
+.linkdin_heading h2 {
+  font-size: 20px;
+}
+}
+
+

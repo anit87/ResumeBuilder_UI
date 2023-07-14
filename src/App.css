@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Cantora+One&family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+div#root {
+  overflow: hidden;
+}
+body{
+  font-size: 62.5%;
+  font-family:'Noto Sans', sans-serif!important;
+}
+:root {
+  --orange: #f25b2a;
+  --black: #000000;
+  --darkBlue:#353f58;
+  --copyRight_Color:#282828;
+  --light_black_para:#333333;
+  --naviblue: #353f58;
+  --package_heading:#293a80;
+  --lightBlack: #212020;
+  --white: #ffffff;
+
+  --parafont: 1.2rem;
+  --familyCar:'Noto Sans', sans-serif;
+  --familygar:'Cantora One', sans-serif;
+  --marginMobile:10px;
+  --marginpc:15px;
+  --nav:15px;
+  --btn:20px;
+  
+
+
+ 
+  /* --bigHeading:26px; */
+  /* --smallPara:13px; */
+  --little_big_para:24px;
+  --package_heading_font:49px;
+ /* now using fonts size */
+
+
+ /* for big screen */
+ --header_font:52px;
+  --bigHeading:40px;
+  --small_header:32px;
+  --bigFont:30px;
+  --heading:25px;
+  --smallPara:20px;
+  --card_heading:28px;
+
+
+  /* for small screen */
+  --smallHeading:22px;
+  --para:18px;
+  --too_small_para:15px;
+}
+p{
+  margin: 0;
+}
+h1,h2,h3,h4,h5{
+  margin-bottom: 0!important;
+}
+

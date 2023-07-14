@@ -1,0 +1,123 @@
+.padding_div{
+    padding-top: 159px;
+}
+.header_text h1{
+    font-size: var(--bigHeading);
+    font-weight: 900;
+    color: var(--orange);
+    font-family: var(--familyCar);
+    margin-bottom: 10px;
+    
+}
+.main_header{
+    width: 100%;
+
+    background-image: url('/public/assets/images/sliderbg.png');
+    background-position: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.header_text{
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.header_text h3{
+    font-size: var(--header_font);
+
+   font-weight: 600;
+   color: var(--orange);
+   margin-bottom: 30px;
+}
+.header_text h5{
+    font-size: var(--small_header);
+    font-weight: 600;
+    
+ }
+
+
+ .header_extra{
+     background-color: var(--naviblue);
+     position: relative;
+     /* border: 2px solid red; */
+     padding: 40px 0;
+ }
+
+ .header_extra .exter-text{
+     color: var(--white);
+     
+ }
+ .header_extra .exter-text p{
+  font-size: var(--smallPara);
+}
+.header_extra .exter-text .team_card{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+    text-align: center;
+
+}
+.header_extra .exter-text .team_card .icons{
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    margin-right:5px;
+    margin-bottom: 4px;
+    color: var(--orange);
+    background-color: var(--white);
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 996.98px) {
+    .header_text h1{
+        font-size: var(--small_header);    
+    }
+    .header_text h3{
+        font-size: var(--bigFont);
+        margin-top: 40px;
+    }
+    .header_text h5{
+        font-size: var(--heading);
+     }
+     .header_extra .exter-text .team_card{
+       padding-top: 20px;
+    }
+  }
+  
+   @media (min-width: 996.98px) and (max-width: 1507px) {
+    .header_text h1{
+        font-size: var(--bigHeading);    
+    }
+    .header_text h3{
+        font-size: var(--bigHeading);
+        margin-top: 40px;
+    }
+    .header_text h5{
+        font-size: var(--bigFont);
+     }
+    
+   }
+
+
+
+
+
+
+/* @media (min-width: 1200px) {  } */
+
+
+
+
+
+
+

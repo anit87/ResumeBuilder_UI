@@ -1,0 +1,112 @@
+
+.contact_us_parent{
+    background-color: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    width: 1000px;
+    box-shadow:0px 0px 30px 5px rgba(0, 0, 0, 0.276)!important;
+
+}
+.full_from{
+    height: max-content;
+    display: flex;
+    align-items: center;
+    background-color: #f7f8fc;
+    padding: 100px 0!important;
+
+}
+#details .text h3{
+    font-size: var(--bigFont);
+    font-weight: 700;
+    color: var(--orange);
+}
+#details .text p{
+    font-size: var(--para);
+    font-weight: 500;
+    color: var(--light_black_para);
+}
+.follow_us img {
+    width: 30px !important;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.contact_input input{
+  box-shadow: 0 0 30px 0 #eeeeee!important;
+  padding: 10px;
+}
+.contact_input textarea{
+    box-shadow: 0 0 30px 0 #d3d3d3d9!important;
+
+  }
+.contact_form{
+    border-radius: 10px;
+    border: 1px solid #e7e7e7fa;
+    padding: 20px 5px;
+  
+
+}
+
+.text_area{
+    resize: none;
+    height: 250px;
+}
+.contentus{
+    margin-left: 30px;
+}
+.contact_form::placeholder{
+  font-size: 17px;
+  font-weight: 500;
+
+}
+.contact_us_details .contact_icon{
+  background-color: #353f58;
+  color: #fff;
+   width: 54px;
+   height: 54px;
+  border-radius: 27px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact_btn .btn{
+    width: 100%!important;
+}
+.contact_us_details p{
+   font-size: 16px!important;
+   color: var(--light_black_para);
+
+}
+.follow_us span{
+    font-size: var(--bigFont);
+    font-weight: 700;
+    color: var(--orange);
+    width: max-content;
+}
+.iframe-div iframe {
+    width: 100%;
+    height: 450px;
+}
+
+
+@media (max-width: 991px){
+    .contentus {
+        margin-left: 0px;
+    }
+    .custom_contact_us{
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+
+@media(max-width:767px){
+    .my-contact-us-divv{
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 459px){
+    .contact_us_details p {
+        flex-basis: 75%;
+    }
+}

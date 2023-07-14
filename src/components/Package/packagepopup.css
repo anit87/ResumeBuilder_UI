@@ -1,0 +1,114 @@
+
+.package-cart-button-div button {
+  padding: 6px 30px!important;
+  background-color: #f25b2a;
+  color: #fff;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  box-shadow: none!important;
+  outline: none!important;
+  border: 1px solid;
+  font-size: 14px;
+}
+.package-cart-button-div {
+  text-align: center;
+  margin-top: 30px;
+}
+
+
+.mymodal {
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 80px;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .my-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 25%;
+    position: relative;
+    border-radius: 21px;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 15px
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .my-modal-div .card-body {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.my-modal-para-div {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.my-modal-div .card-body h4 {
+    font-size: var(--card_heading);
+    font-weight: 900;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 20px !important;
+}
+.my-modal-div .card-body h5 {
+    font-size: var(--card_heading);
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 20px !important;
+}
+.my-modal-div .card-body .package_para p {
+    font-size: var(--too_small_para);
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--light_black_para)!important;
+}
+
+
+@media(max-width: 1199px){
+  .my-modal-content {
+    width: 28%;
+}
+}
+
+@media(max-width: 991px){
+  .my-modal-content {
+    width: 31%;
+}
+}
+@media(max-width: 767px){
+  .my-modal-content {
+    width: 58%;
+}
+}
+@media(max-width: 459px){
+  .my-modal-content {
+    width: 71%;
+}
+}

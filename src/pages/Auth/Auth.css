@@ -1,0 +1,233 @@
+.auth_icon.me-2 button {
+    border: none;
+    background: none;
+    color: #fff;
+}
+
+.auth{
+    background-color: #fff!important;
+    padding-bottom: 80px;
+    /* padding-top: 80px; */
+}
+/* .auth_main_div{
+    border: 2px solid red;
+    padding-bottom: 40px;
+} */
+.communication_text h4{
+    font-size: var(--bigFont);
+    font-weight: 700;
+}
+ .communication_text span{
+    color: var(--orange);
+}
+.meeting_record{
+    background-color: var(--darkBlue);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 100%!important;
+    padding-left: 14px;
+    padding-right: 14px;
+
+}
+.auth_icons{
+    background-color: var(--orange);
+}
+.auth_icon_text span{
+    font-size: var(--marginpc);
+    color: var(--white);
+    text-transform: uppercase;
+}
+.auth_icon{
+    width: 30px!important;
+    height: 30px!important;
+    background-color: var(--orange)!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    border-radius: 50%;
+}
+.auth_img{
+    background-color: #f9f9f9;
+    padding: 26px 36px 0px 49px!important;
+    /* padding: 50px 50px 0px 50px!important; */
+}
+.For_padding{
+    padding: 0 40px;
+}
+.auth_content{
+    /* background-color: red; */
+    background-color: #fcfcfc;
+    border: 1px solid #d5d5d5;
+    padding: 0;
+
+}
+.social_media_icons {
+    margin-top: 27px !important;
+}
+.user {
+    margin-top: 21px !important;
+}
+.communication_text {
+    margin-top: 46px !important;
+}
+.auth_header h2{
+    font-size: 35px!important;
+    font-weight: 700;
+    color: var(--orange);
+}
+.auth_input label{
+    font-size: var(--para);
+}
+.auth_input span{
+    color: var(--orange);
+}
+
+.form-check-input{
+    background-color: #e0e0e0!important;
+    padding: 8px !important;
+    border: none!important;
+}
+.register_input input::placeholder{
+  font-weight: 600;
+}
+
+.form-check-input:checked{
+    background-color: var(--orange)!important;
+    border-color:  var(--orange);
+    
+}
+.form-check-input:focus {
+    border-color: none!important;
+    outline: 0;
+    box-shadow: none!important;
+}
+.login_check .form-check-label{
+   font-size: 17px!important;
+}
+.auth_btn{
+    background-color: var(--orange)!important;
+    color: var(--white)!important;
+    font-size: var(--para);
+    text-transform: uppercase;
+}
+.authantication_btn_tw{
+    background-color: #e75b2e8c!important;
+    color: var(--white)!important;
+    font-size: var(--para);
+    text-transform: uppercase;
+    cursor: not-allowed !important;
+}
+.user a{
+   text-decoration: none;
+   color: var(--light_black_para); 
+}
+.user_link{
+    color: #00aeef!important;   
+}
+.span_link{
+    font-size: var(--para);
+    color: var(--light_black_para)!important;
+}
+.forget_password{
+
+    display: flex;
+    align-items: center ;
+    font-size: 15px;
+}
+
+
+
+/* register page */
+
+.for_register_padding{
+    padding: 0 15px;
+}
+.form-check a{
+    text-decoration: none;
+}
+.auth_header p{
+    font-size: 13px;
+    font-weight: 600;
+
+}
+.form-check .form-check-label{
+    font-size: 13px!important; 
+    font-weight: 600;
+
+}
+.auth_input input::placeholder {
+     font-size: 13px!important; 
+     font-weight: 600;
+  }
+  .new_user{
+    font-size: 13px!important; 
+    color: var(--light_black_para)!important;
+  }
+  .have_account{
+    font-weight: 500;
+  }
+  .auth_img_register{
+    padding: 26px 0px 0px 0px!important;
+  }
+  /* .auth_img_register img {
+    height: 100%;
+} */
+
+.errormsghide{
+    display: none;
+}
+.errormsgshow{
+    display: block;
+}
+
+
+@media(max-width:1399px){
+    .my-auth-main-div{
+        padding: 0px 15px;
+    }
+}
+
+
+  @media (max-width: 1199px){
+    .auth_main_div {
+        padding: 0px 15px;
+    }
+    .For_padding {
+        padding: 0 40px 40px 40px;
+    }
+  }
+
+  @media (max-width: 991px){
+    .auth_content {
+        margin-top: 40px;
+    }
+  }
+
+  @media (max-width: 767px){
+    .auth_icon_text+.auth_icon_text{
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .meeting_record .auth_icon_text {
+        justify-content: flex-start !important;
+    }
+
+  }
+
+  @media (max-width: 459px){
+    .For_padding {
+        padding: 0 20px 40px 20px;
+    }
+    .my-auth-main-div .form-check .form-check-label {
+        font-size: 11px!important;
+        padding-left: 2px;
+    }
+
+  }
+
+  
+
+  
+
+  

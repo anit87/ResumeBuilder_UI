@@ -1,0 +1,50 @@
+.ourProcessComponent{
+    margin-bottom: 40px;
+ 
+}
+.review_main_heading h2{
+  color: var(--black)!important;
+}
+.our_process_img img{
+    width: 100%;
+    margin: auto;
+    display: table;
+}
+/* .our_process_heading{
+    margin-top: 40px;
+    border: 2px solid red;
+} */
+.process_icon{
+   color: var(--orange);
+}
+.our_process_paras{
+    display: flex;
+    align-items: center;
+    /* line-height: 40px; */
+    margin-bottom: 16px;
+}
+.our_process_paras p{
+   font-size: var(--para);
+   font-weight: 500!important;
+   margin-left: 5px;
+   flex-basis: 95%;
+   line-height: 30px;
+
+}
+
+.my-our-process-paras {
+    position: relative;
+    padding-left: 20px;
+}
+
+.my-our-process-paras .process_icon {
+    position: absolute;
+    left: -5px;
+    top: 5px;
+}
+
+@media (max-width:459px){
+    .our_process_img img {
+        transform: scale(1.5);
+    }
+}

@@ -1,0 +1,115 @@
+.resume_help{
+    height: auto;
+    background-color: var(--naviblue);
+    color: var(--white);
+    padding: 20px 0;
+
+}
+.resume_help .resume{
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+   /* height: auto; */
+   align-items: center;
+}
+.text1 h2{
+    text-transform: uppercase;
+
+    font-weight: 900;
+    font-size: var(--heading);
+}
+.text2 p{
+    font-size: var(--smallPara);
+
+    line-height: 40px;
+}
+@media (max-width: 575.98px) {
+    .resume_help{
+        height: auto;
+        margin-bottom: 30px;
+        margin-top: 20px;
+    }
+    .resume_help .resume{
+        flex-direction: column;
+        height:auto;
+        align-items: flex-start;
+    } 
+    .text1 h2{
+        font-weight: 600;
+        font-size: var(--smallHeading);
+        line-height: 40px;
+    }
+    .text2 p{
+        font-size:var(--smallPara);
+        line-height: 40px;
+        margin-top: 20px;
+    }
+ }
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .resume_help{
+        height: auto;
+        margin-bottom: 1px;
+        margin-top: 20px;
+    }
+    .resume_help .resume{
+        flex-direction: column;
+        height: auto;
+        align-items: flex-start;
+    } 
+    .text1 h2{
+        font-weight: 600;
+        font-size: var(--smallHeading);
+        line-height: 40px;
+    }
+    .text2 p{
+        font-size:var(--smallPara);
+        line-height: 40px;
+        margin-top: 20px;
+    }
+ }
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .resume_help{
+        height: auto;
+        margin-bottom: 1px;
+        margin-top: 20px;
+    }
+    .resume_help .resume{
+        flex-direction: column;
+        height: auto;
+        align-items: flex-start;
+    } 
+    .text1 h2{
+        font-weight: 600;
+        font-size: var(--little_big_para);
+        line-height: 40px;
+    }
+    .text2 p{
+        font-size:var(--smallPara);
+        line-height: 40px;
+        margin-top: 20px;
+    }
+ }
+
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+    .resume_help{
+        height: auto;
+        margin-bottom: 20px;
+        margin-top: 30px;
+    }
+    .resume_help .resume{
+        height:auto;
+    } 
+    .text1 h2{
+        font-weight: 600;
+    }
+    .text2 p{
+
+        line-height: 40px;
+        margin-top: 20px;
+    }
+ }
+
+
+/* @media (min-width: 1200px) {  } */

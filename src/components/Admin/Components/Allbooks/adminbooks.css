@@ -1,0 +1,41 @@
+div#previewimag img {
+    width: 100px;
+    
+}
+div#previewimag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 550px !important;
+    overflow-y: auto;
+    margin-top: 20px;
+
+}
+.out-of-stock-check{
+    margin-right: 10px;
+    font-size: 20px !important;
+}
+.image-cross {
+    position: relative;
+    margin-top: 15px;
+}
+.image-cross button {
+    border: none;
+    position: absolute;
+    top: 0;
+    right: -27px;
+    font-size: 15px;
+    width: 21px;
+    color: brown;
+}
+.add-book-editor .ck.ck-reset.ck-editor.ck-rounded-corners{
+    width: 100%;
+}
+
+.product-reviews .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused){
+    height: 177px;
+}
+
+.product-reviews .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused{
+    height: 177px;
+}

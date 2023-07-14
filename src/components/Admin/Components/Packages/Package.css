@@ -1,0 +1,46 @@
+.packageAdd  .MuiInputLabel-root{
+    font-weight: normal !important;
+}
+
+.ck.ck-reset.ck-editor.ck-rounded-corners {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 91%;
+}
+.add-package-editor .ck.ck-reset.ck-editor.ck-rounded-corners{
+    width: 100%;
+}
+.admin-checkbox-color:checked{
+    background-color: #d0989b !important
+}
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked{
+    color: #d0989b !important
+}
+
+
+.updatemsg_stack_alert{
+    width: 63% !important;
+}
+
+.updatesuccessmsg_stack_alert{
+    width: 70% !important;
+}
+
+.successMsg{
+    display: block;
+}
+
+.hideMsg{
+    display: none;
+}
+
+.ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused {
+    height: 270px;
+}
+
+
+.ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+    border-color: var(--ck-color-base-border);
+    height: 270px;
+}
+

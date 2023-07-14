@@ -1,0 +1,162 @@
+.steppers{
+	padding: 150px 0;
+}
+.form_inputs {
+	padding: 50px 30px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+ .message_not_success {
+    background-color: #427a42;
+    height: 50px;
+    text-align: center;
+    color: white;
+    font-size: 17px;
+    margin-top: 9px;
+    padding: 10px;
+    width: 50%;
+    transform: translateX(260%);
+	transition: all 1.5s linear; 
+	/* display: none; */
+}
+.message_success {
+	display: inline-block;
+    background-color: #427a42;
+    height: 50px;
+    text-align: center;
+    color: white;
+    font-size: 17px;
+    margin-top: 9px;
+    padding: 10px;
+    width: 50%;
+	transition: all 1.5s linear; 
+	transform: translateX(100%);
+}
+.message_success p {
+	display: contents;
+}
+.form-label{
+	font-size: 20px;
+	color: var(--light_black_para)!important;
+	font-weight: 600;
+}
+.form-control{
+	font-size: 16px;
+	padding: 7px 10px;
+	box-shadow: none!important;
+	outline: 0 !important;
+}
+.react-tel-input .form-control{
+	width: 100%!important;
+
+}
+.stepper_next{
+	background-color: #353f58;
+	color: #fff;
+	box-shadow: none!important;
+	outline: 0 !important;
+}
+.stepper_back{
+	background-color:var(--orange);
+	color: #fff;
+	box-shadow: none!important;
+	outline: 0 !important;
+}
+.stepper_cancel{
+	background-color: #27aae1;
+	color: #fff;
+	box-shadow: none!important;
+	outline: 0 !important;
+}
+.stepper_save{
+	background-color: #353f58;
+	color: #fff;
+	box-shadow: none!important;
+	outline: 0 !important;
+}
+.padding_div .order-stepper {
+    display: flex;
+    /* justify-content: space-between; */
+    margin-bottom: 30px;
+    margin: 0;
+    justify-content: center;
+    margin-top: 20vh;
+}
+.stepper-main-container{
+	min-height: 75vh;
+}
+.css-qivjh0-MuiStepLabel-label.MuiStepLabel-alternativeLabel{
+	font-size: 17px!important;
+	font-weight: 600!important;
+}
+.css-3sc8hv {
+    box-shadow: 0px 0px 0px 6px #27aae17d;
+}
+.css-q8ba0p{
+	box-shadow: 0px 0px 0px 6px #f25b2a75!important;
+}
+.css-qivjh0-MuiStepLabel-label.Mui-active {
+	color: var(--orange)!important;
+}
+.stepIcon{
+	padding-bottom: 3px;
+}
+/* .hiding_mininav_stepper ul{
+	visibility: hidden;
+} */
+
+/* editor */
+.achievements .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused){
+    height: 177px;
+}
+
+.achievements .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused{
+    height: 177px;
+}
+
+
+@media (max-width: 767px){
+	.steppers .MuiStepper-root.MuiStepper-horizontal.MuiStepper-alternativeLabel.css-10mg1vw-MuiStepper-root {
+		flex-wrap: wrap;
+	}
+	.steppers .css-n7tliy-MuiStep-root {
+		margin-bottom: 30px;
+	}
+	.steppers .form_content {
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+}
+
+@media (max-width: 767px){
+	.custom-overflow{
+		overflow-x: hidden;
+		padding-top: 15px;
+	}
+	.steppers {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}
+
+@media (max-width: 459px){
+	.form_inputs {
+		padding: 50px 10px;
+	}
+	.stepper_back {
+		margin-bottom: 20px;
+	}
+	.stepper_save {
+		margin-bottom: 20px;
+	}
+	.stepper_cancel {
+		margin-bottom: 20px;
+	}
+	.stepper_next {
+		margin-bottom: 20px;
+	}
+	
+}
+
+

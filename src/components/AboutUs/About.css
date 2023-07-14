@@ -1,0 +1,120 @@
+
+
+.review_main_heading h2{
+    text-transform: uppercase;
+    font-size: var(--bigFont);
+    font-weight: 800;
+    text-align: center;
+    padding-top: 20px ;
+    line-height:42px;
+}
+.review_main_heading,.about_text span{
+  color: var(--orange);
+}
+.about_text_data{
+    padding: 60px 0;
+}
+.about_text{
+    display: flex;
+    align-items: center;
+}
+.about_text p{
+    font-size: var(--para);
+    line-height: 40px;
+    font-weight: 500!important;
+    width: 624px;
+}
+
+.my-about-us-div h2 span{
+    color: #f25b2a;
+    
+}
+.my-about-us-div h2 {
+    line-height: 48px;
+}
+.my-about-text-data-div{
+    padding-left: 92px;
+    padding-right: 99px;
+    padding-top: 0px;
+}
+.my-flawles-text-about{
+    margin-top: 88px;
+    display: block;
+}
+.my-flawles-text-about span{
+    white-space: nowrap;
+}
+.flewless_texts.about_text.my-flawles-text-about p+p {
+    margin-top: 55px;
+}
+
+
+@media(min-width: 1700px){
+    .about_text p {
+        width: 609px;
+    }
+}
+
+@media(max-width: 1599px){
+    .my-about-text-data-div {
+        padding-left: 52px;
+        padding-right: 59px;
+    }
+}
+
+@media (max-width: 1399px){
+    .my-about-text-data-div {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .my-flawles-text-about p{
+        font-size: 16px;
+        width: auto;
+    }
+}
+
+@media(max-width: 991px){
+    .my_about_btn button{
+        width: 250px !important;
+    }
+}
+
+@media(max-width: 767px){
+    .my-about-us-div h2{
+        font-size: 19px;
+    }
+    .about_text p {
+        width: 100%;
+        line-height: 30px;
+        text-align: justify;
+    }
+    .my-flawles-text-about span {
+        white-space: pre-wrap;
+    }
+    .flewless_texts {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .my_about_btn button {
+        width: 100% !important;
+        line-height: 27px;
+        font-size: 15px !important;
+    }
+    .about_content {
+        margin-bottom: 21px;
+    }
+    .flewless_texts.about_text.my-flawles-text-about p+p {
+        margin-top: 30px;
+    }
+    
+    
+}
+
+@media(max-width: 459px){
+    .my-about-us-div h2{
+        font-size: 17px;
+    }
+    
+}
+
+

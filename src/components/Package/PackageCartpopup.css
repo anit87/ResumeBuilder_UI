@@ -1,0 +1,125 @@
+
+.package-popup-box {
+    position: fixed;
+    background: #00000050;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 99;
+
+
+}
+
+.package-box {
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+    height: auto;
+    max-height: 70vh;
+    margin-top: calc(100vh - 94vh - 21px);
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 50px;
+    border: 1px solid #999;
+    overflow: auto;
+    top: 25%;
+}
+
+.package-close-icon {
+    /* content: 'x'; */
+    cursor: pointer;
+    position: fixed;
+    /* right: calc(15% - 30px); */
+    right: calc(25% - 22px);
+    /* top: calc(100vh - 85vh - 33px); */
+    top: calc(100vh - 69vh - 36px);
+    background: #ededed;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid #999;
+    font-size: 20px;
+}
+
+.popup_updatemsg_stack_alert{
+    width: 90% ;
+    justify-content: center ;
+}
+
+.popup-inputs {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center ; */
+    justify-content: center;
+    z-index: 99;
+}
+
+
+.popup-textarea {
+    /* color: theme.palette.secondary.light; */
+    padding: 10px;
+    width: 90%;
+    /* height: 100px !important; */
+    /* min-height: 70px; */
+    font-size: 15px;
+    /* font-weight: 500; */
+    margin-bottom: 2%;
+    outline: none;
+}
+
+
+.popup-status {
+    display: flex;
+}
+
+
+.popup-status-active {
+    font-size: 17px !important;
+    color: green;
+    margin-bottom: 2px;
+    padding-top: 5px;
+}
+
+.popup-status-inactive {
+    font-size: 17px !important;
+    color: red;
+    margin-bottom: 2px;
+    padding-top: 5px;
+}
+
+.popup-update-btn{
+    color: white !important;
+    /* background-color: #f25b2a; */
+    background-color: #e1663f !important;
+    max-width: 50%;
+    margin: auto !important;
+}
+
+.MuiFormGroup-root.css-dmmspl-MuiFormGroup-root label {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.css-1a25edt-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
+    color: green !important;
+}
+
+.css-1a25edt-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track {
+    background-color: green !important;
+}
+
+.makeStyles-inputs-20 {
+    background-color: #dc3545 !important;
+}
+
+.css-1a25edt-MuiButtonBase-root-MuiSwitch-switchBase {
+    color: #dc3545 !important;
+}
+
+.css-1yjjitx-MuiSwitch-track {
+    background: #dc3545 !important;
+}

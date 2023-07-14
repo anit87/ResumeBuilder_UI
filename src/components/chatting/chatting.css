@@ -1,0 +1,524 @@
+:root{
+    --chatting_headding:17px;
+}
+.chatting{
+    background-color: #f8f8f8;
+    padding: 40px 50px;
+}
+.chatting-border-div{
+    border: 1px solid #e5e5e5;
+    background-color: var(--white)!important;
+     padding: 10px;
+}
+
+.row.p-2.right-chatting-inner-div {
+  margin-left: auto;
+  width: auto;
+}
+
+.right-chatting-inner-div .msg_div {
+  flex-basis: auto;
+  text-align: right;
+}
+
+.col-md-2.col-lg-2.inner-msg_div {
+  flex-basis: auto;
+  text-align: center;
+}
+.chatting_mg.right-chatting_mg {
+  width: 60%;
+  margin-left: auto;
+}
+.chatting_mg.left-chatting_mg {
+  width: 60%;
+}
+.main-div-chat-data {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.msg_div.col-md-10.col-lg-10 {
+  padding-left: 0px;
+  padding-top: 10px;
+  padding-right: 0px;
+}
+
+
+.adminchatting{
+  padding: 30px 0px !important;
+}
+
+/* chatting tabs */
+.chatting-tabs .nav-pills li.nav-item {
+  margin-right: 50px;
+}
+/* .admin-side-img {
+  flex-basis: 18% !important;
+}
+
+.admin-side-img img {
+  width: 100% !important;
+}
+
+.admin-sidebar-text p:first-child {
+  font-size: 11px !important;
+}
+
+.admin-sidebar-memory p {
+  font-size: 10px !important;
+}
+.admin-sidebar-text p:nth-child(2) {
+  font-size: 10px !important;
+  
+} */
+
+.chatting_mg a {
+  text-decoration: none;
+  color: #6a6565;
+}
+
+.admin-chatting_resume{
+  margin-top: 0px !important;
+}
+
+.text-color span{
+    color: var(--light_black_para)!important;
+   font-weight: 500;
+}
+.chatting_resume,.chatting_avatar{
+    margin-top: 15px;
+}
+.chatting_resume h3{
+    font-size: var(--chatting_headding)!important;
+    font-weight: 600;
+    color: var(--light_black_para)!important;
+}
+
+
+/* ------sidebar of chat page------ */
+.sidebar-text .tab-text{
+  text-align: center !important;
+}
+
+.sidebar-text .tab-text a{
+  text-decoration: none;
+  color: #333333;
+}
+.tab-pane ul.sidebar-div.p-0 {
+  max-height: 500px ;
+  overflow-y: auto ;
+  overflow-x: hidden ;
+}
+
+/*------ ////////////////////---------- */
+
+.tox-statusbar {
+  display: none !important;
+}
+.tox-tinymce{
+  border: none !important;
+}
+.tox-editor-header {
+  position: absolute !important;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.tox.tox-tinymce {
+  height: 123px !important;
+}
+.chatting-editor-div .ck.ck-reset.ck-editor.ck-rounded-corners {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  width: 100%;
+  
+}
+.chatting-editor-div{
+  position: relative;
+}
+.chatting-editor-div .ck.ck-editor__top.ck-reset_all {
+  position: absolute;
+  bottom: -32px;
+}
+.right-icons label {
+  cursor: pointer;
+}
+.right-icons {
+  text-align: right;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 9;
+  display: flex;
+}
+.right-icons svg.chatting-icon {
+  cursor: pointer;
+}
+.file-name-div {
+  display: flex;
+}
+.file-name-div p+p{
+  margin-left: 10px;
+}
+.tox .tox-tbtn:last-child svg {
+  display: block;
+  fill: #656565 !important;
+  transform: scale(1.3) !important;
+}
+.tox .tox-tbtn svg {
+  display: block;
+  fill: #656565 !important;
+  transform: scale(1.1) !important;
+}
+
+.chatting-editor-div .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+  border: 1px !important;
+  height: 100px;
+  border-top: 1px solid #e5e5e5 !important;
+  outline: none !important;
+}
+.chatting-editor-div .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-focused {
+  height: 100px;
+  outline: none !important;
+  border: 1px !important;
+  box-shadow: none !important;
+  border-top: 1px solid #e5e5e5 !important;
+}
+.ck.ck-toolbar.ck-toolbar_grouping {
+  border: 1px;
+}
+
+.chatting_avatar h3{
+    color:#97b573!important;
+    font-size: 17px!important;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.chatting_mg{
+  padding: 10px;
+}
+.chatting_mg img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* margin-bottom: 40px; */
+}
+.chatting_mg .msg_div span{
+    color: var(--light_black_para)!important;
+}
+.chatting_mg .msg_div h3{
+    font-size: var(--chatting_headding)!important;
+    font-weight: 700;
+    margin-bottom: 7px !important;
+}
+.chatting_mg .msg_div p{
+    font-size: var(--too_small_para);
+    color: #5e5e5e!important;
+    line-height: 30px;
+    font-weight: 500;
+}
+.chatting_mg .msg_div span,p{
+   font-size: var(--too_small_para);
+}
+.text_field{
+    border-top: 1px solid #e5e5e5 ;
+ 
+}
+.text_field textarea{
+    border: none;
+    resize: none;
+        padding: 10px 30px;
+}
+.chatting_links{
+    padding: 0px 25px;
+}
+.chatting_links h4{
+    font-size: var(--chatting_headding)!important;
+    padding: 20px 22px;
+    font-weight: 600;
+}
+.text-field-icons{
+    padding: 0 30px;
+}
+.text-field-icons  .chatting-icon{
+    width: 44px;
+    cursor: pointer;
+}
+.right-icons .spacing{
+
+    border: 1px solid #e7e7e7;
+    padding: 5px 0;
+    margin-right: 10px;
+}
+.line{
+  /* padding: 40px; */
+  margin-top: 40px;
+}
+.line p {
+  display: flex;
+  flex-direction: row;
+  color: #bbb8b8!important;
+  font-size: var(--too_small_para)!important;
+  
+}
+.line p:before, .line p:after{
+  content: "";
+  flex: 1 1;
+  border-bottom: 1px solid #e1e1e1;
+  margin: auto;
+}
+.line p:before {
+  margin-right: 0px
+}
+.line p:after {
+  margin-left: 0px
+}
+
+
+/* input search  */
+form.search input[type=text] {
+    padding: 7px;
+    font-size: 13px;
+    border: 1px solid #e5e5e5;
+    float: left;
+    width: 85%;
+    height: 36px;
+    /* background: #f1f1f1; */
+  }
+  form.search input[type=text]:focus{
+    outline: none;
+    /* border: none; */
+  }
+  .my-chatting-content .search{
+    border-bottom: none;
+  }
+  
+  form.search button {
+    float: left;
+    width: 10%;
+    padding: 5px;
+    background: var(--orange);
+    color: white;
+    font-size: 17px;
+    border: none;
+    border-left: none;
+    cursor: pointer;
+  }
+  
+  /* form.search button:hover {
+   
+  } */
+  
+  form.search::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .chatting-tabs ul{
+    font-size: var(--chatting_headding);
+    font-weight: 600;
+    list-style: none;
+    padding-left: 0!important;
+    margin: 0px 0px 30px 0px;
+    /* cursor: pointer; */
+ 
+  }
+
+
+ul.sidebar-div li {
+    border: 2px solid lightgray;
+    border-radius: 5%;
+    margin-bottom: 10px;
+  }
+  
+  .sidebar-text p:first-child {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .sidebar-text p:not(:first-child) {
+    font-size: 11px;
+  }
+  
+  ul.sidebar-div {
+    list-style: none;
+  }.right-icons
+  .sidebar-memory p {
+    font-size: 10px;
+  }
+  .sidebar-box{
+    justify-content: space-around;
+    padding: 5px 0px;
+  }
+  .my-sidebar-box{
+    justify-content: space-between;
+    padding: 5px 12px 5px 10px;
+  }
+
+  .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: transparent !important;
+}
+.nav-link {
+  display: block;
+  padding: .5rem 1rem;
+  color: black;
+  text-decoration: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+.nav-pills .nav-link.active{
+  border-bottom: 5px solid var(--orange);
+  border-radius: 0px;
+  color: var(--orange)!important;
+}
+
+.nav-link:focus, .nav-link:hover {
+  color: black;
+}
+.strike{
+  text-decoration: line-through;
+}
+.right-icons input[type='file']{
+  display: none;
+}
+.picker{
+  position: absolute;
+}
+.sidebar-memory p{
+  font-size: 13px;
+line-height: 25px;
+color: #5e5e5e;
+font-weight: 400;
+font-family: "Noto Sans";
+}
+.sidebar-text p:nth-child(2) {
+  font-size: 13px;
+line-height: 28px;
+color: #5e5e5e;
+font-weight: 400;
+font-family: "Noto Sans";
+}
+.sidebar-memory {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.chatting-mini-div .mini_content ul li {
+  visibility: hidden;
+}
+
+@media (max-width:1599px){
+  .chatting_links {
+    padding: 0px 12px;
+}
+.my-sidebar-box {
+  padding: 5px 10px 5px 7px;
+}
+.sidebar-text p:first-child {
+  font-size: 13px;
+}
+}
+@media (max-width:1399px){
+  .chatting_links {
+    padding: 0px 25px;
+}
+}
+@media (max-width:1199px){
+  .chatting {
+    padding: 40px 15px;
+  }
+  .chatting_links {
+    padding: 0px 12px;
+}
+.chatting_main {
+  padding-left: 0px;
+}
+.sidebar-memory p {
+  font-size: 12px;
+}
+.sidebar-text p:first-child {
+  font-size: 13px;
+}
+.sidebar-text p:nth-child(2) {
+  font-size: 12px;
+}
+}
+
+@media (max-width: 991px){
+  .chatting_main {
+    padding-right: 0px;
+    margin-bottom: 40px;
+}
+.chatting_links {
+  padding: 12px 12px;
+}
+.chatting {
+  padding: 40px 30px;
+}
+ul.sidebar-div li {
+  width: 350px;
+}
+.chatting_files {
+  padding-top: 20px;
+}
+.chatting-tabs ul li+li {
+  margin-left: 15px;
+}
+ul#pills-tab {
+  justify-content: flex-start !important;
+}
+}
+
+@media (max-width: 767px){
+  .msg_div {
+    margin-top: 20px;
+}
+.chatting-border-div {
+  flex-direction: column;
+}
+.chatting-border-div .auth_icon_text{
+  margin-right: 0px !important;
+  justify-content: flex-start;
+}
+}
+
+@media (max-width: 459px){
+  
+.chatting {
+  padding: 40px 10px;
+}
+
+ul.sidebar-div li {
+  width: auto;
+}
+.text-field-icons {
+  padding: 0 0px;
+}
+
+
+.sidebar-box {
+  padding: 15px 15px;
+  flex-direction: column;
+}
+.sidebar-text p:first-child {
+  font-size: 15px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+.sidebar-memory p {
+  font-size: 15px;
+}
+.chatting-border-div .auth_icon_text{
+  margin-right: 0px !important;
+  justify-content: center;
+}
+.chatting-border-div .auth_icon_text+.auth_icon_text{
+  margin-top: 20px;
+}
+}
+

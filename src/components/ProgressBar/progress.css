@@ -1,0 +1,133 @@
+.progress_content{
+	height: auto;
+	align-items: center;
+	/* padding: 100px 0; */
+	width: 100%;
+	margin-top: 40px;
+}
+.progress {
+	border-radius: 5px;
+	position: relative;
+	margin: 15px 0;
+	height: 40px;
+	width: 35%;
+}
+
+.progress-done {
+	background: var(--orange);
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 0;
+	opacity: 0;
+	transition: 1s ease 0.3s;
+}
+.pro{
+	display: flex;
+	align-items: center;
+}
+.pro .progress_icon{
+   width: 65px;
+   height: 65px;
+   background-color: var(--orange);
+   color: var(--white);
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-right: 30px;
+}
+.pro h4{
+	margin-left: 30px;
+	font-family: var(--familyCar);
+	font-size: 3.5rem;
+	font-weight: 400;
+}
+.pro p{
+	font-size: var(--smallPara);
+	font-weight: 500;
+	margin-left: 20px;
+	color: #f25b2a;
+    font-family: var(--familyCar);
+}
+@media (max-width: 575.98px) {
+	.progress {
+		width: 90%;
+	}
+	.pro{
+		flex-direction: column;
+		text-align: center;
+	}
+	.pro .progress_icon{
+		margin-right: 0px;
+	 }
+	 .pro h4{
+		margin-left: 0px;
+	}
+	.pro p{
+		margin-left: 0px;
+		font-size: 1.2rem;
+	}
+  }
+  
+  @media (min-width: 576px) and (max-width: 767.98px) {
+	.progress {
+		width: 90%;
+	}
+	.pro{
+		flex-direction: column;
+		text-align: center;
+	}
+	.pro .progress_icon{
+		margin-right: 0px;
+	 }
+	 .pro h4{
+		margin-left: 0px;
+	}
+	.pro p{
+		margin-left: 0px;
+		font-size: 1.2rem;
+	}
+   }
+  
+  @media (min-width: 768px) and (max-width: 991.98px) { 
+	/* .progress {
+		width: 90%;
+	} */
+	.pro{
+		text-align: center;
+		justify-content: space-between;
+	}
+	.pro .progress_icon{
+		margin-right: 0px;
+	 }
+	 .pro h4{
+		margin-left: 0px;
+	}
+	.pro p{
+		margin-left: 0px;
+		font-size: 1.3rem;
+	}
+   }
+  
+  @media (min-width: 992px) and (max-width: 1199.98px) { 
+	.pro{
+		text-align: center;
+		justify-content: space-between;
+	}
+	.pro .progress_icon{
+		margin-right: 0px;
+	 }
+	 .pro h4{
+		margin-left: 0px;
+	}
+	.pro p{
+		margin-left: 0px;
+		font-size: 1.3rem;
+	}
+   }
+  
+  
+  @media (min-width: 1200px) {  }

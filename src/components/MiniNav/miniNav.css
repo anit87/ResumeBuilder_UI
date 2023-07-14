@@ -1,0 +1,27 @@
+.mini_nav{
+    width: 100%;
+    background-color: var(--naviblue);
+    height: auto;
+   
+}
+.mini_content ul{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    list-style: none;
+}
+.mini_content ul li > a{
+    text-decoration: none;
+    color: var(--white);
+    font-size: 15px;
+    margin-left: 12px;
+}
+.mini_content ul li > p{
+    text-decoration: none;
+    color: var(--white);
+    font-size: 15px;
+    margin-left: 12px;
+}
+.mini_content ul li p i {
+    font-size: 13px;
+}
