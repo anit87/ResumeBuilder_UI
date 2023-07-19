@@ -27,7 +27,7 @@ const QuestionnaireId = () => {
     const toggleState = useSelector((state) => state.togglingReducer.togglingAll)
     const adminorderbyidreducerdata = useSelector((state) => state.adminallorderbyidreducer.adminorderallbyid)
     const GetIntakeFrmData = useSelector((state) => state.AdminQuestionnaireIdReducer.adminQuestionnaireDataId)
-    console.log("GetIntakeFrmData", GetIntakeFrmData)
+    // console.log("Get Intake Frm Data", GetIntakeFrmData, "  -  ", adminorderbyidreducerdata)
 
     const Navigate = useNavigate();
     const dispatch = useDispatch()
@@ -63,10 +63,11 @@ const QuestionnaireId = () => {
                         </Box>
                         <Box style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between' }}>
                             <Typography variant="h6" component="h6" sx={{ marginBottom: '20px !important', fontSize: '19px' }}>
-                                Order Number : {adminorderbyidreducerdata != [] ? adminorderbyidreducerdata[0]?.order_number : null}
+                                Order Number : {adminorderbyidreducerdata != [] ? `FR${adminorderbyidreducerdata[0]?.order_number}L` : null}
                             </Typography>
                             <Typography variant="h5" component="h5" sx={{ marginBottom: '20px !important', fontSize: '19px' }}>
-                                Order Date : {adminorderbyidreducerdata != [] ? adminorderbyidreducerdata[0]?.order_date : null}
+                                {/* Order Date : {adminorderbyidreducerdata != [] ? adminorderbyidreducerdata[0]?.order_date : null} */}
+                                Order Date : {adminorderbyidreducerdata != [] ? new Date(`${adminorderbyidreducerdata[0]?.order_created_at}`).toLocaleString() : null}
                             </Typography>
                             <Box>
                                 <Button sx={{ marginRight: '10px !important', backgroundColor: '#d0989b !important' }}
@@ -98,7 +99,7 @@ const QuestionnaireId = () => {
                             {/*--------------- ----------To see filled intake forms ----------------------------*/}
                             <div className='fron-order-detail-div' style={{ marginBottom: "20px" }}>
                                 <div className='customer-intakefrm-table'>
-                                    {typeof GetIntakeFrmData == 'object' ? GetIntakeFrmData?.map((item, i) => {
+                                    {(typeof GetIntakeFrmData == 'object' && GetIntakeFrmData.length>0)  ? GetIntakeFrmData?.map((item, i) => {
                                         return (
                                             <div key={i} className='customer-intake-form'>
                                                 <div className='container'>
@@ -205,7 +206,7 @@ const QuestionnaireId = () => {
                                                 </div>
                                             </div>
                                         )
-                                    }) : null}
+                                    }) : <h6>No Form Filled By User</h6>}
                                 </div>
                             </div>
                         </Paper>

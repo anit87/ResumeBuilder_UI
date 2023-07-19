@@ -22,7 +22,7 @@ const Nav = () => {
   // const ItemsCartlengthreducer = useSelector((state) => state.CartItemsLengthReducer.CartItemsLength)
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
-  console.log("nav " , cartlengthreducer );
+  // console.log("nav " , cartlengthreducer );
 
   const dispatch = useDispatch();
   let location = useLocation();

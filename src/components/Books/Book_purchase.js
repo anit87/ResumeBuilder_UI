@@ -117,7 +117,6 @@ const Book_purchase = () => {
     }
 
     function SampleNextArrow(props) {
-        // const { className, style, onClick } = props;
         return (
             <button {...props} className='next_button'  >
                 <span className="icon icon-chevron-with-circle-right"><MdNavigateNext className='next_arrow_btn' /></span>
@@ -125,7 +124,6 @@ const Book_purchase = () => {
         );
     }
     function SamplePrevArrow(props) {
-        // const { className, style, onClick } = props;
         return (
             <button {...props} className='prev_button' >
                 <span className="icon icon-chevron-with-circle-right"><GrFormPrevious className='prev_arrow_btn' /></span>
@@ -134,7 +132,6 @@ const Book_purchase = () => {
     }
 
     function SampleNextArrow1(props) {
-        // const { className, style, onClick } = props;
         return (
             <button {...props} className='next_button related_craousel_nextbutton'  >
                 <span className="icon icon-chevron-with-circle-right"><MdNavigateNext className='next_arrow_btn related_next_arrow_btn' /></span>
@@ -142,7 +139,6 @@ const Book_purchase = () => {
         );
     }
     function SamplePrevArrow1(props) {
-        // const { className, style, onClick } = props;
         return (
             <button {...props} className='prev_button related_craousel_prevbutton' >
                 <span className="icon icon-chevron-with-circle-right"><GrFormPrevious className='prev_arrow_btn related_prev_arrow_btn' /></span>
@@ -203,10 +199,11 @@ const Book_purchase = () => {
     }
 
     useEffect(() => {
-        // if (getallbooksinnerdatareducer.length != 0) {
-        //     setMainimage(`${apiURL}${getallbooksinnerdatareducer?.pd_img_feature_image}`)
-        // }
-        setMainimage(`${apiURL}${getallbooksinnerdatareducer?.image[0]?.pd_img_feature_image}`)
+        if (getallbooksinnerdatareducer.length != 0) {
+            // setMainimage(`${apiURL}${getallbooksinnerdatareducer?.pd_img_feature_image}`)
+            setMainimage(`${apiURL}${getallbooksinnerdatareducer?.image[0]?.pd_img_feature_image}`)
+        }
+        // setMainimage(`${apiURL}${getallbooksinnerdatareducer?.image[0]?.pd_img_feature_image}`)  
 
 
     }, [getallbooksinnerdatareducer])
@@ -616,7 +613,7 @@ const Book_purchase = () => {
                                                             size={24}
                                                             activeColor="#ffd700"
                                                             edit={false}
-                                                            value={items.review_rating}
+                                                            value={parseInt(items.review_rating)}
                                                         /> : null}
                                                         <p>{items.review_body}</p>
 

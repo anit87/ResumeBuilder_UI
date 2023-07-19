@@ -86,10 +86,12 @@ const Orderinfo = () => {
             </Box>
             <Box style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <Typography variant="h5" component="h5" sx={{ marginBottom: '5px !important', fontSize: '19px' }}>
-                Order Number : {adminorderbyidreducerdata != [] ? adminorderbyidreducerdata[0]?.order_number : null}
+                {/* Order Number : {adminorderbyidreducerdata != [] ? adminorderbyidreducerdata[0]?.order_number : null} */}
+                Order Number : {adminorderbyidreducerdata != [] ? `FR${adminorderbyidreducerdata[0]?.order_number}L` : null}
               </Typography>
               <Typography variant="h5" component="h5" sx={{ marginBottom: '20px !important', fontSize: '19px' }}>
-                Order Date : {adminorderbyidreducerdata != [] ? adminorderbyidreducerdata[0]?.order_date : null}
+                {/* Order Date : {adminorderbyidreducerdata != [] ? adminorderbyidreducerdata[0]?.order_date : null} */}
+                Order Date : {adminorderbyidreducerdata != [] ? new Date(`${adminorderbyidreducerdata[0]?.order_created_at}`).toLocaleString() : null}
               </Typography>
 
               <Box><button className={`${classes.chat} btn`} onClick={() => handlechat(adminorderbyidreducerdata[0]?.order_id)}>Chat</button></Box>
@@ -124,7 +126,20 @@ const Orderinfo = () => {
                     return (
                       <tr key={i}>
                         <th scope="row">{i + 1}</th>
-                        <td>{item.addons != null ? <div className='admin-orderinfo-addon-name'><p>{item.order_item_product_name}</p>{item.addons.map((v) => { return <p>{v.addons_name} - ${v.order_items_cart_addons_price}</p> })}</div> : <div><p>{item.order_item_product_name}</p></div>}</td>
+                        <td>
+                          {
+                            item.addons != null ?
+                              <div className='admin-orderinfo-addon-name'>
+                                <p>{item.order_item_product_name}</p>
+                                {item.addons.map((v,index) => {
+                                  return <p key={index} >{v.order_items_cart_addons_name} - ${v.order_items_cart_addons_price}</p>
+                                })}
+                              </div> :
+                              <div>
+                                <p>{item.order_item_product_name}</p>
+                              </div>
+                          }
+                        </td>
                         <td><p>{item.order_item_qty}</p></td>
                         <td><p>${parseFloat(item.order_item_price).toFixed(2)}</p></td>
                         <td><p>${parseFloat(item.order_item_qty * item.order_item_price).toFixed(2)}</p></td>

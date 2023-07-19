@@ -73,7 +73,7 @@ const Editorder = () => {
                         </Box>
                         <Box style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between' }}>
                             <Typography variant="h6" component="h6" sx={{ marginBottom: '20px !important', fontSize: '19px' }}>
-                                Order Number : {adminorderbyidreducerdata != [] ? adminorderbyidreducerdata[0]?.order_number : null}
+                                Order Number : {adminorderbyidreducerdata != [] ? `FR${adminorderbyidreducerdata[0]?.order_number}L` : null}
                             </Typography>
                             <Typography variant="h5" component="h5" sx={{ marginBottom: '20px !important', fontSize: '19px' }}>
                                 {/* Order Date : {adminorderbyidreducerdata != [] ? adminorderbyidreducerdata[0]?.order_date : null} */}

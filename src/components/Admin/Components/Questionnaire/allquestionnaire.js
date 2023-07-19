@@ -52,13 +52,14 @@ const Questionnaire  = () => {
 
     {
       name: 'Order Date',
-      selector: row => row.order_date,
+      // selector: row => row.order_created_at,
+      selector: row => new Date(`${row.order_created_at}`).toDateString(),
       sortable: true,
       width: '20%',
     },
     {
       name: "Order Number",
-      selector: row => row.order_number,
+      selector: row => `FR${row.order_number}L`,
       sortable: true,
       width: '20%',
       headerStyle: (selector, id) => {

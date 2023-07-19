@@ -718,8 +718,8 @@ export const adminQuestionnaire = () => async dispatch => {
 ///////////////////admin order action Questionnaire seeby Id  ///////////////////////////
 export const adminQuestionnaireById = (order_id) => async dispatch => {
     try {
-        // const res = await Axios.post(apiURL + 'user_stepper_form_db.php', { "action": "getAdminStepFormByID", order_id });
-        const res = await Axios.post(apiURL + 'admin/order_table', { "action": "AdminOrderInnerData", order_id });
+        const res = await Axios.post(apiURL + 'cart/user_stepper_form_db', { "action": "getStepFormByID", order_id });
+        // const res = await Axios.post(apiURL + 'admin/order_table', { "action": "AdminOrderInnerData", order_id });
         dispatch({
             type: 'adminQuestionnaireId',
             payload: res.data,
@@ -865,7 +865,7 @@ export const AllCartCustItems = (customer_id) => async dispatch => {
 ////////////////recaptcha action
 export const recaptchaaction = (id) => async dispatch => {
     try {
-        const res = await Axios.post(apiURL + 'recaptcha.php', { id });
+        const res = await Axios.post(apiURL + 'recaptcha', { id });
         dispatch({
             type: 'recpatchadata',
             payload: res.data,
@@ -881,7 +881,7 @@ export const recaptchaaction = (id) => async dispatch => {
 ///////////////////////contact us mail action
 export const ContactUs = (data) => async dispatch => {
     try {
-        const res = await Axios.post(apiURL + 'mailData.php', { ...data });
+        const res = await Axios.post(apiURL + 'mailData', { ...data });
         dispatch({
             type: 'ContactUs',
             payload: res.data,
@@ -922,7 +922,7 @@ export const UserChat = (userChatData) => async dispatch => {
     formdata.append('chatting_msg', userChatData.chatting_msg)
     formdata.append('action', 'AddUserChat')
     try {
-        const res = await Axios.post(apiURL + 'addChat.php', formdata)
+        const res = await Axios.post(apiURL + 'chatting/addChat', formdata)
         // console.log("dfsdfsd",Object.fromEntries(formdata))
         dispatch({
             type: "AddUserChat",
@@ -939,7 +939,7 @@ export const UserChat = (userChatData) => async dispatch => {
 //add user
 export const AddUserChat = (data) => async dispatch => {
     try {
-        const res = await Axios.post(apiURL + 'chatting.php', { "action": "UserChat", ...data });
+        const res = await Axios.post(apiURL + 'chatting', { "action": "UserChat", ...data });
         dispatch({
             type: 'ContactUs',
             payload: res.data,
@@ -954,7 +954,7 @@ export const AddUserChat = (data) => async dispatch => {
 ///////////////adminchat action
 export const Adminchataction = (data) => async dispatch => {
     try {
-        const res = await Axios.post(apiURL + 'chatting.php', { "action": "getChatByAdmin", ...data });
+        const res = await Axios.post(apiURL + 'chatting', { "action": "getChatByAdmin", ...data });
         dispatch({
             type: 'Adminchat',
             payload: res.data,
@@ -969,7 +969,7 @@ export const Adminchataction = (data) => async dispatch => {
 //Admin Chat
 export const Adminchatuseraction = (data) => async dispatch => {
     try {
-        const res = await Axios.post(apiURL + 'chatting.php', { "action": "CombineChats", ...data });
+        const res = await Axios.post(apiURL + 'chatting', { "action": "CombineChats", ...data });
         dispatch({
             type: 'Adminchatuser',
             payload: res.data,
@@ -985,7 +985,7 @@ export const Adminchatuseraction = (data) => async dispatch => {
 //GetAdminMsg
 export const GetAdminMsg = (data) => async dispatch => {
     try {
-        const res = await Axios.post(apiURL + 'chatting.php', { "action": "getChatByAdmin", ...data });
+        const res = await Axios.post(apiURL + 'chatting', { "action": "getChatByAdmin", ...data });
         dispatch({
             type: 'GetAdminMsg',
             payload: res.data,
@@ -1000,7 +1000,7 @@ export const GetAdminMsg = (data) => async dispatch => {
 //Getchatstatus read
 export const Getchatstatusread = (data) => async dispatch => {
     try {
-        const res = await Axios.post(apiURL + 'chatting.php', { "action": "OpenChat", ...data });
+        const res = await Axios.post(apiURL + 'chatting', { "action": "OpenChat", ...data });
         dispatch({
             type: 'Getchatstatus',
             payload: res.data,
@@ -1135,7 +1135,7 @@ export const GetOneStarProductReview = (product_id) => async dispatch => {
 ///get alll links and images files of chat
 export const Getchatlinkimagesfile = (order_id) => async dispatch => {
     try {
-        const res = await Axios.post(apiURL + 'admin/chatting', { "action": "getAllChatting", order_id });
+        const res = await Axios.post(apiURL + 'chatting', { "action": "getAllChatting", order_id });
         dispatch({
             type: 'Getchatlinkimgae',
             payload: res.data,
@@ -1150,7 +1150,7 @@ export const Getchatlinkimagesfile = (order_id) => async dispatch => {
 ///get  images files of chat
 export const GetchatFile = (order_id) => async dispatch => {
     try {
-        const res = await Axios.post(apiURL + 'chatting.php', { "action": "getAllFiles", order_id });
+        const res = await Axios.post(apiURL + 'chatting', { "action": "getAllFiles", order_id });
 
         dispatch({
             type: 'GetchatFiles',
@@ -1167,7 +1167,7 @@ export const GetchatFile = (order_id) => async dispatch => {
 ///get  Links of chat
 export const GetchatLink = (order_id) => async dispatch => {
     try {
-        const res = await Axios.post(apiURL + 'chatting.php', { "action": "getAllLinks", order_id });
+        const res = await Axios.post(apiURL + 'chatting', { "action": "getAllLinks", order_id });
         dispatch({
             type: 'GetchatLinks',
             payload: res.data,

@@ -88,7 +88,7 @@ const Manage_order = () => {
                                             </div>
                                         </div>
                                     </div> :
-                                        <table className="table mt-5"> 
+                                        <table className="table mt-5">
                                             <tbody>
                                                 <tr className='main_tr '>
                                                     <td ></td>
@@ -106,21 +106,21 @@ const Manage_order = () => {
                                                 {manageAllOrders?.map((items, i) => {
                                                     return (
                                                         <tr key={i} className='main_tr'>
-                                                            <td className='table_img' >{items?.order_number}</td>
+                                                            <td className='table_img' >{`FR${items?.order_number}L`}</td>
                                                             <td className='table_img' >${`${parseFloat(items?.order_subtotal).toFixed(2)}`}</td>
                                                             {/* <td className='table_img' >{items?.order_date}</td> */}
-                                                            <td className='table_img' >{new Date(`${items?.order_date}`).toLocaleString()}</td>
+                                                            <td className='table_img' >{new Date(`${items?.order_created_at}`).toLocaleString()}</td>
                                                             {items.order_status == 1 ? <td className='table_img' >Completed</td> : <td className='table_img' >Failed</td>}
                                                             <td>
-                                                                <div className="d-flex questions_div">
+                                                                <div className="d-flex justify-content-center questions_div">
                                                                     <button className="questions_btn " onClick={() => viewfun(items.order_id)}>
                                                                         <ImEye style={{ marginRight: "5px" }} size={20} className='mb-1' />
-                                                                        View More
+                                                                        View
                                                                     </button>
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                {items?.prdct_type == "True" ?
+                                                                {items?.prdct_type == true ?
                                                                     <div className="d-flex questions_div ">
                                                                         <button className='questions_btn' onClick={() => handleWriteResume(items.order_number)}>Questionnaire </button>
                                                                     </div>

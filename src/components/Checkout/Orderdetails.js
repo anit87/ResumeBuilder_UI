@@ -67,7 +67,7 @@ const Orderdetails = () => {
                                 <div className='col-md-12'>
                                     <div className='fron-order-detail-div'>
                                         <div className='order-number'>
-                                            <h3>Order Number : {adminorderbyidreducerdata != [] ? adminorderbyidreducerdata[0]?.order_number : null}</h3>
+                                            <h3>Order Number : {adminorderbyidreducerdata != [] ? `FR${adminorderbyidreducerdata[0]?.order_number}L` : null}</h3>
                                             <div style={{ display: "flex" }}>
                                                 <button className='btn chatdivchat' onClick={chatfun}>Chat</button>
                                                 {WriteResumeMsg?.message == "True" && GetIntakeFrmData == '' ?
