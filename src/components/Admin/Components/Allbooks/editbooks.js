@@ -117,7 +117,7 @@ const Editbooks = () => {
   const classes = useStyle();
   const toggleState = useSelector((state) => state.togglingReducer.togglingAll)
 
-  const booksbyiddatareducer = useSelector((state) => state.booksIddataimage.booksIddatafinalimage[0]);
+  const booksbyiddatareducer = useSelector((state) => state.booksIddataimage.booksIddatafinalimage);
   const getmsgbooksave = useSelector((state) => state.Getmsgforsavebook.Getmsgforsavebookdata);
   
 

@@ -3,7 +3,7 @@ import './chatting.css';
 import { MdOutlineAttachFile, MdSend } from 'react-icons/md';
 import { Editor } from '@tinymce/tinymce-react';
 import { useDispatch, useSelector } from 'react-redux';
-import {adminorderbyid, UserChat, AddUserChat,Adminchatuseraction, GetCData, GetFrontChatNum } from '../../redux/action/Action';
+import { adminorderbyid, UserChat, AddUserChat, Adminchatuseraction, GetCData, GetFrontChatNum } from '../../redux/action/Action';
 
 
 
@@ -16,85 +16,90 @@ const SendMessage = (props) => {
   const [sendColor, setSendColor] = useState('#656565')
 
   const editorRef = useRef(null);
-  const adminorderbyidreducerdata = useSelector((state)=>state.adminallorderbyidreducer.adminorderallbyid)
+  const adminorderbyidreducerdata = useSelector((state) => state.adminallorderbyidreducer.adminorderallbyid)
   const dispatch = useDispatch();
   let CustomerId = localStorage?.getItem('frontuserid');
   let MsgData;
 
-  const EditorChange=()=>{
+
+  const EditorChange = () => {
     MsgData = editorRef.current.getContent();
-    // console.log("data is ", MsgData)
-    if(MsgData !=''){
-    setSendColor('#f25b2a');
-    }else{
-    setSendColor('#656565');
+    if (MsgData != '') {
+      setSendColor('#f25b2a');
+    } else {
+      setSendColor('#656565');
     }
   }
 
   const sendMsg = () => {
     dispatch(GetCData('1'))
-      MsgData = editorRef.current.getContent();
-      setMsg(MsgData);
-      setSendColor('#656565');
-      // console.log("MsgData", MsgData)
-      let Data = {chatting_msg:MsgData, customer_id:CustomerId, chatting_from_user:CustomerId, chatting_to_user:0, 
-                  order_id:adminorderbyidreducerdata[0]?.order_number, attachFileData}
-      
-      if (MsgData != '' && attachFileData=='') {            
-        dispatch(AddUserChat(Data)) 
-        editorRef.current.setContent('');
-        setAttachFilename([])
-        setAttachFileData('')
-        dispatch(GetFrontChatNum('0')); 
-        
-     } 
-      else if (attachFileData !='' && MsgData==''){   
-        dispatch(UserChat(Data))
-        editorRef.current.setContent('');
-        setAttachFilename([])
-        setAttachFileData('')
-        dispatch(GetFrontChatNum('0')); 
+    MsgData = editorRef.current.getContent();
+    setMsg(MsgData);
+    setSendColor('#656565');
+    let Data = {
+      chatting_msg: MsgData,
+      customer_id: CustomerId,
+      chatting_from_user: CustomerId,
+      chatting_to_user: 0,
+      order_id: adminorderbyidreducerdata[0]?.order_number,
+      attachFileData
+    }
 
-      }
-      else if (MsgData=='' && attachFileData==''){
-        console.log("emptyyy data")
-      }
-      else{
-        dispatch(AddUserChat(Data))
-        dispatch(UserChat(Data))
-        editorRef.current.setContent('');
-        setAttachFilename([])
-        setAttachFileData('')
-        dispatch(GetFrontChatNum('0')); 
+    if (MsgData != '' && attachFileData == '') {
+      dispatch(AddUserChat(Data))
+      editorRef.current.setContent('');
+      setAttachFilename([])
+      setAttachFileData('')
+      dispatch(GetFrontChatNum('0'));
 
-      }    
+    }
+    else if (attachFileData != '' && MsgData == '') {
+      dispatch(UserChat(Data))
+      editorRef.current.setContent('');
+      setAttachFilename([])
+      setAttachFileData('')
+      dispatch(GetFrontChatNum('0'));
+
+    }
+    else if (MsgData == '' && attachFileData == '') {
+      console.log("emptyyy data")
+    }
+    else {
+      dispatch(AddUserChat(Data))
+      dispatch(UserChat(Data))
+      editorRef.current.setContent('');
+      setAttachFilename([])
+      setAttachFileData('')
+      dispatch(GetFrontChatNum('0'));
+
+    }
   };
 
   const chatfiles = (e) => {
     setSendColor('#f25b2a')
     let files = e.target.files
-    setAttachFileData(files)
+    setAttachFileData([...attachFileData, files[0]])
     for (let item of files) {
       attachFilename.push(item.name)
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(adminorderbyid(props.feact2))
-},[])
+  }, [])
 
 
-useEffect(()=>{
-  const datauser = {order_id:adminorderbyidreducerdata[0]?.order_number,customer_id:adminorderbyidreducerdata[0]?.cust_id,admin_id:0}
-  const myTimeout = setTimeout(myGreeting, 5000);
-  function myGreeting() {
-    // dispatch(Adminchataction(data))
-    dispatch(Adminchatuseraction(datauser))
-  }
-  return () => {
-    clearTimeout(myTimeout);
-  }
-},[sendMsg])
+  useEffect(() => {
+    const datauser = { order_id: adminorderbyidreducerdata[0]?.order_number, customer_id: adminorderbyidreducerdata[0]?.cust_id, admin_id: 0 }
+    const myTimeout = setTimeout(myGreeting, 5000);
+    function myGreeting() {
+      // dispatch(Adminchataction(data))
+      dispatch(Adminchatuseraction(datauser))
+    }
+    return () => {
+      clearTimeout(myTimeout);
+    }
+  }, [sendMsg])
 
 
   return (
@@ -138,7 +143,7 @@ useEffect(()=>{
 
 
     </>
-    )
+  )
 }
 
 export default SendMessage;

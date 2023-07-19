@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { adminorderbyid, Adminchatuseraction, Getchatstatusread, GetCData } from '../../../../redux/action/Action';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
-
+import { apiURL } from '../Api/BaseLine';
 
 const Adminchatdata = (props) => {
 
@@ -96,17 +96,33 @@ const Adminchatdata = (props) => {
                             <div className="chatting_mg left-chatting_mg" key={item.chatting_id}>
                                 <div className="row p-2">
                                     <div className='col-md-2 col-lg-2 inner-msg_div'>
-                                        {item?.chatting_from_user == 0 ? <img src="/assets/images/letter msg.jpg" alt="msg_img" /> : <img src="/assets/images/user1.jpg" alt="msg_img" />}
+                                        {item?.chatting_from_user == 0 ?
+                                            <img src="/assets/images/letter msg.jpg" alt="msg_img" /> :
+                                            <img src="/assets/images/user1.jpg" alt="msg_img" />
+                                        }
                                     </div>
 
                                     <div className="msg_div col-md-10 col-lg-10">
-                                        <span className='mb-5'>{item.chatting_created_at.substring(10, 16)}</span>
-                                        {item?.chatting_from_user == 0 ? <h3 className='mt-2'>FLAWLESS RESUME TEAM</h3> : <h3 className='mt-2'>{item.cust_fname + " " + item.cust_lname}</h3>}
-                                        {item?.chatting_msg_type == '3' ? item?.fileData.map((v) => {
-                                            return (
-                                                <p className='pb-2'> <a href={`/${v.trim()}`} download={`${v.replace('Chat_Data/', '').trim()}`}>{/\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(v) ? <img src={`/${v.trim()}`} alt='image' /> : <><InsertDriveFileIcon />{`${v.replace('Chat_Data/', '').trim()}`}</>}</a></p>
-                                            )
-                                        }) : <p className='pb-2' dangerouslySetInnerHTML={{ __html: item.chatting_msg }}></p>}
+                                        <span className='mb-5'>{new Date(`${item.chatting_created_at}`).toLocaleString()}</span>
+                                        {item?.chatting_from_user == 0 ?
+                                            <h3 className='mt-2'>FLAWLESS RESUME TEAM</h3> :
+                                            <h3 className='mt-2'>{item.cust_fname + " " + item.cust_lname}</h3>
+                                        }
+                                        {
+                                            item?.chatting_msg_type == '3' ?
+                                                <p className='pb-2'>
+                                                    <a href={`${apiURL}/${item.chatting_msg}`} download={`${item.chatting_msg.replace('Chat_Image/', 'Chat_Image/').trim()}`}>
+                                                        {/\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(item.chatting_msg) ?
+                                                            <img src={`${apiURL}/${item.chatting_msg}`} alt='image' /> :
+                                                            <>
+                                                                <InsertDriveFileIcon />
+                                                                {`${item.chatting_msgreplace('Chat_Image/', '').trim()}`}
+                                                            </>
+                                                        }
+                                                    </a>
+                                                </p> :
+                                                <p className='pb-2' dangerouslySetInnerHTML={{ __html: item.chatting_msg }}></p>
+                                        }
                                     </div>
                                 </div>
 
@@ -115,16 +131,32 @@ const Adminchatdata = (props) => {
                             <div className="chatting_mg right-chatting_mg">
                                 <div className="row p-2 right-chatting-inner-div">
                                     <div className="msg_div col-md-10 col-lg-10">
-                                        <span className='mb-5'>{item.chatting_created_at.substring(10, 16)}</span>
-                                        {item?.chatting_from_user == 0 ? <h3 className='mt-2'>FLAWLESS RESUME TEAM</h3> : <h3 className='mt-2'>{item.cust_fname + " " + item.cust_lname}</h3>}
-                                        {item?.chatting_msg_type == '3' ? item?.fileData.map((v) => {
-                                            return (
-                                                <p className='pb-2'> <a href={`/${v.trim()}`} download={`${v.replace('Chat_Data/', '').trim()}`}>{/\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(v) ? <img src={`/${v.trim()}`} alt='image' /> : <><InsertDriveFileIcon />{`${v.replace('Chat_Data/', '').trim()}`}</>}</a></p>
-                                            )
-                                        }) : <p className='pb-2' dangerouslySetInnerHTML={{ __html: item.chatting_msg }}></p>}
+                                        <span className='mb-5'>{new Date(`${item.chatting_created_at}`).toLocaleString()}</span>
+                                        {
+                                            item?.chatting_from_user == 0 ?
+                                                <h3 className='mt-2'>FLAWLESS RESUME TEAM</h3> :
+                                                <h3 className='mt-2'>{item.cust_fname + " " + item.cust_lname}</h3>
+                                        }
+                                        {item?.chatting_msg_type == '3' ?
+                                            <p className='pb-2'>
+                                                <a href={`/${item.chatting_msg.trim()}`} download={`${item.chatting_msg.replace('Chat_Image/', 'Chat_Image/').trim()}`}>
+                                                    {/\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(item.chatting_msg) ?
+                                                        <img src={`${apiURL}/${item.chatting_msg}`} alt='image' /> :
+                                                        <>
+                                                            <InsertDriveFileIcon />
+                                                            {`${item.chatting_msgreplace('Chat_Image/', '').trim()}`}
+                                                        </>
+                                                    }
+                                                </a>
+                                            </p> :
+                                            <p className='pb-2' dangerouslySetInnerHTML={{ __html: item.chatting_msg }}></p>
+                                        }
                                     </div>
                                     <div className='col-md-2 col-lg-2 inner-msg_div'>
-                                        {item?.chatting_from_user == 0 ? <img src="/assets/images/letter msg.jpg" alt="msg_img" /> : <img src="/assets/images/user1.jpg" alt="msg_img" />}
+                                        {item?.chatting_from_user == 0 ?
+                                            <img src="/assets/images/letter msg.jpg" alt="msg_img" /> :
+                                            <img src="/assets/images/user1.jpg" alt="msg_img" />
+                                        }
                                     </div>
                                 </div>
                             </div>
