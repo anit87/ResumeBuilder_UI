@@ -73,7 +73,7 @@ const Chatting = () => {
 
     useEffect(() => {
         if (zoomurlmeeting != null)
-            setZoomjoinurl(zoomurlmeeting[0]?.join_url)
+            setZoomjoinurl(zoomurlmeeting?.join_url)
     }, [zoomurlmeeting])
 
     useEffect(() => {
@@ -132,7 +132,7 @@ const Chatting = () => {
                                             </div>
                                             <span> Schedule a meeting</span>
                                         </div>
-                                        <div className="  d-flex align-items-center auth_icon_text text-color">
+                                        <div className="d-flex align-items-center auth_icon_text text-color">
                                             <div className="me-2 auth_icon">
                                                 {/* <SiLoom className='connectIcon' size={13} /> */}
                                                 <Loom />
@@ -144,7 +144,7 @@ const Chatting = () => {
                                         <h3>Flawless Resume Team</h3>
                                     </div>
                                     <div className="chatting_avatar chatting-border-div">
-                                        <h3 style={{ display: 'flex' }} >Order : <p style={{ cursor: 'pointer' }} onClick={() => ToOrderDetail()}>#{adminorderbyidreducerdata[0]?.order_number}</p> - Name : {adminorderbyidreducerdata[0]?.cust_fname + " " + adminorderbyidreducerdata[0]?.cust_lname}</h3>
+                                        <h3 style={{ display: 'flex' }} >Order : <p style={{ cursor: 'pointer' }} onClick={() => ToOrderDetail()}>#{`FR${adminorderbyidreducerdata[0]?.order_number}L`}</p> - Name : {adminorderbyidreducerdata[0]?.cust_fname + " " + adminorderbyidreducerdata[0]?.cust_lname}</h3>
                                     </div>
                                     <div className="chatting_resume chatting-border-div p-0">
                                         <GetChat feact2={feact2} />

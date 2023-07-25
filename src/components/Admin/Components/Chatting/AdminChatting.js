@@ -101,7 +101,7 @@ const AdminChatting = () => {
                                                 <h3>Flawless Resume Team</h3>
                                             </div>
                                             <div className="chatting_avatar chatting-border-div">
-                                                <h3 style={{ cursor: 'pointer' }} onClick={goBack}>Order : #{adminorderbyidreducerdata[0]?.order_number} - Name : {adminorderbyidreducerdata[0]?.cust_fname + " " + adminorderbyidreducerdata[0]?.cust_lname}</h3>
+                                                <h3 style={{ cursor: 'pointer' }} onClick={goBack}>Order : #{`FR${adminorderbyidreducerdata[0]?.order_number}L`} - Name : {adminorderbyidreducerdata[0]?.cust_fname + " " + adminorderbyidreducerdata[0]?.cust_lname}</h3>
                                             </div>
                                             <div className="chatting_resume chatting-border-div p-0">
                                                 <Adminchatdata />

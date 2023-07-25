@@ -763,13 +763,8 @@ export const updateOrderStatus = (data) => async dispatch => {
 }
 ///////////////////zoom action//////////////
 export const zoomaction = (id) => async dispatch => {
-    const headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic Base64Encoder(yuhLzecxSq6RtVh__lpkVw:g262NrGkcCdHXAcTKvfl2TsNh3CiMaWJ)'
-    }
     try {
-        const res = await Axios.post(apiURL + 'zoom.php', {});
-        console.log("zoomresponse", res)
+        const res = await Axios.post(apiURL + 'zoom', {});
         dispatch({
             type: 'zoomtoken',
             payload: res.data,
@@ -782,17 +777,12 @@ export const zoomaction = (id) => async dispatch => {
     }
 }
 
-export const zoomapiaction = (id) => async dispatch => {
-    const headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Basic Base64Encoder(yuhLzecxSq6RtVh__lpkVw:g262NrGkcCdHXAcTKvfl2TsNh3CiMaWJ)'
-    }
+export const zoomapiaction = (token) => async dispatch => {
     try {
-        const res = await Axios.post(apiURL + 'zoomapi.php', { id });
-        console.log("zoomresponseapi", res)
+        const res = await Axios.post(apiURL + 'newmeeting', { token }); 
         dispatch({
             type: 'zoomapi',
-            payload: res.data.meetings,
+            payload: res.data,
         })
     } catch (e) {
         dispatch({
