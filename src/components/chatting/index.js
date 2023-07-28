@@ -1,80 +1,56 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './chatting.css';
 import MiniNav from '../MiniNav/MiniNav';
 import { BsFillCameraVideoFill } from 'react-icons/bs';
 import { IoIosArrowBack } from 'react-icons/io';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { useEffect } from 'react';
 import Layout from '../../Layout/Layout';
 import { useDispatch, useSelector } from 'react-redux';
-import { adminorderbyid, zoomaction, zoomapiaction, GetAdminMsg, Getchatlinkimagesfile, GetchatFile, GetchatLink } from '../../redux/action/Action';
+import { adminorderbyid, GetAdminMsg, Getchatlinkimagesfile, GetchatFile, GetchatLink, getAllMeets } from '../../redux/action/Action';
 import { useNavigate, useParams } from 'react-router-dom';
 import Loom from '../../components/Loom/loom';
 import SendMessage from './sendMessage';
 import GetChat from './getChat';
 import { apiURL } from '../../components/Admin/Components/Api/BaseLine';
-
+import ScheduleMeeting from "../zoom/ScheduleMeeting"
+import Alert from '../basicComponents/Alert';
 
 
 const Chatting = () => {
-    const [textAreaData, setTextAreaData] = useState('')
-    const [textBoldItalic, setTextBoldItalic] = useState('')
-    const [zoomjoinurl, setZoomjoinurl] = useState()
-    const [chattingData, setChattingData] = useState()
-    const [time, setTime] = useState(Date.now());
     const navigate = useNavigate();
 
+    const [alert, setAlert] = useState(false);
+    const alertfn = () => {
+        setTimeout(() => setAlert(true), 100);
+    }
 
     const adminorderbyidreducerdata = useSelector((state) => state.adminallorderbyidreducer.adminorderallbyid)
-
-    let zoomtokendatadata = useSelector((state) => state.zoomtoken.zoomtokenno)
-
-    let zoomurlmeeting = useSelector((state) => state.zoommeetingurl.zoomurl)
 
     const chatlinkimagealldata = useSelector((state) => state.Adminchatlinkimagereducer.adminchatlinkimagedata)
 
     const chatFilesAlldata = useSelector((state) => state.ChatFilereducer.chatFiledata)
     const chatLinksAlldata = useSelector((state) => state.ChatLinksReducer.chatLinkData)
+    const zoomMeetinList = useSelector((state) => state.zoomMeeting.meetingList)
 
-    // const chatFilesAlldata = useSelector((state)=>console.log('state data is', state))
-
-    //  const GetChat =  useMemo(import GetChat from './getChat');
+    const zoomMessage = useSelector((state) => state.zoomMeetinReq.message)
 
     const userid = useParams()
     const feact1 = userid.id;
     const feact = feact1.replace("Y2F0ZWdvcnk9d", "")
     const feact2 = feact.trim() / 45;
     const dispatch = useDispatch()
-
     let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-    const zoomredirect = (URL) => {
-        window.open(`${URL}`, '_blank', 'noopener,noreferrer');
-    }
-
-    useEffect(() => {
-        if (textAreaData.length === 0) {
-            setTextBoldItalic('')
-        }
-
-    })
     useEffect(() => {
         dispatch(adminorderbyid(feact2))
+        dispatch(adminorderbyid(feact2))
+        dispatch(getAllMeets(feact2))
     }, [])
 
     useEffect(() => {
-        dispatch(zoomaction())
-    }, [])
+        alertfn()
+    }, [zoomMessage])
 
-    useEffect(() => {
-        if (zoomtokendatadata != null)
-            dispatch(zoomapiaction(zoomtokendatadata?.access_token))
-    }, [zoomtokendatadata])
-
-    useEffect(() => {
-        if (zoomurlmeeting != null)
-            setZoomjoinurl(zoomurlmeeting?.join_url)
-    }, [zoomurlmeeting])
 
     useEffect(() => {
         // let id = adminorderbyidreducerdata[0]?.order_number
@@ -105,17 +81,27 @@ const Chatting = () => {
         navigate(`/orderdetail/${feact1}`)
     }
 
+    const handleOpen = (setOpen) => {
+        setOpen(true)
+    }
+    console.log("**", zoomMeetinList, " **");
     return (
         <Layout>
             <div className="padding_div">
                 <div className='chatting-mini-div'>
                     <MiniNav NavData={['review', 'Review']} />
                 </div>
+                {zoomMessage &&
+                    <Alert
+                        open={alert}
+                        type={zoomMessage.status !== 200 ? "error" : "info"}
+                        msg={zoomMessage.message}
+                        onClose={() => setAlert(false)}
+                    />
+                }
 
                 <div className='chatting'>
                     <div className="container-fluid">
-                        {/* <MiniNav /> */}
-
                         <div className="communication_text text-center mb-5 mt-3">
                             <h4>Communicate with us via <span> Zoom Video calls </span> and <span> Loom Recordings.</span></h4>
                         </div>
@@ -123,18 +109,19 @@ const Chatting = () => {
                         <div className="row">
                             <div className="chatting_main col-md-12 col-lg-8 col-xl-8 col-xxl-9">
                                 <div className="chatting_left_side">
+
                                     <div className=" d-flex meeting_record chatting-border-div">
 
-                                        <div className="  d-flex align-items-center  auth_icon_text text-color me-5">
-                                            <div className=" auth_icon me-2">
-                                                <button onClick={() => zoomredirect(zoomjoinurl)}>
-                                                    <BsFillCameraVideoFill className='connectIcon' size={13} /></button>
+
+                                        <div className="d-flex align-items-center  auth_icon_text text-color me-5">
+                                            <div className="auth_icon me-2">
+                                                <ScheduleMeeting handleOpen={handleOpen} order_id={feact2} />
                                             </div>
-                                            <span> Schedule a meeting</span>
+                                            <span htmlFor='ScheduleMeeting' > Schedule a meeting</span>
                                         </div>
+
                                         <div className="d-flex align-items-center auth_icon_text text-color">
                                             <div className="me-2 auth_icon">
-                                                {/* <SiLoom className='connectIcon' size={13} /> */}
                                                 <Loom />
                                             </div>
                                             <span>Record with Loom</span>
@@ -173,6 +160,9 @@ const Chatting = () => {
                                             </li>
                                             <li className="nav-item" role="presentation">
                                                 <button className="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" >Files</button>
+                                            </li>
+                                            <li className="nav-item" role="presentation">
+                                                <button className="nav-link" id="pills-meeting-tab" data-bs-toggle="pill" data-bs-target="#pills-meeting" type="button" role="tab" aria-controls="pills-meeting" aria-selected="false" >Meetings</button>
                                             </li>
                                         </ul>
                                     </div>
@@ -216,7 +206,6 @@ const Chatting = () => {
                                                 }
                                             </div>
                                             <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                                {/* <p>No Data</p>  */}
                                                 {chatFilesAlldata == undefined || chatFilesAlldata == '' ? <div className='tab-no-content'><p>No Data Available</p></div>
                                                     :
                                                     <ul className="sidebar-div p-0">
@@ -238,44 +227,47 @@ const Chatting = () => {
                                                                             </p>
                                                                         </div>
                                                                         <div className="sidebar-memory">
-                                                                            <p>{items.chatting_created_at.slice(2, 11)}</p>
+                                                                            <p>{items.chatting_created_at.slice(2, 10)}</p>
                                                                             <p>{dayName}</p>
                                                                         </div>
                                                                     </div>
                                                                 </li>
                                                             )
-                                                            // return (
-                                                            //     items?.fileData?.map((childItems, childIndex) => {
-                                                            //         return (
-                                                            //             <li key={childIndex}>
-                                                            //                 <div className="my-sidebar-box sidebar-box d-flex ">
-                                                            //                     <div className="side-img">
-                                                            //                         <img src="/assets/images/chat.jpg" alt="" />
-                                                            //                     </div>
-                                                            //                     <div className="sidebar-text">
-                                                            //                         {/* <p>Chat Flawless Resume</p> */}
-                                                            //                         {/* <p>{childItems.replace('Chat_Data/', '')}</p> */}
-                                                            //                         <p className='tab-text'> <a href={`/${childItems.trim()}`} download={`${childItems.replace('Chat_Data/', '').trim()}`}>{childItems.replace('Chat_Data/', '')}</a></p>
-                                                            //                     </div>
-                                                            //                     <div className="sidebar-memory">
-                                                            //                         {/* <p>227.00 KB</p> */}
-                                                            //                         <p>{items.chatting_created_at.slice(2, 11)}</p>
-                                                            //                         {/* <p>Monday</p> */}
-                                                            //                         <p>{dayName}</p>
-                                                            //                     </div>
-                                                            //                 </div>
-                                                            //             </li>
-                                                            //         )
-                                                            //     })
-                                                            // )
                                                         })
                                                         }
                                                     </ul>
                                                 }
                                             </div>
-                                            {/* <div className="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                                <p>No Data</p>
-                                            </div> */}
+                                            <div className="tab-pane fade" id="pills-meeting" role="tabpanel" aria-labelledby="pills-meeting-tab">
+                                                {!zoomMeetinList ?
+                                                    <p>No Data Available</p> :
+                                                    <ul className="sidebar-div p-0">
+                                                        <table className="table admin-order-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">S.No</th>
+                                                                    <th scope="col">Topic</th>
+                                                                    <th scope="col">Time</th>
+                                                                    <th scope="col">Status</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {zoomMeetinList.data.map((item, i) => {
+                                                                    const date = new Date(`${item.meetingTime}`)
+                                                                    return (
+                                                                        <tr key={i}>
+                                                                            <td>{i + 1}</td>
+                                                                            <td><p>{item.topic}</p></td>
+                                                                            <td><p>{date.toLocaleDateString()}<br/>{date.toLocaleTimeString()}</p></td>
+                                                                            <td><p>{item.approvedStatus===1? "Approved": "Pending"}</p></td>
+                                                                        </tr>
+                                                                    )
+                                                                })}
+                                                            </tbody>
+                                                        </table>
+                                                    </ul>
+                                                }
+                                            </div>
                                         </div>
 
 

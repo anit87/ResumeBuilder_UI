@@ -1,0 +1,12 @@
+.admin-order-table{
+    border:none !important;
+    font-size: 13px;
+}
+
+.admin-orderinfo-addon-name p+p {
+    margin-top: 5px;
+}
+
+.css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
+    color: #d0989b !important;
+} 

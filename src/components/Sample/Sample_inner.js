@@ -49,11 +49,11 @@ const Sample_inner = () => {
     //             }
     //           }
     //     // }
-        
-    // }, [popupbolean])
-    
 
-    
+    // }, [popupbolean])
+
+
+
 
     const allsample = (e) => {
         // console.log("sddwd",e.target)
@@ -63,29 +63,31 @@ const Sample_inner = () => {
 
     const InnerDataisdata = [
         // { id: 1, name: 'Human Resource', images: ['/assets/images/human_resource.jpg', '/assets/images/human_resource1.jpg', '/assets/images/human_resource2.jpg'] },
-        { id: 1, name: 'Human Resource', resume: [{id: 1, images:['/assets/images/hrfirst1.jpg' , '/assets/images/hrfirst2.jpg']},{id: 2, images:['/assets/images/hrsecond1.jpg' , '/assets/images/hrsecond2.jpg']}] },
-        { id: 2, name: 'Medical%2FBiotech', resume: [{id:1, images:['/assets/images/medical_1.jpg','/assets/images/medical_2.jpg']},{id:2, images:['/assets/images/medicalsecond.jpg']}] },
-        { id: 3, name: 'Information Technology', resume: [{id:1, images:['/assets/images/carl1.jpg', '/assets/images/carl2.jpg']}] },
-        { id: 4, name: 'Public Relations', resume: [{id:1, images:['/assets/images/public_1.jpg', '/assets/images/public_2.jpg']}] },
-        { id: 5, name: 'Geotech%2FSpecialized Fields', resume: [{id:1, images:['/assets/images/geotech_1.jpg', '/assets/images/geotech_2.jpg']}]}, 
-                
-        { id: 6, name: 'Sales%2FMarketing%2FOperations', resume: [{id:1, images:['/assets/images/mark1.jpg', '/assets/images/mark2.jpg']},{id:2, images:['/assets/images/smith1.jpg', '/assets/images/smith2.jpg']},{id:3, images:['/assets/images/andrew1.jpg', '/assets/images/andrew2.jpg', '/assets/images/andrew3.jpg']}] },
-        { id: 7, name: 'Accounting', resume: [{id:1, images:['/assets/images/account.jpg', '/assets/images/account1.jpg']}] },
-        {id: 8, name: 'View All Samples', resume: [
-            {id: 1, images:['/assets/images/hrfirst1.jpg' , '/assets/images/hrfirst2.jpg']},{id: 2, images:['/assets/images/hrsecond1.jpg' , '/assets/images/hrsecond2.jpg']},
-            {id:3, images:['/assets/images/medical_1.jpg','/assets/images/medical_2.jpg']},{id:4, images:['/assets/images/medicalsecond.jpg']},
-            {id:5, images:['/assets/images/carl1.jpg', '/assets/images/carl2.jpg']},
-            {id:6, images:['/assets/images/public_1.jpg', '/assets/images/public_2.jpg']},
-            {id:7, images:['/assets/images/geotech_1.jpg', '/assets/images/geotech_2.jpg']},
-            {id:8, images:['/assets/images/mark1.jpg', '/assets/images/mark2.jpg']},{id:9, images:['/assets/images/smith1.jpg', '/assets/images/smith2.jpg']},{id:10, images:['/assets/images/andrew1.jpg', '/assets/images/andrew2.jpg', '/assets/images/andrew3.jpg']},
-            {id:11, images:['/assets/images/account.jpg', '/assets/images/account1.jpg']},
-            ]}
+        { id: 1, name: 'Human Resource', resume: [{ id: 1, images: ['/assets/images/hrfirst1.jpg', '/assets/images/hrfirst2.jpg'] }, { id: 2, images: ['/assets/images/hrsecond1.jpg', '/assets/images/hrsecond2.jpg'] }] },
+        { id: 2, name: 'Medical%2FBiotech', resume: [{ id: 1, images: ['/assets/images/medical_1.jpg', '/assets/images/medical_2.jpg'] }, { id: 2, images: ['/assets/images/medicalsecond.jpg'] }] },
+        { id: 3, name: 'Information Technology', resume: [{ id: 1, images: ['/assets/images/carl1.jpg', '/assets/images/carl2.jpg'] }] },
+        { id: 4, name: 'Public Relations', resume: [{ id: 1, images: ['/assets/images/public_1.jpg', '/assets/images/public_2.jpg'] }] },
+        { id: 5, name: 'Geotech%2FSpecialized Fields', resume: [{ id: 1, images: ['/assets/images/geotech_1.jpg', '/assets/images/geotech_2.jpg'] }] },
+
+        { id: 6, name: 'Sales%2FMarketing%2FOperations', resume: [{ id: 1, images: ['/assets/images/mark1.jpg', '/assets/images/mark2.jpg'] }, { id: 2, images: ['/assets/images/smith1.jpg', '/assets/images/smith2.jpg'] }, { id: 3, images: ['/assets/images/andrew1.jpg', '/assets/images/andrew2.jpg', '/assets/images/andrew3.jpg'] }] },
+        { id: 7, name: 'Accounting', resume: [{ id: 1, images: ['/assets/images/account.jpg', '/assets/images/account1.jpg'] }] },
+        {
+            id: 8, name: 'View All Samples', resume: [
+                { id: 1, images: ['/assets/images/hrfirst1.jpg', '/assets/images/hrfirst2.jpg'] }, { id: 2, images: ['/assets/images/hrsecond1.jpg', '/assets/images/hrsecond2.jpg'] },
+                { id: 3, images: ['/assets/images/medical_1.jpg', '/assets/images/medical_2.jpg'] }, { id: 4, images: ['/assets/images/medicalsecond.jpg'] },
+                { id: 5, images: ['/assets/images/carl1.jpg', '/assets/images/carl2.jpg'] },
+                { id: 6, images: ['/assets/images/public_1.jpg', '/assets/images/public_2.jpg'] },
+                { id: 7, images: ['/assets/images/geotech_1.jpg', '/assets/images/geotech_2.jpg'] },
+                { id: 8, images: ['/assets/images/mark1.jpg', '/assets/images/mark2.jpg'] }, { id: 9, images: ['/assets/images/smith1.jpg', '/assets/images/smith2.jpg'] }, { id: 10, images: ['/assets/images/andrew1.jpg', '/assets/images/andrew2.jpg', '/assets/images/andrew3.jpg'] },
+                { id: 11, images: ['/assets/images/account.jpg', '/assets/images/account1.jpg'] },
+            ]
+        }
     ]
     const ToPackageBtn = () => {
         navigate('/package')
     }
 
-    const close_fnx = () =>{
+    const close_fnx = () => {
         setPopupbolean(false)
 
     }
@@ -108,27 +110,27 @@ const Sample_inner = () => {
                                     items.id == newIdIs ?
                                         items.resume.map((v, index) => {
                                             return (
-                                                                <>
-                                                                <div key={index} onClick={imagezoomfun}  className={`unique-wrapper`}>
-                                                                    <div className='unique-wrapper-div'>
-                                                                        <img src={v.images[0]} alt='sample_inner' className='img-fluid' name={v.id} id={items.id} />
-                                                                    </div>
-                                                                </div>
-                                                            </>
-                                                         
-                                            //     v.images?.map((itemV, itemVIndex)=>{
-                                            // console.log("v",itemV)
-                                            //         return(
-                                            //             <>
-                                            //             <div onClick={imagezoomfun}  className={`unique-wrapper ${staticclass}${itemVIndex}`}>
-                                            //                 <div className='inner-sample-unique-image'>
-                                            //                     <img src={itemV[0]} alt='sample_inner' className='img-fluid' id={itemVIndex} />
-                                            //                 </div>
-                                            //             </div>
-                                            //         </>
-                                            //         )
-                                            //     })
-                                         
+                                                <>
+                                                    <div key={index} onClick={imagezoomfun} className={`unique-wrapper`}>
+                                                        <div className='unique-wrapper-div'>
+                                                            <img src={v.images[0]} alt='sample_inner' className='img-fluid' name={v.id} id={items.id} />
+                                                        </div>
+                                                    </div>
+                                                </>
+
+                                                //     v.images?.map((itemV, itemVIndex)=>{
+                                                // console.log("v",itemV)
+                                                //         return(
+                                                //             <>
+                                                //             <div onClick={imagezoomfun}  className={`unique-wrapper ${staticclass}${itemVIndex}`}>
+                                                //                 <div className='inner-sample-unique-image'>
+                                                //                     <img src={itemV[0]} alt='sample_inner' className='img-fluid' id={itemVIndex} />
+                                                //                 </div>
+                                                //             </div>
+                                                //         </>
+                                                //         )
+                                                //     })
+
                                             )
                                         })
 
@@ -152,17 +154,17 @@ const Sample_inner = () => {
                                     // console.log('vv', v.id)
                                     return (
                                         <>
-                                        {v.id!=8 ?  v.resume.map((itms, indexs)=>{
-                                        //  console.log('itms  are', itms)
-                                            return(
-                                            <div key={indexs} onClick={allsample} className='all_other_resume'>
-                                            <img  src={itms?.images[0]} alt='' name={v.name} id={v.id} className='img-fluid' />
-                                        </div>
-                                            )
-                                        }) : null}
+                                            {v.id != 8 ? v.resume.map((itms, indexs) => {
+                                                //  console.log('itms  are', itms)
+                                                return (
+                                                    <div key={indexs} onClick={allsample} className='all_other_resume'>
+                                                        <img src={itms?.images[0]} alt='' name={v.name} id={v.id} className='img-fluid' />
+                                                    </div>
+                                                )
+                                            }) : null}
                                         </>
-                                       
-                                      
+
+
                                     )
                                 })}
 
@@ -179,13 +181,13 @@ const Sample_inner = () => {
                         </div>
                         : ''}
 
-                        { popupbolean &&
+                    {popupbolean &&
                         <div onClick={close_fnx} ref={ref} className='staticclass' id='123'>
-                            <div  onClick={(e)=>e.stopPropagation()} className='inner-sample-unique-image'>
-                              <Innersamplepopup InnerDataisdata={InnerDataisdata} categoryID={categoryID} imgaesID={imgaesID}/>
+                            <div onClick={(e) => e.stopPropagation()} className='inner-sample-unique-image'>
+                                <Innersamplepopup InnerDataisdata={InnerDataisdata} categoryID={categoryID} imgaesID={imgaesID} />
                             </div>
                         </div>
-                        }
+                    }
                 </div>
             </div>
         </Layout>

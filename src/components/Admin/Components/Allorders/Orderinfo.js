@@ -54,6 +54,9 @@ const Orderinfo = () => {
   const handlechat = (id) => {
     dispatch(adminorderbyid(id)).then(() => Navigate(`/admin/adminchatting/${id}`))
   }
+  const handleMeeting = (id) => {
+    Navigate(`/admin/meetings/${id}`)
+  }
 
   const goBack = () => {
     Navigate(`/admin/order`)
@@ -94,7 +97,10 @@ const Orderinfo = () => {
                 Order Date : {adminorderbyidreducerdata != [] ? new Date(`${adminorderbyidreducerdata[0]?.order_created_at}`).toLocaleString() : null}
               </Typography>
 
-              <Box><button className={`${classes.chat} btn`} onClick={() => handlechat(adminorderbyidreducerdata[0]?.order_id)}>Chat</button></Box>
+              <Box>
+                <button className={`${classes.chat} btn mx-2`} onClick={() => handlechat(adminorderbyidreducerdata[0]?.order_id)}>Chat</button>
+                <button className={`${classes.chat} btn mx-2`} onClick={() => handleMeeting(adminorderbyidreducerdata[0]?.order_id)}>Meetings</button>
+              </Box>
             </Box>
 
             <Box style={{ marginBottom: '20px' }}>
@@ -131,7 +137,7 @@ const Orderinfo = () => {
                             item.addons != null ?
                               <div className='admin-orderinfo-addon-name'>
                                 <p>{item.order_item_product_name}</p>
-                                {item.addons.map((v,index) => {
+                                {item.addons.map((v, index) => {
                                   return <p key={index} >{v.order_items_cart_addons_name} - ${v.order_items_cart_addons_price}</p>
                                 })}
                               </div> :

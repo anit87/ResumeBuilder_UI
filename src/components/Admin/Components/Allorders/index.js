@@ -43,7 +43,7 @@ const Allorders = () => {
   const [tableData, setTableData] = useState({})
   const toggleState = useSelector((state) => state.togglingReducer.togglingAll)
   const adminorderreducerdata = useSelector((state) => state.adminallorderreducer.adminorderall)
-  console.log("admin all orders list- ", adminorderreducerdata);
+  // console.log("admin all orders list- ", adminorderreducerdata);
   
   const Navigate = useNavigate();
   const dispatch = useDispatch()

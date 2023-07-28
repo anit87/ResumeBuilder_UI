@@ -374,7 +374,7 @@ export const getIdToEditBooks = (id) => async dispatch => {
 }
 //Add Books
 export const savebooks = (booksData) => async dispatch => {
-    
+
     let formdata = new FormData();
     for (let i = 0; i < booksData.product_images.length; i++) {
         formdata.append(`file[]`, booksData.product_images[i]);
@@ -779,9 +779,59 @@ export const zoomaction = (id) => async dispatch => {
 
 export const zoomapiaction = (token) => async dispatch => {
     try {
-        const res = await Axios.post(apiURL + 'newmeeting', { token }); 
+        const res = await Axios.post(apiURL + 'newmeeting', { token });
         dispatch({
             type: 'zoomapi',
+            payload: res.data,
+        })
+    } catch (e) {
+        dispatch({
+            type: 'USERS_ERROR',
+            payload: console.log(e)
+        })
+    }
+}
+export const zoomRequestForMeeting = (data) => async dispatch => {
+    try {
+        const res = await Axios.post(apiURL + 'requestmeeting', { data });
+        dispatch({
+            type: 'zoomMeetingReq',
+            payload: res.data,
+        })
+    } catch (e) {
+        dispatch({
+            type: 'USERS_ERROR',
+            payload: console.log(e)
+        })
+    }
+}
+
+export const getAllMeets = (order_id) => async dispatch => {
+    try {
+        const res = await Axios.post(apiURL + 'getAllMeets', { order_id });
+        dispatch({
+            type: 'getAllMeetsById',
+            payload: res.data,
+        })
+    } catch (e) {
+        dispatch({
+            type: 'USERS_ERROR',
+            payload: console.log(e)
+        })
+    }
+}
+export const approveStatus = (data) => async dispatch => {
+    try {
+        console.log("meee ", data);
+        const res = await Axios.post(apiURL + 'approveStatus', {
+            id: data.id,
+            meetingTime: data.meetingTime,
+            cust_email: data.custEmail,
+            topic: data.topic,
+            duration: data.duration
+        });
+        dispatch({
+            type: 'approveStatus',
             payload: res.data,
         })
     } catch (e) {
@@ -838,7 +888,7 @@ export const packagesaveaddon = (data) => async dispatch => {
     }
 }
 //////////////////////////////////////Get ALL Cart Items/////////////////////////////////
-export const AllCartCustItems = (customer_id) => async dispatch => { 
+export const AllCartCustItems = (customer_id) => async dispatch => {
     try {
         const res = await Axios.post(apiURL + 'cart', { "action": "getCartItems", customer_id });
         dispatch({
@@ -1065,7 +1115,7 @@ export const GetFiveStarProductReview = (product_id) => async dispatch => {
 //------------------------------------------To get Total 4 star Reviews--------------------------------------------------
 export const GetFourStarProductReview = (product_id) => async dispatch => {
     try {
-        const res = await Axios.post(apiURL + 'review', { "action": "getFourStarReviewProduct", product_id }); 
+        const res = await Axios.post(apiURL + 'review', { "action": "getFourStarReviewProduct", product_id });
         dispatch({
             type: 'FourStarProductReview',
             payload: res.data,

@@ -42,6 +42,7 @@ import Editaddons from './components/Admin/Components/Alladdons/editAddon';
 import Allorders from './components/Admin/Components/Allorders';
 import Editorder from './components/Admin/Components/Allorders/editorder';
 import Orderinfo from './components/Admin/Components/Allorders/Orderinfo';
+import ZoomMeetingsInfo from './components/Admin/Components/zoom/ZoomMeetingsInfo';
 import Paypalthankyou from './components/Checkout/Paypalthankyou';
 import Orderdetails from './components/Checkout/Orderdetails';
 import AdminChatting from './components/Admin/Components/Chatting/AdminChatting';
@@ -92,6 +93,7 @@ const App = () => {
       <Route path='admin/order' exact element={<Allorders />} />
       <Route path='admin/editorder/:id' exact element={<Editorder />} />
       <Route path='admin/orderinfo/:id' exact element={<Orderinfo />} />
+      <Route path='admin/meetings/:id' exact element={<ZoomMeetingsInfo />} />
       <Route path='admin/adminchatting/:id' exact element={<AdminChatting />} />
       <Route path='admin/questionnaire/' exact element={<Questionnaire />} />
       <Route path='admin/viewresumeform/:id' exact element={<QuestionnaireId />} />

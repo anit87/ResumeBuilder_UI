@@ -11,9 +11,11 @@ const initialadminchat = { adminchatdata: [], adminchatuserdata: [] }
 const initialcaptcha = { captchastatus: [] }
 const initialpaypal = { paypalres: [], paypalthank: [] }
 const initialtoken = { zoomtokenno: [], zoomurl: [] }
+const zoomRequestMeetingMessage = { message: "" }
+const zoomMeetings = { meetingList: "", meetStatusMessage:"" }
 const initialorder = {
     orderplace: [], orderall: [], adminorderall: [], adminorderallbyid: [], ManageOrderAll: [],
-    adminQuestionnaireData: [], adminQuestionnaireDataId: [], updatedOrderStatus:[]
+    adminQuestionnaireData: [], adminQuestionnaireDataId: [], updatedOrderStatus: []
 }
 const initialcart = { datacart: [], datacartlength: [], CartItemsLength: [] }
 const initialfrontlogin = { frontloginmsg: [] }
@@ -143,7 +145,7 @@ const GetPackageDataReducer = (state = initialpackage, action) => {
         case 'getPackage':
             return {
                 ...state,
-                packagedatafinal: action.payload, 
+                packagedatafinal: action.payload,
             }
         default:
             return {
@@ -286,7 +288,7 @@ const loginstatus = (state = loginstatusvalue, action) => {
             ...state
         }
     }
-} 
+}
 //////////addonsreducers//////////
 const addondata = (state = initialaddon, action) => {
     switch (action.type) {
@@ -561,6 +563,36 @@ const zoommeetingurl = (state = initialtoken, action) => {
                 ...state,
                 zoomurl: action.payload
             }
+        default: return {
+            ...state
+        }
+    }
+}
+const zoomMeetinReq = (state = zoomRequestMeetingMessage, action) => {
+    switch (action.type) {
+        case 'zoomMeetingReq':
+            return {
+                ...state,
+                message: action.payload
+            }
+        default: return {
+            ...state
+        }
+    }
+}
+const zoomMeeting = (state = zoomMeetings, action) => {
+    switch (action.type) {
+        case 'getAllMeetsById':
+            return {
+                ...state,
+                meetingList : action.payload
+            }
+        case 'approveStatus':
+            return {
+                ...state,
+                meetStatusMessage : action.payload
+            }
+        
         default: return {
             ...state
         }
@@ -939,7 +971,8 @@ export {
     getallcustomer, loginstatus, getallpackages, getIdToEditPackageReducer, updatePackagereducer, addPackagereducer, StatusChangecustomer,
     addCustomersreducer, GetactiveFaqDataReducer, addondata, GetPackageDataReducer, packagedata, booksdataimage, Addaddondata,
     Addaddondatabyid, PackageAddonDataReducer, booksinnerreducer, ChatFilereducer, booksIddataimage, frontendloginreducer, cartreducer,
-    lengthcartreducer, orderplacereducer, allorderreducer, adminallorderreducer, adminallorderbyidreducer, zoomtoken, zoommeetingurl,
+    lengthcartreducer, orderplacereducer, allorderreducer, adminallorderreducer, adminallorderbyidreducer,
+    zoomtoken, zoommeetingurl, zoomMeetinReq,zoomMeeting,
     paypalorderreducer, paypalthanyouidreducer, recaptchareducer, Adminchatreducer, Adminchatuserreducer, GetAdminMsgReducer,
     Adminchatlinkimagereducer, ChatLinksReducer, GetFrontChatNumReducer, AddReviewsReducer, GetProductsReviewsReducer,
     GetProductsReviewsSumReducer, GetFiveStarProductsReviewsReducer, GetFourStarProductsReviewsReducer, GetThreeStarProductsReviewsReducer,
