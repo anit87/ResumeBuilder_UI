@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './chatting.css';
 import MiniNav from '../MiniNav/MiniNav';
-import { BsFillCameraVideoFill } from 'react-icons/bs';
-import { IoIosArrowBack } from 'react-icons/io';
-import { AiOutlineSearch } from 'react-icons/ai';
 import Layout from '../../Layout/Layout';
 import { useDispatch, useSelector } from 'react-redux';
 import { adminorderbyid, GetAdminMsg, Getchatlinkimagesfile, GetchatFile, GetchatLink, getAllMeets } from '../../redux/action/Action';

@@ -69,7 +69,7 @@ const Login = () => {
       [name]: value
     })
   }
-  console.log("statuslogindata", statuslogindata);
+
 
   const validationfun = () => {
     if (statuslogindata == 200 && statuslogindata != []) {
@@ -77,7 +77,7 @@ const Login = () => {
       Navigate('/admin/order')
     }
     else {
-      alert("wrong credentials")
+      alert("Wrong Credentials")
     }
   }
 
@@ -85,8 +85,6 @@ const Login = () => {
     let data = { "user_email": logindata.user_email, "password": logindata.password, "action": "login" }
     dispatch(loginfun(data))
   }, [changehandle])
-
-
 
   const classes = useStyle()
   return (

@@ -69,7 +69,7 @@ const Orderinfo = () => {
         setTimeout(() => setAlert(true), 100);
     }
 
-    console.log("nrew time ", newMeetingDate, " *");
+
     const columns = [
         {
             name: 'S.No',
@@ -100,15 +100,19 @@ const Orderinfo = () => {
             name: "Action",
             selector: row => row.meeting_id,
             sortable: false,
-            cell: (d) => d.approvedStatus === 1 ? "Approved" : [
-                <DoneIcon key='1' className={classes.edit_btn} onClick={() => dispatch(approveStatus({
-                    id: d.meeting_id,
-                    meetingTime: newMeetingDate ? newMeetingDate : d.meetingTime,
-                    custEmail: zoomMeetinList?.data[0]?.cust_email,
-                    topic: d.topic,
-                    duration: "15"
-                }))} />
-            ],
+            cell: (d) => d.approvedStatus === 1 ? <>
+                <button className={`${classes.chat} btn mx-2`} onClick={()=>window.open(`${d.start_url}`, '_blank', 'noopener,noreferrer')} >Join</button>
+                
+            </> :
+                [
+                    <DoneIcon key='1' className={classes.edit_btn} onClick={() => dispatch(approveStatus({
+                        id: d.meeting_id,
+                        meetingTime: newMeetingDate ? newMeetingDate : d.meetingTime,
+                        custEmail: zoomMeetinList?.data[0]?.cust_email,
+                        topic: d.topic,
+                        duration: "15"
+                    }))} />
+                ],
         }
     ];
 

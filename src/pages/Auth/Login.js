@@ -30,7 +30,7 @@ const Login = () => {
     let zoomurlmeeting = useSelector((state) => state.zoommeetingurl.zoomurl)
     // console.log("zoomtokendatadata",zoomtokendatadata)
     // console.log("zoomurlmeeting",zoomurlmeeting)
-    console.log("frontlogindata", frontlogindata)
+    // console.log("frontlogindata",frontlogindata.message)
 
     const logininfo = (e) => {
         const { name, value } = e.target
@@ -134,17 +134,11 @@ const Login = () => {
                                             <h2>LOGIN</h2>
                                         </div>
                                         <Stack sx={{ width: '100%' }} spacing={2}>
-                                            {
-                                                frontlogindata.Status == 200 && errormsg ?
-                                                    <Alert severity="success">Login Successfully</Alert>
-                                                    : frontlogindata.Status == 500 && errormsg ?
-                                                        <Alert severity="error">Sorry Your Account is Deactivated</Alert>
-                                                        : frontlogindata.Status == 404 && errormsg ?
-                                                            <Alert severity="error">Invalid Cerenditials</Alert>
-                                                            : frontlogindata.Status == 401 && errormsg ?
-                                                                <Alert severity="error">Sorry Email Did Not Exist, Create New Account</Alert>
-                                                                : null
-                                            }
+                                            {frontlogindata.Status == 200 && errormsg ? <Alert severity="success">Login Successfully</Alert>
+                                                : frontlogindata.Status == 500 && errormsg ? <Alert severity="error">Sorry Your Account is Deactivated</Alert>
+                                                    : frontlogindata.Status == 404 && errormsg ? <Alert severity="error">Invalid Cerenditials</Alert>
+                                                        : frontlogindata.Status == 401 && errormsg ? <Alert severity="error">Sorry Email Did Not Exist, Create New Account</Alert>
+                                                            : null}
                                         </Stack>
                                         <div className="auth_input">
                                             <div className="mb-3">
@@ -157,7 +151,7 @@ const Login = () => {
                                             </div>
                                             {/* <div className="login_check">
                                             <input className="form-check-input mt-1" type="checkbox" value="" id="flexCheckDefault" />
-                                            <label className="form-check-label" htmlFor="flexCheckDefault">
+                                            <label className="form-check-label" for="flexCheckDefault">
                                             &nbsp;   Remember me
                                             </label>
                                         </div> */}

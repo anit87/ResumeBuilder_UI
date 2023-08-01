@@ -10,13 +10,16 @@ import { useState } from 'react';
 import { apiURL } from '../../../src/components/Admin/Components/Api/BaseLine'
 import Swal from "sweetalert2";
 import { useNavigate } from 'react-router-dom';
-
+import PackageCartpopup from '../Package/packageCartPopup';
 const Cart = () => {
 
     const [subtotal, setSubtotal] = useState(0)
     const [tax, setTax] = useState(0)
+
+    const [openloginpopup, setOpenloginpopup] = useState(false);
     const cartdatareducer = useSelector((state) => state.cartreducer.datacart)
-    console.log("cartdatareducer", cartdatareducer)
+    
+    console.log("cartdatareducer", cartdatareducer.length)
 
     const [datafromapi, setDatafromapi] = useState([])
 
@@ -120,6 +123,9 @@ const Cart = () => {
 
 
     useEffect(() => {
+        if (!localStorage.getItem("frontuserid")) {
+            setOpenloginpopup(true)
+        }
         dispatch(cartaction(localStorage.getItem("frontuserid")))
         //   dispatch(lengthcartaction(localStorage.getItem("frontuserid")))
         dispatch(AllCartCustItems(localStorage.getItem("frontuserid")))
@@ -136,6 +142,7 @@ const Cart = () => {
 
     return (
         <Layout>
+            {openloginpopup && <PackageCartpopup PackagePopupclose={() => setOpenloginpopup(false)} />}
             <div className="padding_div">
                 <div className="cart">
                     <MiniNav NavData={['cart', 'Cart']} />
@@ -220,7 +227,7 @@ const Cart = () => {
 
                                     <div className="row">
                                         <div className="col-md-12 col-lg-12 cart_btn mb-3">
-                                            <button onClick={proceedcheckout} className="btn  w-100 auth_btn" disabled={Email ? 0 : 1}>
+                                            <button onClick={proceedcheckout} className="btn  w-100 auth_btn" disabled={cartdatareducer.length<1}>
                                                 Proceed to Checkout
                                             </button>
                                         </div>
