@@ -1,3 +1,2 @@
-export const baseURL = 'http://localhost/flawless/'
-// export const apiURL = 'https://dev.businesswebsoft.com/'
-export const apiURL = 'http://localhost:4000/'
+export const apiURL = 'https://resume-y9v6.onrender.com/'
+// export const apiURL = 'http://localhost:4000/'
