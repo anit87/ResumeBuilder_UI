@@ -9,6 +9,7 @@ const initialadminpackagemsg = { adminpackagemsg: [] }
 const initialadminchatlinkimage = { adminchatlinkimagedata: [], chatFiledata: [], chatLinkData: [] }
 const initialadminchat = { adminchatdata: [], adminchatuserdata: [] }
 const initialcaptcha = { captchastatus: [] }
+const contactUs = { status: "" }
 const initialpaypal = { paypalres: [], paypalthank: [] }
 const initialtoken = { zoomtokenno: [], zoomurl: [] }
 const zoomRequestMeetingMessage = { message: "" }
@@ -637,6 +638,19 @@ const recaptchareducer = (state = initialcaptcha, action) => {
         }
     }
 }
+// get contact us form status
+const contactUsStatus = (state = contactUs, action) => {
+    switch (action.type) {
+        case 'ContactUs':
+            return {
+                ...state,
+                status: action.payload
+            }
+        default: return {
+            ...state
+        }
+    }
+}
 //Adminchat
 const Adminchatreducer = (state = initialadminchat, action) => {
     switch (action.type) {
@@ -973,7 +987,7 @@ export {
     Addaddondatabyid, PackageAddonDataReducer, booksinnerreducer, ChatFilereducer, booksIddataimage, frontendloginreducer, cartreducer,
     lengthcartreducer, orderplacereducer, allorderreducer, adminallorderreducer, adminallorderbyidreducer,
     zoomtoken, zoommeetingurl, zoomMeetinReq,zoomMeeting,
-    paypalorderreducer, paypalthanyouidreducer, recaptchareducer, Adminchatreducer, Adminchatuserreducer, GetAdminMsgReducer,
+    paypalorderreducer, paypalthanyouidreducer, recaptchareducer,contactUsStatus, Adminchatreducer, Adminchatuserreducer, GetAdminMsgReducer,
     Adminchatlinkimagereducer, ChatLinksReducer, GetFrontChatNumReducer, AddReviewsReducer, GetProductsReviewsReducer,
     GetProductsReviewsSumReducer, GetFiveStarProductsReviewsReducer, GetFourStarProductsReviewsReducer, GetThreeStarProductsReviewsReducer,
     GetTwoStarProductsReviewsReducer, GetOneStarProductsReviewsReducer, Getmsgforsavebook, Getmsgforpackageupdate, CartItemsLengthReducer,

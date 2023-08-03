@@ -56,7 +56,6 @@ const Cart = () => {
 
     const proceedcheckout = (e) => {
         dispatch(updatecartaction(datafromapi))
-
         navigate('/checkout')
     }
 
@@ -223,7 +222,7 @@ const Cart = () => {
 
                                     <div className="row">
                                         <div className="col-md-12 col-lg-12 cart_btn mb-3">
-                                            <button onClick={proceedcheckout} className="btn  w-100 auth_btn" disabled={cartdatareducer.length<1}>
+                                            <button onClick={proceedcheckout} className="btn w-100 auth_btn" disabled={cartdatareducer.length<1}>
                                                 Proceed to Checkout
                                             </button>
                                         </div>

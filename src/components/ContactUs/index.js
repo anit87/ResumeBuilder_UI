@@ -6,9 +6,23 @@ import MiniNav from '../MiniNav/MiniNav';
 import ReCAPTCHA from "react-google-recaptcha";
 import { useDispatch, useSelector } from 'react-redux';
 import { recaptchaaction, ContactUs } from '../../redux/action/Action'
+import { reCaptchaKey } from '../Admin/Components/Api/BaseLine';
+import AlertComponent from '../basicComponents/Alert';
+
+function allKeysHaveValues(obj) {
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      if (obj[key] === undefined || obj[key] === null || obj[key] === '') {
+        return false;
+      }
+    }
+  }
+  return true;
+}
 
 const ContantUs = () => {
 
+  const [alert, setAlert] = useState(false);
   const [contactusData, setContactUsData] = useState({
     name: '',
     email: '',
@@ -16,11 +30,18 @@ const ContantUs = () => {
     message: ''
   })
 
-
   const statuscaptcha = useSelector((state) => state.recaptchareducer.captchastatus)
+  const contactUsStatus = useSelector((state) => state.contactUsStatus.status)
 
-  // console.log("statuscaptcha", statuscaptcha)
+  useEffect(() => {
+    alertfn()
 
+  }, [contactUsStatus])
+
+  // console.log("statuscaptcha", contactUsStatus)
+  const alertfn = () => {
+    setTimeout(() => setAlert(true), 100);
+  }
 
   const dispatch = useDispatch()
   const captchaRef = useRef(null)
@@ -47,9 +68,14 @@ const ContantUs = () => {
     // console.log("token",token)
   }
 
-
   return (
     <Layout>
+      {(contactUsStatus.status === true || contactUsStatus.status === false) && <AlertComponent
+        open={alert}
+        type={contactUsStatus.status === true ? "info" : "error"}
+        msg={contactUsStatus.message}
+        onClose={() => setAlert(false)}
+      />}
       <div className="padding_div">
         <MiniNav NavData={['contactus', 'Contact us']} />
         <div className="full_from">
@@ -80,13 +106,13 @@ const ContantUs = () => {
                         {/* sitekey="6Lf9TrgiAAAAABdM8ml-sdvv0FE2j0eVH22o77St" */}
 
                         <ReCAPTCHA
-                          sitekey="6Lc79fAiAAAAAFss509BtRrf8uZScOofcovgyQmm"
+                          sitekey={reCaptchaKey}
                           ref={captchaRef}
                           onChange={handleChange}
                         />
                       </div>
                       <div className="d-flex btn__buy contact_btn pt-2">
-                        {statuscaptcha.success == true ?
+                        {(statuscaptcha.success == true && allKeysHaveValues(contactusData)) ?
                           <button className="btn " type="submit">Send Message</button> :
                           <button className="btn " type="button" disabled>Send Message</button>
                         }

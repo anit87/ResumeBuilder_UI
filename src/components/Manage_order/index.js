@@ -21,7 +21,6 @@ const Manage_order = () => {
     const adminorderbyidreducerdata = useSelector((state) => state.adminallorderbyidreducer.adminorderallbyid)
     // console.log("manageAllOrders", manageAllOrders)
 
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -56,7 +55,7 @@ const Manage_order = () => {
     }, [])
 
     useEffect(() => {
-        if (manageAllOrders.length != 0) {
+        if (manageAllOrders.status) {
             setLoading(false)
         }
         else {
@@ -81,59 +80,64 @@ const Manage_order = () => {
                                     </div>
                                 </div>
                                 <div className='table-responsive'>
-                                    {loading ? <div className='no_table_data'><Loadingspinner />
-                                        <div className='no_data_available'>
-                                            <div className='sample_inner_button_div'>
-                                                <button type="button" onClick={ToPackageBtn} className='btn sample_inner_button'>START YOUR FLAWLESS RESUME</button>
+                                    {loading
+                                        ? <div className='no_table_data'>
+                                            <Loadingspinner />
+                                            <div className='no_data_available'>
+                                                <div className='sample_inner_button_div'>
+                                                    <button type="button" onClick={ToPackageBtn} className='btn sample_inner_button'>START YOUR FLAWLESS RESUME</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div> :
-                                        <table className="table mt-5">
-                                            <tbody>
-                                                <tr className='main_tr '>
-                                                    <td ></td>
-                                                    <td> </td>
-                                                    <td> <h5 className='d'>g</h5> </td>
-                                                    <td> <h5></h5> </td>
-                                                </tr>
-                                                <tr className='main_tr'>
-                                                    <td ><h5>ORDER ID</h5></td>
-                                                    <td> <h5>TOTAL</h5> </td>
-                                                    <td> <h5>ORDERS DATE</h5> </td>
-                                                    <td> <h5>STATUS</h5> </td>
-                                                    <td> </td>
-                                                </tr>
-                                                {manageAllOrders?.map((items, i) => {
-                                                    return (
-                                                        <tr key={i} className='main_tr'>
-                                                            <td className='table_img' >{`FR${items?.order_number}L`}</td>
-                                                            <td className='table_img' >${`${parseFloat(items?.order_subtotal).toFixed(2)}`}</td>
-                                                            {/* <td className='table_img' >{items?.order_date}</td> */}
-                                                            <td className='table_img' >{new Date(`${items?.order_created_at}`).toLocaleString()}</td>
-                                                            {items.order_status == 1 ? <td className='table_img' >Completed</td> : <td className='table_img' >Failed</td>}
-                                                            <td>
-                                                                <div className="d-flex justify-content-center questions_div">
-                                                                    <button className="questions_btn " onClick={() => viewfun(items.order_id)}>
-                                                                        <ImEye style={{ marginRight: "5px" }} size={20} className='mb-1' />
-                                                                        View
-                                                                    </button>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                {items?.prdct_type == true ?
-                                                                    <div className="d-flex questions_div ">
-                                                                        <button className='questions_btn' onClick={() => handleWriteResume(items.order_number)}>Questionnaire </button>
+                                        : manageAllOrders.length<1|| manageAllOrders.result.length < 1
+                                            ? <div className='d-flex justify-content-center align-items-center' >
+                                                <h6 className='m-4'>No Orders Found</h6>
+                                            </div>
+                                            : <table className="table mt-5">
+                                                < tbody >
+                                                    <tr className='main_tr '>
+                                                        <td ></td>
+                                                        <td> </td>
+                                                        <td> <h5 className='d'>g</h5> </td>
+                                                        <td> <h5></h5> </td>
+                                                    </tr>
+                                                    <tr className='main_tr'>
+                                                        <td ><h5>ORDER ID</h5></td>
+                                                        <td> <h5>TOTAL</h5> </td>
+                                                        <td> <h5>ORDERS DATE</h5> </td>
+                                                        <td> <h5>STATUS</h5> </td>
+                                                        <td> </td>
+                                                    </tr>
+                                                    {manageAllOrders.result?.map((items, i) => {
+                                                        return (
+                                                            <tr key={i} className='main_tr'>
+                                                                <td className='table_img' >{`FR${items?.order_number}L`}</td>
+                                                                <td className='table_img' >${`${parseFloat(items?.order_subtotal).toFixed(2)}`}</td>
+                                                                {/* <td className='table_img' >{items?.order_date}</td> */}
+                                                                <td className='table_img' >{new Date(`${items?.order_created_at}`).toLocaleString()}</td>
+                                                                {items.order_status == 1 ? <td className='table_img' >Completed</td> : <td className='table_img' >Failed</td>}
+                                                                <td>
+                                                                    <div className="d-flex justify-content-center questions_div">
+                                                                        <button className="questions_btn " onClick={() => viewfun(items.order_id)}>
+                                                                            <ImEye style={{ marginRight: "5px" }} size={20} className='mb-1' />
+                                                                            View
+                                                                        </button>
                                                                     </div>
-                                                                    : null
-                                                                }
-                                                            </td>
-                                                        </tr>
-                                                    )
-                                                })}
+                                                                </td>
+                                                                <td>
+                                                                    {items?.prdct_type == true ?
+                                                                        <div className="d-flex questions_div ">
+                                                                            <button className='questions_btn' onClick={() => handleWriteResume(items.order_number)}>Questionnaire </button>
+                                                                        </div>
+                                                                        : null
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    })}
 
-                                            </tbody>
-
-                                        </table>}
+                                                </tbody>
+                                            </table>}
 
                                 </div>
 

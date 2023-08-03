@@ -10,10 +10,6 @@ import Switch from '@mui/material/Switch';
 import { alpha } from '@mui/material/styles';
 import { Allcustomer, StatusChange, allFaqData, toggle } from '../../../../redux/action/Action'
 
-
-
-
-
 const useStyle = makeStyles((theme) => ({
   root: {
     paddingTop: theme.spacing(20),

@@ -28,9 +28,9 @@ const Chatting = () => {
     const chatFilesAlldata = useSelector((state) => state.ChatFilereducer.chatFiledata)
     const chatLinksAlldata = useSelector((state) => state.ChatLinksReducer.chatLinkData)
     const zoomMeetinList = useSelector((state) => state.zoomMeeting.meetingList)
-    // console.log("Files & Links", zoomMeetinList);
     const zoomMessage = useSelector((state) => state.zoomMeetinReq.message)
 
+    // console.log("**"+ zoomMeetinList+"**");
     const userid = useParams()
     const feact1 = userid.id;
     const feact = feact1.replace("Y2F0ZWdvcnk9d", "")
@@ -81,7 +81,7 @@ const Chatting = () => {
     const handleOpen = (setOpen) => {
         setOpen(true)
     }
-    // console.log("**---------", zoomMeetinList, " **");
+    
     return (
         <Layout>
             <div className="padding_div">
@@ -236,7 +236,7 @@ const Chatting = () => {
                                                 }
                                             </div>
                                             <div className="tab-pane fade" id="pills-meeting" role="tabpanel" aria-labelledby="pills-meeting-tab">
-                                                {  zoomMeetinList.status && zoomMeetinList.data.length<1 ?
+                                                {  zoomMeetinList?.status && zoomMeetinList?.data.length<1 ?
                                                     <p>No Data Available</p> :
                                                     <ul className="sidebar-div p-0">
                                                         <table className="table admin-order-table">
@@ -249,7 +249,7 @@ const Chatting = () => {
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                {zoomMeetinList.data.map((item, i) => {
+                                                                {zoomMeetinList.status && zoomMeetinList?.data.map((item, i) => {
                                                                     const date = new Date(`${item.meetingTime}`)
                                                                     return (
                                                                         <tr key={i}>

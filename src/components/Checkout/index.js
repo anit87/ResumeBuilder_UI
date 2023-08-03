@@ -15,6 +15,7 @@ import {
     usePayPalScriptReducer
 } from "@paypal/react-paypal-js";
 import ButtonWrapper from './ButtonWrapper';
+import { paypalClientId } from '../../../src/components/Admin/Components/Api/BaseLine';
 
 
 const Checkout = () => {
@@ -96,7 +97,7 @@ const Checkout = () => {
 
     const gettransectionpprove = (paypaltransectionid, paypalorderid, paypalstatus) => {
         // console.log("in parentssss",paypaltransectionid,paypalorderid,paypalstatus)
-        const data = { paypaltransectionid: paypaltransectionid, paypalorderid: paypalorderid, paypalstatus: paypalstatus }
+        const data = { paypaltransectionid: paypaltransectionid, paypalorderid: paypalorderid, paypalstatus: paypalstatus, cartid:cartid[0] }
         dispatch(paypalsave(data)).then(() => navigate(`/paypalthankyou/${data.paypalorderid}`))
 
 
@@ -162,9 +163,7 @@ const Checkout = () => {
                                     <div className='form_heading'>
                                         <div className='checkout_form_heading'>
                                             <h4>Contact information</h4>
-
                                         </div>
-
                                     </div>
                                     <div className='checkout_form_div'>
                                         <form>
@@ -219,12 +218,12 @@ const Checkout = () => {
                                             <div className='checkout_form_submit'>
                                                 <button type="button" className="btn return_button" onClick={returncart}><span><ChevronLeftIcon /></span>Return to cart</button>
                                                 {(shippingadress.firstname != '' && shippingadress.lastname != '' && shippingadress.address != '' && shippingadress.email != ''
-                                                    && shippingadress.country != '' && shippingadress.city != '' && shippingadress.state != '' && shippingadress.pincode != '') ?
-                                                    <div className='paypal-button'>
+                                                    && shippingadress.country != '' && shippingadress.city != '' && shippingadress.state != '' && shippingadress.pincode != '')
+                                                    ? <div className='paypal-button'>
                                                         <button type="button" className="btn submit_btn" onClick={continueshipping}>Place Order</button>
                                                         <PayPalScriptProvider
                                                             options={{
-                                                                "client-id": "AR7hqnlASqeqFHfxoNwBxefHq0cNPzfb7_ZKSNarhCulhIBA3M6_mU83C2KRQEX23IZd6ye4OqgW0RD3",
+                                                                "client-id": paypalClientId,
                                                                 components: "buttons",
                                                                 currency: "USD"
                                                             }}
@@ -237,7 +236,8 @@ const Checkout = () => {
                                                                 checksubtotal={checksubtotal}
                                                             />
                                                         </PayPalScriptProvider>
-                                                    </div> : <button type="button" className="btn submit_btn befor-submit-place" >Place Order</button>}
+                                                    </div>
+                                                    : <button type="button" className="btn submit_btn befor-submit-place" >Place Order</button>}
                                             </div>
 
                                         </form>
