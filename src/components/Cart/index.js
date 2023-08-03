@@ -84,16 +84,12 @@ const Cart = () => {
         })
 
         setDatafromapi(testingg)
-        //    console.log("datafromapi",datafromapi)
-
-
     }
 
 
     const updatecartqty = () => {
         // update_cart.push({cart_id:updatedcartid,cart_qty:updatedcartqty})
         // dispatch(updatecartaction([{cart_id:updatedcartid,cart_qty:updatedcartqty}]))
-        // console.log("datafromapi",datafromapi)
         dispatch(updatecartaction(datafromapi))
     }
 

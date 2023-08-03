@@ -6,11 +6,8 @@ import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import Switch from '@mui/material/Switch';
 import Select from 'react-select';
-import { useDispatch ,useSelector} from 'react-redux';
-import {addcategory , allCategories} from '../../../../redux/action/Action'
-
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { addcategory, allCategories } from '../../../../redux/action/Action'
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -56,65 +53,65 @@ const useStyle = makeStyles((theme) => ({
       fontSize: 15,
       fontWeight: 500,
     },
-    '& .css-b62m3t-container':{
-      width:'90%',
-      marginBottom:15,
+    '& .css-b62m3t-container': {
+      width: '90%',
+      marginBottom: 15,
       border: theme.palette.secondary.light,
-      '& .css-1s2u09g-control':{
+      '& .css-1s2u09g-control': {
         padding: `${theme.spacing(1)} 5px`,
-    
+
       },
-      '& .css-14el2xx-placeholder':{
+      '& .css-14el2xx-placeholder': {
         fontSize: 16,
         fontWeight: 500,
-        },
-        '& .css-1pahdxg-control':{
-            outline:'none',
-            padding: `${theme.spacing(1)} 5px`,
-            // borderColor: 'hsl(0, 0%, 80%)',
-            border: `2px solid ${theme.palette.secondary.main}`,
-            boxShadow:'none'
-        },
-     
+      },
+      '& .css-1pahdxg-control': {
+        outline: 'none',
+        padding: `${theme.spacing(1)} 5px`,
+        // borderColor: 'hsl(0, 0%, 80%)',
+        border: `2px solid ${theme.palette.secondary.main}`,
+        boxShadow: 'none'
+      },
 
-  
+
+
     },
-    
-    '& .css-1a25edt-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked':{
-      color:theme.palette.primary.green,
-      },
-      '& .css-1a25edt-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track':{
-        background:theme.palette.primary.green,
-      },
-      '& .makeStyles-inputs-20':{
-        background:'red'
-      },
-    '& .css-1a25edt-MuiButtonBase-root-MuiSwitch-switchBase':{
-      color:'red'
+
+    '& .css-1a25edt-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked': {
+      color: theme.palette.primary.green,
     },
-    '& .css-1yjjitx-MuiSwitch-track':{
-      background:'red'
+    '& .css-1a25edt-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track': {
+      background: theme.palette.primary.green,
+    },
+    '& .makeStyles-inputs-20': {
+      background: 'red'
+    },
+    '& .css-1a25edt-MuiButtonBase-root-MuiSwitch-switchBase': {
+      color: 'red'
+    },
+    '& .css-1yjjitx-MuiSwitch-track': {
+      background: 'red'
     }
- 
- 
+
+
   },
-  statusDiv:{
-    display:'flex',
-    alignItems:'center',
+  statusDiv: {
+    display: 'flex',
+    alignItems: 'center',
   },
-  active:{
-    fontSize: '17px!important',
-      fontWeight: '500!important',
-      color:theme.palette.primary.green,
-      marginBottom:2
-  },
-  inactive:{
+  active: {
     fontSize: '17px!important',
     fontWeight: '500!important',
-      color:theme.palette.primary.red,
-      marginBottom:2
+    color: theme.palette.primary.green,
+    marginBottom: 2
+  },
+  inactive: {
+    fontSize: '17px!important',
+    fontWeight: '500!important',
+    color: theme.palette.primary.red,
+    marginBottom: 2
   }
- 
+
 
 
 }))
@@ -129,27 +126,16 @@ const EditField = (props) => {
     (state) => state.editfieldReducer.editcategory
   );
 
- 
-  console.log('category',getAllFields);
-  
-  
 
   const dispatch = useDispatch();
-//   const options = [];
-//   getAllFields.map((items) =>
-//     options.push({ value: items.id, label: items.feild_type })
-//   );
+
 
   const options = [
-    { value: "String",    label: "String" },
-    { value: "Integer",   label: "Integer" },
-    { value: "Array",     label: "Array" },
-    { value: "JSON",      label: "JSON" },
+    { value: "String", label: "String" },
+    { value: "Integer", label: "Integer" },
+    { value: "Array", label: "Array" },
+    { value: "JSON", label: "JSON" },
   ];
-
-
-  //console.log('data',options);
-
 
   const [student, setStudent] = useState({
     feildname: "",
@@ -160,24 +146,14 @@ const EditField = (props) => {
 
   useEffect(() => {
     setStudent({
-        feildname: editFiels.feild_name,
-        feildtype: editFiels.feild_type,
-        status: editFiels.status === "0" ? false : true,
-        statusApi: editFiels.status,
+      feildname: editFiels.feild_name,
+      feildtype: editFiels.feild_type,
+      status: editFiels.status === "0" ? false : true,
+      statusApi: editFiels.status,
     });
     // let a={value:editFiels.parent_cat,label: 'Furniture'}
     // handleChangeOpt(a)
   }, [editFiels]);
-
-    
-//     const  defaultValues= [{
-//                 'label' : `${student.feildname}`,
-//                 'value' : `${student.feildtype}`,
-//  }]
-
-
- // console.log('datas',defaultValues[0]);
-
 
   const handlerStatus = (e) => {
     if (student.status) {
@@ -210,7 +186,6 @@ const EditField = (props) => {
   };
 
   const handleChangeOpt = (selectedOption) => {
-    console.log("selectedOption", selectedOption);
     setStudent((prev) => {
       return {
         ...prev,
@@ -223,7 +198,6 @@ const EditField = (props) => {
   };
 
   if (getAllFields.length == 0) {
-    console.log("length", getAllFields.length);
     dispatch(allCategories());
   }
 
@@ -235,7 +209,7 @@ const EditField = (props) => {
             <Typography variant="h5" component="h5" sx={{ marginBottom: 2 }}>
               Edit Field
             </Typography>
-           {/* {student.parent_name} */}
+            {/* {student.parent_name} */}
             <TextField
               type="text"
               id="outlined-basic"
@@ -256,9 +230,9 @@ const EditField = (props) => {
             
               onChange={handleChangeOpt}
             /> */}
-              <Select
+            <Select
               options={options}
-            //   defaultValue={student.feildtype}
+              //   defaultValue={student.feildtype}
               onChange={handleChangeOpt}
             />
             <FormControl className={classes.radionBtns}>

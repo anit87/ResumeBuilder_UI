@@ -2,64 +2,56 @@ import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Layout from '../../Pages/Layout';
 import { makeStyles } from '@mui/styles';
-import { useTheme } from '@mui/material/styles';
-import { Paper, Box, Button, Typography, TextField, Table, TableBody, TableCell, TableContainer, TableFooter, TablePagination, 
-    TableRow, TableHead, Toolbar, TableSortLabel, FormGroup, InputBase   } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import { useSelector,useDispatch } from 'react-redux';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import {
+  Paper, Box, Table, TableBody, TableCell, TableContainer, TablePagination, TableRow, TableHead, Toolbar, FormGroup
+} from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux';
 import Switch from '@mui/material/Switch';
-import Checkbox from '@mui/material/Checkbox';
-import Tooltip from '@mui/material/Tooltip';
-import DeleteIcon from '@mui/icons-material/Delete';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import { visuallyHidden } from '@mui/utils';
 import { alpha } from '@mui/material/styles';
-import {Allcustomer, StatusChange, allFaqData, toggle} from '../../../../redux/action/Action'
-import { useNavigate } from 'react-router-dom';
-import SearchIcon from '@mui/icons-material/Search';
+import { Allcustomer, StatusChange, allFaqData, toggle } from '../../../../redux/action/Action'
 
 
 
 
-const useStyle = makeStyles((theme)=>({
-    root:{
-      paddingTop:theme.spacing(20),
-      width:'100%',
-    },
-    table:{
-      
-     //  width:'90%',
-      margin:'auto',
-    
-    },
-    statusDiv:{
-     display:'flex',
-     alignItems:'center',
-   },
-   active:{
-       fontSize: '17px!important',
-       fontWeight: '500!important',
-       color:'green',
-       marginBottom:2,
-       paddingTop:'5px!important'
-   },
-   inactive:{
-       fontSize: '17px!important',
-       fontWeight: '500!important',
-       color:'red',
-       marginBottom:2,
-       paddingTop:'5px!important'
 
-   },
- 
-   box_noData: {
+const useStyle = makeStyles((theme) => ({
+  root: {
+    paddingTop: theme.spacing(20),
+    width: '100%',
+  },
+  table: {
+
+    //  width:'90%',
+    margin: 'auto',
+
+  },
+  statusDiv: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  active: {
+    fontSize: '17px!important',
+    fontWeight: '500!important',
+    color: 'green',
+    marginBottom: 2,
+    paddingTop: '5px!important'
+  },
+  inactive: {
+    fontSize: '17px!important',
+    fontWeight: '500!important',
+    color: 'red',
+    marginBottom: 2,
+    paddingTop: '5px!important'
+
+  },
+
+  box_noData: {
     height: '100px',
     fontSize: '14px',
     textAlign: 'center',
     padding: '10px',
-   },
-   searchIcon: {
+  },
+  searchIcon: {
     padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
@@ -68,190 +60,97 @@ const useStyle = makeStyles((theme)=>({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  ' & .active':{
-    color:'green',
+  ' & .active': {
+    color: 'green',
   },
-   // '& .css-xcho4-MuiButtonBase-root-MuiRadio-root.Mui-checked': {
-   //   color: '#16ab52 !important' ,
-   // },
- 
-   
- }))
+  // '& .css-xcho4-MuiButtonBase-root-MuiRadio-root.Mui-checked': {
+  //   color: '#16ab52 !important' ,
+  // },
+}))
 
 
-  
-  function descendingComparator(a, b, orderBy) {
-    if (b[orderBy] < a[orderBy]) {
-      return -1;
+
+function descendingComparator(a, b, orderBy) {
+  if (b[orderBy] < a[orderBy]) {
+    return -1;
+  }
+  if (b[orderBy] > a[orderBy]) {
+    return 1;
+  }
+  return 0;
+}
+
+function getComparator(order, orderBy) {
+  return order === 'desc'
+    ? (a, b) => descendingComparator(a, b, orderBy)
+    : (a, b) => -descendingComparator(a, b, orderBy);
+}
+
+// This method is created for cross-browser compatibility, if you don't
+// need to support IE11, you can use Array.prototype.sort() directly
+function stableSort(array, comparator) {
+  const stabilizedThis = array.map((el, index) => [el, index]);
+  stabilizedThis.sort((a, b) => {
+    const order = comparator(a[0], b[0]);
+    if (order !== 0) {
+      return order;
     }
-    if (b[orderBy] > a[orderBy]) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  function getComparator(order, orderBy) {
-    return order === 'desc'
-      ? (a, b) => descendingComparator(a, b, orderBy)
-      : (a, b) => -descendingComparator(a, b, orderBy);
-  }
-  
-  // This method is created for cross-browser compatibility, if you don't
-  // need to support IE11, you can use Array.prototype.sort() directly
-  function stableSort(array, comparator) {
-    const stabilizedThis = array.map((el, index) => [el, index]);
-    stabilizedThis.sort((a, b) => {
-      const order = comparator(a[0], b[0]);
-      if (order !== 0) {
-        return order;
-      }
-      return a[1] - b[1];
-    });
-    return stabilizedThis.map((el) => el[0]);
-  }
-  
-//   const headCells = [
-//     {
-//       id: '1',
-//       numeric: false,
-//       disablePadding: true,
-//       label: 'FirstName ',
-//     },
-//     {
-//       id: '2',
-//       numeric: true,
-//       disablePadding: false,
-//       label: 'LastName',
-//     },
-//     {
-//       id: '3',
-//       numeric: true,
-//       disablePadding: false,
-//       label: 'Email',
-//     },
-//     {
-//       id: '4',
-//       numeric: true,
-//       disablePadding: false,
-//       label: 'Status',
-//     },
-//   ];
-  
-  function EnhancedTableHead(props) {
-    const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
-      props;
-    const createSortHandler = (property) => (event) => {
-      onRequestSort(event, property);
-    };
-  
-    return (
-      <TableHead>
-        {/* <TableRow>
-          {headCells.map((headCell) => (
-            <TableCell
-              key={headCell.id}
-              align={headCell.numeric ? 'right' : 'left'}
-              padding={headCell.disablePadding ? 'none' : 'normal'}
-              sortDirection={orderBy === headCell.id ? order : false}
-            >
-              <TableSortLabel
-                active={orderBy === headCell.id}
-                direction={orderBy === headCell.id ? order : 'asc'}
-                onClick={createSortHandler(headCell.id)}
-              >
-                {headCell.label}
-                {orderBy === headCell.id ? (
-                  <Box component="span" sx={visuallyHidden}>
-                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                  </Box>
-                ) : null}
-              </TableSortLabel>
-            </TableCell>
-          ))}
-        </TableRow> */}
-      </TableHead>
-    );
-  }
-  
-  EnhancedTableHead.propTypes = {
-    numSelected: PropTypes.number.isRequired,
-    onRequestSort: PropTypes.func.isRequired,
-    onSelectAllClick: PropTypes.func.isRequired,
-    order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-    orderBy: PropTypes.string.isRequired,
-    rowCount: PropTypes.number.isRequired,
+    return a[1] - b[1];
+  });
+  return stabilizedThis.map((el) => el[0]);
+}
+
+function EnhancedTableHead(props) {
+  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
+    props;
+  const createSortHandler = (property) => (event) => {
+    onRequestSort(event, property);
   };
-  
-  const EnhancedTableToolbar = (props) => {
-    const { numSelected } = props;
-  
-    return (
-      <Toolbar
-        sx={{
-          pl: { sm: 2 },
-          pr: { xs: 1, sm: 1 },
-          ...(numSelected > 0 && {
-            bgcolor: (theme) =>
-              alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
-          }),
-        }}
-      >
-        {/* {numSelected > 0 ? (
-          <Typography
-            sx={{ flex: '1 1 100%' }}
-            color="inherit"
-            variant="subtitle1"
-            component="div"
-          >
-            {numSelected} selected
-          </Typography>
-        ) : (
-          // <Typography
-          //   sx={{ flex: '1 1 100%' }}
-          //   variant="h6"
-          //   id="tableTitle"
-          //   component="div"
-          // >
-          //   Nutrition
-          // </Typography>
-          // <TextField type='input'  />
-          <Box  sx={{borderBottom:' 1px  solid #f25b2a'}}>
-            <SearchIcon />
-            <InputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Box>
-   
-        
-        )} */}
-{/*   
-        {numSelected > 0 ? (
-          <Tooltip title="Delete">
-            <IconButton>
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip>
-        ) : (
-          <Tooltip title="Filter list">
-            <IconButton>
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
-        )} */}
-      </Toolbar>
-    );
-  };
-  
-  EnhancedTableToolbar.propTypes = {
-    numSelected: PropTypes.number.isRequired,
-  };
+
+  return (
+    <TableHead>
+    </TableHead>
+  );
+}
+
+EnhancedTableHead.propTypes = {
+  numSelected: PropTypes.number.isRequired,
+  onRequestSort: PropTypes.func.isRequired,
+  onSelectAllClick: PropTypes.func.isRequired,
+  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
+  orderBy: PropTypes.string.isRequired,
+  rowCount: PropTypes.number.isRequired,
+};
+
+const EnhancedTableToolbar = (props) => {
+  const { numSelected } = props;
+
+  return (
+    <Toolbar
+      sx={{
+        pl: { sm: 2 },
+        pr: { xs: 1, sm: 1 },
+        ...(numSelected > 0 && {
+          bgcolor: (theme) =>
+            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
+        }),
+      }}
+    >
+
+
+    </Toolbar>
+  );
+};
+
+EnhancedTableToolbar.propTypes = {
+  numSelected: PropTypes.number.isRequired,
+};
 
 
 //-----------------------------//-----------------main table starts here --------------------//-----------------------//
- const  CustomTable = () => {
+const CustomTable = () => {
   const classes = useStyle();
-  const toggleState = useSelector((state)=>state.togglingReducer.togglingAll)
+  const toggleState = useSelector((state) => state.togglingReducer.togglingAll)
 
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('calories');
@@ -260,94 +159,73 @@ const useStyle = makeStyles((theme)=>({
   const [dense, setDense] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [customerStatus, setCustomerStatus] = useState({
-    id :'',
+    id: '',
     status: '0',
-    statusApi : false
+    statusApi: false
   });
 
   const [userStatus, setUserStatus] = useState({
-    active : '1',
-    inactive :'0'
+    active: '1',
+    inactive: '0'
   })
 
   const [activeClass, setActiveClass] = useState(false);
   const [deleteSuccess, setDeleteSuccess] = useState('')
-  
-  const getallcustomer = useSelector((state)=>state.getallcustomer.customerData)
 
-  
+  const getallcustomer = useSelector((state) => state.getallcustomer.customerData)
+
+
   const dispatch = useDispatch()
-  
 
-  console.log("datata",getallcustomer)
-  
-
-
-
-  function createData(first_name,  last_name, email ) {
+  function createData(first_name, last_name, email) {
     return {
       first_name,
       last_name,
       email,
-      
+
     };
   }
-  
-//   const rows = [
-//     createData('Cupcake', 305, 3.7, 67),
-//     createData('Donut', 452, 25.0, 51),
-//   ];
 
-//   const rows = [];
-//   getallcustomer?.map((i)=>{
-//     rows.push(createData(i.first_name, i.last_name, i.email, i.id))
-//   })
 
-let  rows = [];
-getallcustomer?.map((i)=>{
-  rows.push({first_name : i.first_name, last_name : i.last_name, email : i.email, id : i.id, status : i.status})
-})
+  let rows = [];
+  getallcustomer?.map((i) => {
+    rows.push({ first_name: i.first_name, last_name: i.last_name, email: i.email, id: i.id, status: i.status })
+  })
 
-  console.log('rows', rows)
+  const handlerStatus = (e, id) => {
+    // debugger;
+    let { name, value } = e.target;
 
-    const handlerStatus = (e, id) => {
-      // debugger;
-      let {name, value} = e.target;
-  
-      console.log('customerStatus.statusApi is', customerStatus.statusApi)
-    
-      if(customerStatus.statusApi){
+    if (customerStatus.statusApi) {
 
-        setCustomerStatus((prev) => {
-          return {
-            ...prev,   
-            [name]: false,
-            status:"0",
-          }
-        })
-        console.log('Inactive customerStatus.Status is is ', customerStatus.status)
-        let data = {"action" : "CustomersStatusChange", "id" : parseInt(id), "status" : customerStatus.status }
-        // dispatch(StatusChange(data))
+      setCustomerStatus((prev) => {
+        return {
+          ...prev,
+          [name]: false,
+          status: "0",
+        }
+      })
+      let data = { "action": "CustomersStatusChange", "id": parseInt(id), "status": customerStatus.status }
+      // dispatch(StatusChange(data))
 
-      }else{
-        setCustomerStatus((prev) => {
+    } else {
+      setCustomerStatus((prev) => {
 
-          return {
-            ...prev,
-            [name]: true,
-            status:"1",
-          }
-        })
-        console.log('Active customerStatus.Status is is ', customerStatus.status)
+        return {
+          ...prev,
+          [name]: true,
+          status: "1",
+        }
+      })
 
-        let data = {"action" : "CustomersStatusChange", "id" : parseInt(id), "status" : customerStatus.status }
-        // dispatch(StatusChange(data))
+      let data = { "action": "CustomersStatusChange", "id": parseInt(id), "status": customerStatus.status }
+      // dispatch(StatusChange(data))
 
-      }
-     
     }
 
-   
+  }
+
+
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -382,135 +260,118 @@ getallcustomer?.map((i)=>{
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-    useEffect(()=>{
-        dispatch(toggle())
-    },[])
-       
-      useEffect(()=>{
-        dispatch(allFaqData())
-      },[])
+  useEffect(() => {
+    dispatch(toggle())
+  }, [])
 
-      useEffect(()=>{
-        dispatch(Allcustomer());
-      },[])
-      useEffect(()=>{
-        setCustomerStatus({
-            id:2,
-            status: getallcustomer?.status,
-            statusApi : getallcustomer?.status == '0' ? false : true
-        })
-      },[getallcustomer])
+  useEffect(() => {
+    dispatch(allFaqData())
+  }, [])
 
-      console.log('customer Status', customerStatus)
+  useEffect(() => {
+    dispatch(Allcustomer());
+  }, [])
+  useEffect(() => {
+    setCustomerStatus({
+      id: 2,
+      status: getallcustomer?.status,
+      statusApi: getallcustomer?.status == '0' ? false : true
+    })
+  }, [getallcustomer])
+
 
   return (
     <>
- <Layout>
-    <div className={classes.root} >
+      <Layout>
+        <div className={classes.root} >
 
-    <div className={classes.student}>
-    <Paper variant='outlined' className={classes.table} 
-      style={{ position: 'absolute', right: 0, left: toggleState ? 300 : 0, width:toggleState ? '80%' : '90%' ,transition: '.3s all', }}>
-    { rows == '' ?   <Box className={classes.box_noData} >No Records Found</Box> :
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
-        <TableContainer>
-          <Table
-            sx={{ minWidth: 750 }}
-            aria-labelledby="tableTitle"
-            size={dense ? 'small' : 'medium'}
-          >
-            <EnhancedTableHead
-              numSelected={selected.length}
-              order={order}
-              orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
-              onRequestSort={handleRequestSort}
-              rowCount={rows.length}
-            />
-            <TableHead>
-                <TableRow>
-                    <TableCell>First Name</TableCell>
-                    <TableCell align="right">Last name</TableCell>
-                    <TableCell align="right">Email</TableCell>
-                    <TableCell align="right">Status</TableCell>
-                </TableRow>
-            </TableHead>
-
-            <TableBody>
-
-              {
-              stableSort(rows, getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  return (
-                    <TableRow >
-                      <TableCell
-                        component="th"
-                        scope="row"
-                        padding="none"
+          <div className={classes.student}>
+            <Paper variant='outlined' className={classes.table}
+              style={{ position: 'absolute', right: 0, left: toggleState ? 300 : 0, width: toggleState ? '80%' : '90%', transition: '.3s all', }}>
+              {rows == '' ? <Box className={classes.box_noData} >No Records Found</Box> :
+                <Box sx={{ width: '100%' }}>
+                  <Box sx={{ width: '100%', mb: 2 }}>
+                    <EnhancedTableToolbar numSelected={selected.length} />
+                    <TableContainer>
+                      <Table
+                        sx={{ minWidth: 750 }}
+                        aria-labelledby="tableTitle"
+                        size={dense ? 'small' : 'medium'}
                       >
-                        {row.first_name}
-                      </TableCell>
-                      <TableCell align="right">{row.last_name}</TableCell>
-                      <TableCell align="right">{row.email}</TableCell>
-                      <TableCell align="right"  >
-                        <Box sx={{display:'flex', justifyContent:'end'}}>
-                        <FormGroup>
-                         <Switch name="statusApi"  value={customerStatus.statusApi}  onChange={(e)=>handlerStatus(e, row.id)}  />  
-                        </FormGroup>
-                         {/* {customerStatus.statusApi ? (
-                            <>
-                            <Typography
-                                variant="body1"
-                                componenet="p"
-                                className={classes.active}  
+                        <EnhancedTableHead
+                          numSelected={selected.length}
+                          order={order}
+                          orderBy={orderBy}
+                          onSelectAllClick={handleSelectAllClick}
+                          onRequestSort={handleRequestSort}
+                          rowCount={rows.length}
+                        />
+                        <TableHead>
+                          <TableRow>
+                            <TableCell>First Name</TableCell>
+                            <TableCell align="right">Last name</TableCell>
+                            <TableCell align="right">Email</TableCell>
+                            <TableCell align="right">Status</TableCell>
+                          </TableRow>
+                        </TableHead>
+
+                        <TableBody>
+
+                          {
+                            stableSort(rows, getComparator(order, orderBy))
+                              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                              .map((row, index) => {
+                                return (
+                                  <TableRow >
+                                    <TableCell
+                                      component="th"
+                                      scope="row"
+                                      padding="none"
+                                    >
+                                      {row.first_name}
+                                    </TableCell>
+                                    <TableCell align="right">{row.last_name}</TableCell>
+                                    <TableCell align="right">{row.email}</TableCell>
+                                    <TableCell align="right"  >
+                                      <Box sx={{ display: 'flex', justifyContent: 'end' }}>
+                                        <FormGroup>
+                                          <Switch name="statusApi" value={customerStatus.statusApi} onChange={(e) => handlerStatus(e, row.id)} />
+                                        </FormGroup>
+
+                                      </Box>
+                                    </TableCell>
+
+                                  </TableRow>
+                                );
+                              })}
+                          {emptyRows > 0 && (
+                            <TableRow
+                              style={{
+                                height: (dense ? 33 : 53) * emptyRows,
+                              }}
                             >
-                                Active
-                            </Typography>
-                            </>
-                        )  
-                        :
-                        (<Typography  variant="body1"  
-                          className={classes.inactive} 
-                          >
-                                Inactive
-                            </Typography>)} */}
-                            </Box> 
-                      </TableCell>
-                      
-                    </TableRow>
-                  );
-                }) }
-              {emptyRows > 0 && (
-                <TableRow
-                  style={{
-                    height: (dense ? 33 : 53) * emptyRows,
-                  }}
-                >
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Box>
-    </Box>
-  }
-    </Paper>
-    </div>
-    </div> 
- </Layout>
+                              <TableCell colSpan={6} />
+                            </TableRow>
+                          )}
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                    <TablePagination
+                      rowsPerPageOptions={[5, 10, 25]}
+                      component="div"
+                      count={rows.length}
+                      rowsPerPage={rowsPerPage}
+                      page={page}
+                      onPageChange={handleChangePage}
+                      onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                  </Box>
+                </Box>
+              }
+            </Paper>
+          </div>
+        </div>
+      </Layout>
     </>
   );
 }

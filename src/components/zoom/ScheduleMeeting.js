@@ -11,7 +11,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 
 export default function ModalUnstyled(props) {
-    console.log(props);
     const dispatch = useDispatch()
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -23,8 +22,6 @@ export default function ModalUnstyled(props) {
         order_id: props.order_id,
         approvedStatus: 0
     })
-
-
 
     const onChangeHandle = (e) => {
         let { name, value } = e.target;

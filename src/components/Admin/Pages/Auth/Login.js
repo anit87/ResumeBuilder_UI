@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector, useDispatch, } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import { height, width } from '@mui/system';
 import { loginfun } from '../../../../redux/action/Action'
 
 
@@ -72,18 +71,17 @@ const Login = () => {
 
 
   const validationfun = () => {
-    if (statuslogindata == 200 && statuslogindata != []) {
+    if (statuslogindata == 200) {
       sessionStorage.setItem("credential", logindata.user_email);
       Navigate('/admin/order')
-    }
-    else {
-      alert("Wrong Credentials")
     }
   }
 
   useEffect(() => {
     let data = { "user_email": logindata.user_email, "password": logindata.password, "action": "login" }
-    dispatch(loginfun(data))
+    if (logindata.user_email && logindata.password) {
+      dispatch(loginfun(data))
+    }
   }, [changehandle])
 
   const classes = useStyle()

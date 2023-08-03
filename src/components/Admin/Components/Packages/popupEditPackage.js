@@ -1,34 +1,34 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './popupEditPackage.css';
-import { Paper, Box, Button, Typography, TextField, Alert, Stack   } from '@mui/material';
-import { useDispatch ,useSelector} from 'react-redux';
+import { Paper, Box, Button, Typography, TextField, Alert, Stack } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
 import TextareaAutosize from '@mui/base/TextareaAutosize';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import {getalladdons, updatePackage} from '../../../../redux/action/Action'
-import {CKEditor} from '@ckeditor/ckeditor5-react';
+import { getalladdons, updatePackage } from '../../../../redux/action/Action'
+import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
- 
+
 const PopupPackageEdit = props => {
 
-const checkboxes = useRef()
+    const checkboxes = useRef()
     const [packageData, setPackageData] = useState({
         product_id: '',
         product_name: '',
         product_description: '',
-        product_amount:'',
-        product_sale_amount:'',
-        product_type_id : '1'
+        product_amount: '',
+        product_sale_amount: '',
+        product_type_id: '1'
     });
 
     const [editorstate, setEditorstate] = useState({
         editor: '',
-      });
+    });
 
-  const [addons, setAddons] = useState([]);
-  const [unlinkedaddons, setUnlinkedaddons] = useState([]);
+    const [addons, setAddons] = useState([]);
+    const [unlinkedaddons, setUnlinkedaddons] = useState([]);
 
 
     const [message, setMessage] = useState();
@@ -36,49 +36,45 @@ const checkboxes = useRef()
     const dispatch = useDispatch();
 
     const singalpackage = useSelector((state) => state.getIdToEditPackageReducer.packageiddatavalue)
-    const addondatafromreducer = useSelector((state)=> state.addondata.addondatafinal);
+    const addondatafromreducer = useSelector((state) => state.addondata.addondatafinal);
 
-    console.log("packageData", packageData)
-    console.log("addondatafromreducer", addondatafromreducer)
-
-    const UpdateMessage = () =>{
-        return(
-           <Stack  spacing={2}>
-             <Alert className='popup_updatemsg_stack_alert' severity="success">Data Updated Successfully</Alert>
-           </Stack>
+    const UpdateMessage = () => {
+        return (
+            <Stack spacing={2}>
+                <Alert className='popup_updatemsg_stack_alert' severity="success">Data Updated Successfully</Alert>
+            </Stack>
         )
     }
 
     const handleChangeDescription = (event, editor) => {
         const data = editor.getData()
         // const data = packageData.product_description
-    //   console.log( 'data is', {event, editor, data});
-      setPackageData((pre)=>{
-          return{
-            ...pre,
-            product_description : data
-          }
+        //   console.log( 'data is', {event, editor, data});
+        setPackageData((pre) => {
+            return {
+                ...pre,
+                product_description: data
+            }
         })
-    
-      }
+
+    }
 
     const checkedValue = (e) => {
         const { value, name, checked } = e.target
         if (checked) {
-          setAddons((prev) => [...prev, value])
-          let index1 = unlinkedaddons.indexOf(value)
-          unlinkedaddons.splice(index1,1)
-          let unlincked = [...unlinkedaddons]
-          setUnlinkedaddons(unlincked)
+            setAddons((prev) => [...prev, value])
+            let index1 = unlinkedaddons.indexOf(value)
+            unlinkedaddons.splice(index1, 1)
+            let unlincked = [...unlinkedaddons]
+            setUnlinkedaddons(unlincked)
         } else {
-          let index = addons.indexOf(value)
-          setUnlinkedaddons((prev) => [...prev,value])
-          addons.splice(index, 1)
-          let unchecked = [...addons]
-          setAddons(unchecked)
+            let index = addons.indexOf(value)
+            setUnlinkedaddons((prev) => [...prev, value])
+            addons.splice(index, 1)
+            let unchecked = [...addons]
+            setAddons(unchecked)
         }
-    
-      }
+    }
 
     const handlePackage = (e) => {
         setPackageData((prev) => {
@@ -91,7 +87,7 @@ const checkboxes = useRef()
     };
 
     const editorConfiguration = {
-        toolbar: [ 'heading', '|', 'bold', 'italic' ],
+        toolbar: ['heading', '|', 'bold', 'italic'],
         heading: {
             options: [
                 { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
@@ -106,8 +102,8 @@ const checkboxes = useRef()
     };
 
     const UpdatePackageData = () => {
-        let Data = {PackageData  :packageData, Addons : {linked:addons,unlinked:unlinkedaddons}}
-        console.log("dataatat",Data)
+        let Data = { PackageData: packageData, Addons: { linked: addons, unlinked: unlinkedaddons } }
+
         dispatch(updatePackage(Data));
         setMessage(UpdateMessage())
     };
@@ -122,47 +118,35 @@ const checkboxes = useRef()
             product_amount: singalpackage?.product_amount,
             product_sale_amount: singalpackage?.product_sale_amount,
             product_type_id: singalpackage?.product_type_id,
-            
-                       
         });
     }, [singalpackage]);
 
     useEffect(() => {
         let addonset = []
-      
-    let initialval = document.querySelectorAll(".editcheck");
-    
-    initialval?.forEach((item)=>{
-        
-        let bolean = false;
-        singalpackage?.package_addons?.forEach((v)=>{
-            
-            if(item.name==v.addons_name){
-                bolean=true
-                addonset.push(v.addons_id)
-                
+
+        let initialval = document.querySelectorAll(".editcheck");
+        initialval?.forEach((item) => {
+
+            let bolean = false;
+            singalpackage?.package_addons?.forEach((v) => {
+
+                if (item.name == v.addons_name) {
+                    bolean = true
+                    addonset.push(v.addons_id)
+                }
+            })
+            if (bolean == true) {
+                item.checked = true;
             }
-            
         })
-        if(bolean==true){
-            item.checked=true;
-        }
-    })
-    console.log("addonset",addonset)
-    setAddons(addonset)
-    
+        setAddons(addonset)
+
     }, [packageData])
-    
+
 
     useEffect(() => {
- 
         dispatch(getalladdons())
-          
-        }, [addons])
-
-    // console.log('packageData', packageData)
-     console.log('addons', addons)
-     console.log('unlinkedaddons', unlinkedaddons)
+    }, [addons])
 
     return (
         <div className="popup-box">
@@ -171,9 +155,9 @@ const checkboxes = useRef()
 
                 <div className='popup-inputs' >
                     <Typography variant="h6" sx={{ marginBottom: 2 }} className='popup-heading' >
-                        Edit Package  
+                        Edit Package
                     </Typography>
-                        {message}
+                    {message}
                     <TextField
                         type="text"
                         id="outlined-basic"
@@ -197,16 +181,16 @@ const checkboxes = useRef()
                     /> */}
 
                     <Typography variant="h6" component="h6"  >
-                        Description 
+                        Description
                     </Typography>
 
                     <CKEditor
-                        editor={ ClassicEditor }
-                        config={ editorConfiguration }
+                        editor={ClassicEditor}
+                        config={editorConfiguration}
                         name='product_description'
-                        data={packageData.product_description !=null ? packageData.product_description : "" }
-                        onChange={(e, editor, data)=>handleChangeDescription(e, editor, data)}
-                     />
+                        data={packageData.product_description != null ? packageData.product_description : ""}
+                        onChange={(e, editor, data) => handleChangeDescription(e, editor, data)}
+                    />
 
                     <TextField
                         type="text"
@@ -218,7 +202,7 @@ const checkboxes = useRef()
                         value={packageData.product_amount}
                         onChange={handlePackage}
                     />
-                    
+
                     <TextField
                         type="text"
                         id="outlined-basic"
@@ -239,8 +223,8 @@ const checkboxes = useRef()
                                     //     ref={checkboxes} onClick={checkedValue} value={item.addons_id}
                                     // />
                                     <label>
-                                      <input name={item.addons_name} value={item.addons_id} onChange={checkedValue} className="form-check-input editcheck"
-                                      type="checkbox" id="flexCheckDefault"/> {item.addons_name} - ${item.addons_price}
+                                        <input name={item.addons_name} value={item.addons_id} onChange={checkedValue} className="form-check-input editcheck"
+                                            type="checkbox" id="flexCheckDefault" /> {item.addons_name} - ${item.addons_price}
                                     </label>
                                 )
                             })}

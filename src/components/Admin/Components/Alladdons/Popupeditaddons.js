@@ -16,7 +16,6 @@ const Popupeditaddons = (props) => {
     const dispatch = useDispatch();
 
     const singaladdon = useSelector((state) => state.Addaddondatabyid.initialaddonid)
-    console.log("singaladdon", singaladdon)
 
     const UpdateMessage = () =>{
         return(

@@ -43,7 +43,6 @@ const Orderinfo = () => {
 
   const adminorderbyidreducerdata = useSelector((state) => state.adminallorderbyidreducer.adminorderallbyid)
 
-  // console.log("adminorderbyidreducerdata",adminorderbyidreducerdata)
   const Navigate = useNavigate();
   const dispatch = useDispatch()
 

@@ -111,7 +111,6 @@ const Checkout = () => {
         }
         else {
             setErrormsgcheckout(true)
-            // console.log("eroropaypal")
         }
 
     }
@@ -165,28 +164,17 @@ const Checkout = () => {
                                             <h4>Contact information</h4>
 
                                         </div>
-                                        {/* <div className='checkout_form_login'>
-                        <h4>Already have an account? <Link to="/">Log in</Link></h4>
-                        </div> */}
+
                                     </div>
                                     <div className='checkout_form_div'>
                                         <form>
                                             <div className="form-group">
                                                 <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onChange={updatevalue} value={shippingadress.email} />
                                             </div>
-                                            {/* <div className="form-group form-check ">
-                            <input type="checkbox" className="form-check-input checkbox_position" id="exampleCheck1" onChange={updatevalue}/>
-                            <label className="form-check-label" htmlFor="exampleCheck1">Email me with news and offers</label>
-                        </div> */}
+
                                             <div className="form-group">
                                                 <label htmlFor="exampleFormControlSelect1" className='shipping_label'>Shipping address<span>*</span></label>
-                                                {/* <select className="form-control" id="exampleFormControlSelect1" name="country" onChange={updatevalue}>
-                            <option>Country/region</option>
-                            <option>India</option>
-                            <option>USA</option>
-                            <option>China</option>
-                            <option>Australia</option>
-                            </select> */}
+
                                                 <CountryDropdown
                                                     className="form-control"
                                                     value={shippingadress.country}
@@ -212,13 +200,6 @@ const Checkout = () => {
                                             <div className="form-row row">
 
                                                 <div className="form-group col-md-4">
-                                                    {/* <select className="form-control" id="exampleFormControlSelect3" name="state" onChange={updatevalue}>
-                            <option>State</option>
-                            <option>Chandigarh</option>
-                            <option>Punjab</option>
-                            <option>Haryana</option>
-                            <option>New delhi</option>
-                            </select> */}
                                                     <RegionDropdown
                                                         className="form-control"
                                                         country={shippingadress.country}
@@ -234,7 +215,7 @@ const Checkout = () => {
                                                     <input type="text" className="form-control" id="inputPassword4" placeholder="Zip code (Required)" name="pincode" onChange={updatevalue} value={shippingadress.pincode} />
                                                 </div>
                                             </div>
-                                            
+
                                             <div className='checkout_form_submit'>
                                                 <button type="button" className="btn return_button" onClick={returncart}><span><ChevronLeftIcon /></span>Return to cart</button>
                                                 {(shippingadress.firstname != '' && shippingadress.lastname != '' && shippingadress.address != '' && shippingadress.email != ''
@@ -283,42 +264,7 @@ const Checkout = () => {
                                             </div>
                                         )
                                     })
-
                                     }
-
-
-
-                                    {/* <div className='book_details'>
-                    <div className='book_image_detail'>
-                        <div className='book_image'>
-                            <img src='./assets/images/book_image_checkout.png' alt='book_image_checkout' className='img-fluid'/>
-                        </div>
-                        <div className='book_name'>
-                            <h3>Get Interviewed!</h3>
-                        </div>
-                    </div>
-                    <div className='book_price'>
-                        <h4>$9.99</h4>
-                    </div>
-                </div> */}
-                                    {/* <div className='discount_div'>
-                    <div className='discount_code'>
-                        <input type="text" name="discountCode"  placeholder='Discount code'/>
-                    </div>
-                    <div className='discount_button_div'>
-                    <button type="button" className="btn discount_button">Apply</button>
-                    </div>
-                </div> */}
-                                    {/* <div className='subtotal_maindiv'>
-                    <div className='subtotal_div'>
-                        <h4>Subtotal</h4>
-                        <h4>{`$${checksubtotal}`}</h4>
-                    </div>
-                    <div className='shipping'>
-                        <h4>Shipping</h4>
-                        <h4>Calculated at next step</h4>
-                    </div>
-                </div> */}
                                     <div className='totalDiv'>
                                         <h4>Total</h4>
                                         <h4>{`$${parseFloat(checksubtotal).toFixed(2)}`}</h4>

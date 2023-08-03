@@ -63,7 +63,7 @@ const AdminsendMessage = (props) => {
       setAttachFileData('')
     }
     else if (MsgData == '' && attachFileData == '') {
-      console.log("emptyyy data")
+      // console.log("emptyyy data")
     }
     else {
       dispatch(AddUserChat(Data))

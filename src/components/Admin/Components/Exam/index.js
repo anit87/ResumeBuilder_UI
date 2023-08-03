@@ -67,7 +67,7 @@ const AddExam = () => {
      }
     })
   }
-  console.log('examData',examData);
+  // console.log('examData',examData);
   return (
     <Layout>
       <div className={classes.root}>

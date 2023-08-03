@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { BsFillCameraVideoFill } from 'react-icons/bs';
 import { Stack, Alert } from '@mui/material';
 import { SiLoom } from 'react-icons/si';
-import { HiOutlineMail } from 'react-icons/hi';
-import { FcGoogle } from 'react-icons/fc';
 import './Auth.css';
 import MiniNav from '../../components/MiniNav/MiniNav';
 import Layout from '../../Layout/Layout';
@@ -55,12 +53,10 @@ const Register = () => {
     let dispatch = useDispatch()
 
     const AddNewCustomersReducer = useSelector((state) => state.addCustomersreducer.ADDCUSTOMERVALUE)
-    // console.log('mssg is', AddNewCustomersReducer)
 
 
     const emailHandleChange = (e) => {
         const { name, value } = e.target;
-        // console.log('Value of email is', value)
         let emailValid = /\S+@\S+\.\S+/.test(value)
         setEmailValidation({
             emailValid
@@ -88,7 +84,6 @@ const Register = () => {
 
     const AddDataChangeHandle = (e) => {
         const { name, value } = e.target;
-        // console.log('value is', value);
         setAddRegisterData((prev) => {
             return {
                 ...prev,
@@ -165,9 +160,6 @@ const Register = () => {
 
     }
 
-
-
-
     useEffect(() => {
         // dispatch(AddCustomersData())
     }, [AddNewCustomersReducer])
@@ -181,10 +173,6 @@ const Register = () => {
         }
     }, [show])
 
-    // console.log('Data is', addRegisterData)
-    // console.log('passwordValidtion is', passwordValidtion)
-
-
 
     return (
         <Layout >
@@ -193,8 +181,6 @@ const Register = () => {
                 <div className="auth">
                     <MiniNav NavData={['register', 'Signup']} />
                     <div className="container">
-
-
                         <div className="communication_text text-center mb-5 mt-3">
                             <h4>Communicate with us via <span> Zoom Video calls </span> and <span> Loom Recordings.</span></h4>
                         </div>
@@ -203,7 +189,7 @@ const Register = () => {
                                 <div className="col-md-12 col-lg-6 col-xl-7 auth_img auth_img_register d-flex justify-content-center align-items-center">
                                     <img src="./assets/images/sign2.png" alt="loginvector" className="img-fluid " />
                                 </div>
-                                <div className="col-md-12 col-lg-6 col-xl-5    auth_content ">
+                                <div className="col-md-12 col-lg-6 col-xl-5 auth_content">
                                     <div className="meeting_record">
                                         <div className="row ">
                                             <div className="col-md-6 col-lg-6  d-flex align-items-center justify-content-center auth_icon_text">

@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './PackageCartpopup.css'
-import { Paper, Box, Button, Typography, TextField, Alert, Stack   } from '@mui/material';
+import {Alert, Stack } from '@mui/material';
 import { useDispatch ,useSelector} from 'react-redux';
-import {loginaction, innerbookaction, lengthcartaction} from '../../redux/action/Action'
-import { NavLink, useNavigate } from 'react-router-dom';
-
+import {loginaction, lengthcartaction} from '../../redux/action/Action'
 
 const PackageCartpopup = (props) => {
-    // console.log('Hello Data is', props.product_id, props.cart_price, props.cart_qty, props.customer_id)
     const [loginboleanstate,setLoginboleanstate] = useState(false)
     const [errormsg,setErrormsg] = useState(false)
     const [loginstate,setLoginstate] = useState({
@@ -15,7 +12,6 @@ const PackageCartpopup = (props) => {
         password: ''
     })
 
-    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     let frontlogindata = useSelector((state)=>state.frontendloginreducer.frontloginmsg);
@@ -36,8 +32,6 @@ const PackageCartpopup = (props) => {
         setErrormsg(true)
     }
 
-    // console.log('loginstate', loginstate)
-    // console.log('frontlogindata', frontlogindata)
 
     useEffect(() => {
         if(frontlogindata.Status==200 && loginboleanstate && loginstate.email !='' && loginstate.password !=''){

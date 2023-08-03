@@ -131,7 +131,6 @@ const Addaddons = () => {
 
   const toggleState = useSelector((state) => state.togglingReducer.togglingAll)
   const addonmsgfromreducer = useSelector((state) => state.Addaddondata.initialaddaddon);
-  console.log("addonmsgfromreducer", addonmsgfromreducer);
   const handleAddon = (e) => {
     setAddonData((prev) => {
       const { name, value } = e.target;

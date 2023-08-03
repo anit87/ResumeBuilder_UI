@@ -5,14 +5,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../../Layout/Layout';
 import { adminorderbyid, paypalthankyouidaction, UserIntakeFormById } from '../../redux/action/Action';
 import './checkout.css'
-import Loadingspinner from '../Books/Loadingspinner';
 
 const Paypalthankyou = () => {
   const [redirectbolean, setRedirectbolean] = useState(false)
   const paypaldata = useSelector((state) => state.paypalorderreducer.paypalres)
   const paypalthankdata = useSelector((state) => state.paypalthanyouidreducer.paypalthank)
 
-  console.log("paypalthankdata", paypalthankdata);
+  // console.log("paypalthankdata",paypaldata, " - ", paypalthankdata);
   let newPaypalthankdata = { ...paypalthankdata }
   const GetIntakeFrmDataId = useSelector((state) => state.GetUserIntakeFormById.getUserStepFormById)
 
@@ -41,12 +40,9 @@ const Paypalthankyou = () => {
   useEffect(() => {
     dispatch(paypalthankyouidaction(userid.id))
   }, [])
-  useEffect(() => {
-    dispatch(UserIntakeFormById(newPaypalthankdata[0]?.order_number))
-  }, [newPaypalthankdata[0]?.order_number], newPaypalthankdata[0]?.product_type_id)
-
-  // console.log("newPaypalthankdata[0]?.product_type_id",  newPaypalthankdata[0]?.product_type_id)
-  // console.log("GetIntakeFrmDataId", GetIntakeFrmDataId)
+  // useEffect(() => {
+  //   dispatch(UserIntakeFormById(newPaypalthankdata[0]?.order_number))
+  // }, [newPaypalthankdata[0]?.order_number], newPaypalthankdata[0]?.product_type_id)
 
   return (
     <Layout>

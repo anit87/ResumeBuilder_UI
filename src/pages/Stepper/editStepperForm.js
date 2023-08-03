@@ -157,7 +157,6 @@ const EditSteppers = () => {
   const userid = useParams()
   const feact1 = userid.id;
   let navigate = useNavigate()
-  // console.log("feact1", feact1)
 
   const [getInputData, SetGetInputData] = useState({
     cust_id: userId,
@@ -506,7 +505,6 @@ const EditSteppers = () => {
     dispatch(UserIntakeFormById(feact1))
   }, [feact1])
 
-  // console.log("data is:", getInputData)
   const Stepps = () => {
     return (
       <Stack sx={{ width: '100%' }} spacing={4}>

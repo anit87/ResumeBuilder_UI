@@ -38,9 +38,6 @@ const Cartpopup = (props) => {
         setCartLength(true)
     }
 
-    // console.log('loginstate', loginstate)
-    // console.log('frontlogindata', frontlogindata)
-
     useEffect(() => {
         if(frontlogindata.Status==200 && loginboleanstate && loginstate.email !='' && loginstate.password !=''){
           localStorage.setItem("frontemail",frontlogindata.email );

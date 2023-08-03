@@ -4,19 +4,15 @@ import { oembed } from "@loomhq/loom-embed";
 import { useRef, useEffect, useState } from "react";
 import { SiLoom } from 'react-icons/si';
 
-
-
 const PUBLIC_APP_ID = "100b1b6b-5e21-486f-9c91-9fa0ff2a1a60"; /* sandbox */
 // const PUBLIC_APP_ID = "8f3ec782-1bd1-40a6-ab47-e8b199c996b9";
 // const PUBLIC_APP_ID = "a3cd8ab9-3e9b-41b4-a715-856689a4be77";
 const BUTTON_ID = "loom-record-sdk-button";
 
-const Loom = () => {
+const Loom = ({disable}) => {
 
   const [videoHTML, setVideoHTML] = useState("");
   const ref = useRef(null);
-
-
 
   async function setupLoom() {
     const { supported, error } = await isSupported();
@@ -45,6 +41,10 @@ const Loom = () => {
   useEffect(() => {
     setupLoom();
   }, [BUTTON_ID], ref);
+
+  if (disable) {
+    return <SiLoom className='connectIcon' size={13} />
+  }
 
 
   return (

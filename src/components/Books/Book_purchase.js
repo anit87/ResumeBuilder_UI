@@ -69,9 +69,6 @@ const Book_purchase = () => {
     let TwoStarLength = typeof (GetTwoStarPrdctReviews) == 'object' ? GetTwoStarPrdctReviews?.length : '0';
     let OneStarLength = typeof (GetOneStarPrdctReviews) == 'object' ? GetOneStarPrdctReviews?.length : '0';
 
-    // console.log("fous ", GetPrdctReviewAllSum);
-
-    // console.log("get all books inner data reducer ", getallbooksinnerdatareducer);
 
     const writereviewratingChanged = (newRating) => {
         setWritereviewStar(newRating)

@@ -28,7 +28,7 @@ const Chatting = () => {
     const chatFilesAlldata = useSelector((state) => state.ChatFilereducer.chatFiledata)
     const chatLinksAlldata = useSelector((state) => state.ChatLinksReducer.chatLinkData)
     const zoomMeetinList = useSelector((state) => state.zoomMeeting.meetingList)
-
+    // console.log("Files & Links", zoomMeetinList);
     const zoomMessage = useSelector((state) => state.zoomMeetinReq.message)
 
     const userid = useParams()
@@ -81,7 +81,7 @@ const Chatting = () => {
     const handleOpen = (setOpen) => {
         setOpen(true)
     }
-    console.log("**", zoomMeetinList, " **");
+    // console.log("**---------", zoomMeetinList, " **");
     return (
         <Layout>
             <div className="padding_div">
@@ -236,7 +236,7 @@ const Chatting = () => {
                                                 }
                                             </div>
                                             <div className="tab-pane fade" id="pills-meeting" role="tabpanel" aria-labelledby="pills-meeting-tab">
-                                                {!zoomMeetinList ?
+                                                {  zoomMeetinList.status && zoomMeetinList.data.length<1 ?
                                                     <p>No Data Available</p> :
                                                     <ul className="sidebar-div p-0">
                                                         <table className="table admin-order-table">
@@ -255,8 +255,8 @@ const Chatting = () => {
                                                                         <tr key={i}>
                                                                             <td>{i + 1}</td>
                                                                             <td><p>{item.topic}</p></td>
-                                                                            <td><p>{date.toLocaleDateString()}<br/>{date.toLocaleTimeString()}</p></td>
-                                                                            <td><p>{item.approvedStatus===1? "Approved": "Pending"}</p></td>
+                                                                            <td><p>{date.toLocaleDateString()}<br />{date.toLocaleTimeString()}</p></td>
+                                                                            <td><p>{item.approvedStatus === 1 ? "Approved" : "Pending"}</p></td>
                                                                         </tr>
                                                                     )
                                                                 })}

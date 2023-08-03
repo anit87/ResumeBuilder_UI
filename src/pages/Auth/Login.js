@@ -28,9 +28,7 @@ const Login = () => {
     let frontlogindata = useSelector((state) => state.frontendloginreducer.frontloginmsg)
     let zoomtokendatadata = useSelector((state) => state.zoomtoken.zoomtokenno)
     let zoomurlmeeting = useSelector((state) => state.zoommeetingurl.zoomurl)
-    // console.log("zoomtokendatadata",zoomtokendatadata)
-    // console.log("zoomurlmeeting",zoomurlmeeting)
-    // console.log("frontlogindata",frontlogindata.message)
+
 
     const logininfo = (e) => {
         const { name, value } = e.target
@@ -43,26 +41,21 @@ const Login = () => {
     }
 
     const zoomredirect = (URL) => {
-        // console.log("URL",URL)
         window.open(`${URL}`, '_blank', 'noopener,noreferrer');
-        // window.location.replace(`${URL}`)
     }
-    // let userid = localStorage?.getItem("frontuserid");
 
     const loginbtn = () => {
         dispatch(loginaction(loginstate))
         setLoginboleanstate(true)
         setErrormsg(true)
         setCartLength(true);
-        // console.log("userid",frontlogindata.userId)
-        // dispatch(lengthcartaction(frontlogindata.userId))
     }
 
     useEffect(() => {
         if (frontlogindata.Status == 200 && loginboleanstate) {
             localStorage.setItem("frontemail", frontlogindata.email);
             localStorage.setItem("frontuserid", frontlogindata.userId);
-            navigate('/order')
+            navigate('/package')
             setLoginboleanstate(false)
         }
     }, [frontlogindata])
@@ -75,7 +68,6 @@ const Login = () => {
         if (cartLength == true) {
             dispatch(lengthcartaction(localStorage?.getItem("frontuserid")))
         }
-        // console.log("userid",localStorage?.getItem("frontuserid"))
     }, [loginbtn])
 
     useEffect(() => {
@@ -92,8 +84,6 @@ const Login = () => {
             setZoomjoinurl(zoomurlmeeting[0]?.join_url)
     }, [zoomurlmeeting])
 
-    // let userid = localStorage?.getItem("frontuserid");
-    // console.log("userid",userid)
 
     return (
         <Layout >
@@ -115,15 +105,15 @@ const Login = () => {
                                         <div className="row ">
                                             <div className="col-md-6 col-lg-6  d-flex align-items-center justify-content-center auth_icon_text">
                                                 <div className=" auth_icon me-2">
-                                                    <button onClick={() => zoomredirect(zoomjoinurl)}>
-                                                        <BsFillCameraVideoFill className='connectIcon' size={13} /></button>
+                                                    
+                                                    <BsFillCameraVideoFill className='connectIcon' size={13} />
                                                 </div>
                                                 <span> Schedule a meeting</span>
                                             </div>
                                             <div className="col-md-6 col-lg-6  d-flex align-items-center auth_icon_text">
                                                 <div className=" me-2 auth_icon">
                                                     {/* <SiLoom className='connectIcon' size={13} /> */}
-                                                    <Loom />
+                                                    <Loom disable={true} />
                                                 </div>
                                                 <span>Record with Loom</span>
                                             </div>

@@ -28,35 +28,17 @@ const Sample_inner = () => {
 
 
     const imagezoomfun = (e) => {
-        // console.log('zoom funx', e.target)
         let val = 'staticclass' + e.target.id
         setStaticclass(val)
-        // console.log("val is", val)
         setCategoryID(e.target.id)
         setImgaesID(e.target.name)
         setPopupbolean(true)
-
     }
-
-    // useEffect(() => {
-    //     // if(popupbolean==true){
-    //         window.onclick = function(event) {
-    //             console.log("dfknjiuhfeuwhf",event)
-    //             if ( ref.current.contains(event.target.id== '123')) {
-    //                  console.log(" ia ma abover it")
-    //                 //  event.stopPropagation()=true
-    //                 setPopupbolean(false)
-    //             }
-    //           }
-    //     // }
-
-    // }, [popupbolean])
 
 
 
 
     const allsample = (e) => {
-        // console.log("sddwd",e.target)
         const newId = e.target.id + "" + e.target.name
         navigate(`/sample_inner/${newId}`)
     }
@@ -89,7 +71,6 @@ const Sample_inner = () => {
 
     const close_fnx = () => {
         setPopupbolean(false)
-
     }
 
     return (
@@ -118,19 +99,6 @@ const Sample_inner = () => {
                                                     </div>
                                                 </>
 
-                                                //     v.images?.map((itemV, itemVIndex)=>{
-                                                // console.log("v",itemV)
-                                                //         return(
-                                                //             <>
-                                                //             <div onClick={imagezoomfun}  className={`unique-wrapper ${staticclass}${itemVIndex}`}>
-                                                //                 <div className='inner-sample-unique-image'>
-                                                //                     <img src={itemV[0]} alt='sample_inner' className='img-fluid' id={itemVIndex} />
-                                                //                 </div>
-                                                //             </div>
-                                                //         </>
-                                                //         )
-                                                //     })
-
                                             )
                                         })
 
@@ -151,11 +119,9 @@ const Sample_inner = () => {
                             </div>
                             <div className='all_other_resume_wrapper'>
                                 {InnerDataisdata.map((v, index) => {
-                                    // console.log('vv', v.id)
                                     return (
                                         <>
                                             {v.id != 8 ? v.resume.map((itms, indexs) => {
-                                                //  console.log('itms  are', itms)
                                                 return (
                                                     <div key={indexs} onClick={allsample} className='all_other_resume'>
                                                         <img src={itms?.images[0]} alt='' name={v.name} id={v.id} className='img-fluid' />

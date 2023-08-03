@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
 import './dashboard.css'
 import Layout from '../../Pages/Layout';
@@ -6,21 +6,18 @@ import Table from "react-data-table-component";
 import DataTableExtensions from "react-data-table-component-extensions";
 import { Paper, Box, Button, Typography, TextField } from '@mui/material';
 import "react-data-table-component-extensions/dist/index.css";
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { toggle } from '../../../../redux/action/Action';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import {BsPeople} from 'react-icons/bs';
-import {FcQuestions} from 'react-icons/fc';
+import { BsPeople } from 'react-icons/bs';
+import { FcQuestions } from 'react-icons/fc';
 import { useNavigate } from 'react-router-dom';
 import { allFaqData, Allcustomer } from '../../../../redux/action/Action';
-import {deleteFaq} from '../../../../redux/action/Action'
-import {getIdToEditFAQ} from '../../../../redux/action/Action'
-import Swal from "sweetalert2";  
+import { deleteFaq } from '../../../../redux/action/Action'
+import { getIdToEditFAQ } from '../../../../redux/action/Action'
+import Swal from "sweetalert2";
 import LineChart from './linechart';
-
-
-
 
 const useStyle = makeStyles((theme) => ({
     root: {
@@ -50,36 +47,29 @@ const AdminDashboard = () => {
 
     const Navigate = useNavigate();
 
-    const toggleState = useSelector((state)=>state.togglingReducer.togglingAll)
+    const toggleState = useSelector((state) => state.togglingReducer.togglingAll)
 
-    const getFaqAllData = useSelector((state)=>state.GetFaqDataReducer.FaqAllData)
+    const getFaqAllData = useSelector((state) => state.GetFaqDataReducer.FaqAllData)
 
-    const getallcustomer = useSelector((state)=>state.getallcustomer.customerData)
+    const getallcustomer = useSelector((state) => state.getallcustomer.customerData)
 
 
     let FaqLength = getFaqAllData?.length
     let CustomersLength = getallcustomer.length
 
-    console.log('length of Faq is', getFaqAllData)
-
-
-    //   useEffect(()=>{
-          
-    //   },[])
-
-    const FaqData = () =>{
+    const FaqData = () => {
         Navigate('/admin/allfaq')
     }
-    const CustomersData = () =>{
+    const CustomersData = () => {
         Navigate('/admin/allcustomer')
     }
 
-      useEffect(()=>{
+    useEffect(() => {
         dispatch(toggle())
         dispatch(allFaqData())
         dispatch(Allcustomer())
-        
-    },[allFaqData, Allcustomer])
+
+    }, [allFaqData, Allcustomer])
     return (
 
         <>
@@ -137,9 +127,9 @@ const AdminDashboard = () => {
                                                 </div>
 
                                             </div>
-                                 
+
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -147,13 +137,13 @@ const AdminDashboard = () => {
                                 <div className='container'>
                                     <div className='row'>
                                         <div className='col-md-12 lwrchart'>
-                                        {/* <LineChart/> */}
+                                            {/* <LineChart/> */}
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            
+
                         </Paper>
 
 

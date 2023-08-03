@@ -31,8 +31,6 @@ const GetChat = (props) => {
 
     const chatdatauser = useSelector((state) => state.Adminchatuserreducer.adminchatuserdata)
 
-    // console.log("GetDataAdminSend FrontEnd",GetDataAdminSend)
-    // console.log("GetAllChattingData:",GetAllChattingData)
     const dispatch = useDispatch();
 
     if (dataFromParents == 1) {

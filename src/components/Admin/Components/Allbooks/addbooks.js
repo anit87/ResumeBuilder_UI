@@ -167,7 +167,6 @@ const Addbooks = () => {
 
   }
 
-  console.log(imagesname);
   const imagefun = (e) => {
     let beforeimagename = []
     let allfiles = e.target.files;
@@ -190,7 +189,6 @@ const Addbooks = () => {
   }
 
   const savebookdata = () => {
-    // console.log(booksData);
     dispatch(savebooks(booksData))
     setPreventfromstart(true)
   }
