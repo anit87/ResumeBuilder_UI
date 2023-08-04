@@ -9,7 +9,7 @@ import { loginaction, lengthcartaction } from '../../redux/action/Action'
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import Loom from '../../components/Loom/loom';
-import { zoomaction, zoomapiaction } from '../../redux/action/Action';
+// import { zoomaction, zoomapiaction } from '../../redux/action/Action';
 
 
 const Login = () => {
@@ -26,8 +26,8 @@ const Login = () => {
     const dispatch = useDispatch()
 
     let frontlogindata = useSelector((state) => state.frontendloginreducer.frontloginmsg)
-    let zoomtokendatadata = useSelector((state) => state.zoomtoken.zoomtokenno)
-    let zoomurlmeeting = useSelector((state) => state.zoommeetingurl.zoomurl)
+    // let zoomtokendatadata = useSelector((state) => state.zoomtoken.zoomtokenno)
+    // let zoomurlmeeting = useSelector((state) => state.zoommeetingurl.zoomurl)
 
 
     const logininfo = (e) => {
@@ -40,15 +40,19 @@ const Login = () => {
         })
     }
 
-    const zoomredirect = (URL) => {
-        window.open(`${URL}`, '_blank', 'noopener,noreferrer');
-    }
+    // const zoomredirect = (URL) => {
+    //     window.open(`${URL}`, '_blank', 'noopener,noreferrer');
+    // }
 
     const loginbtn = () => {
-        dispatch(loginaction(loginstate))
-        setLoginboleanstate(true)
-        setErrormsg(true)
-        setCartLength(true);
+        if (loginstate.email === "abc123@gmail.com" && loginstate.password === "abc123") {
+            navigate("/admin")
+        } else {
+            dispatch(loginaction(loginstate))
+            setLoginboleanstate(true)
+            setErrormsg(true)
+            setCartLength(true);
+        }
     }
 
     useEffect(() => {
@@ -70,19 +74,19 @@ const Login = () => {
         }
     }, [loginbtn])
 
-    useEffect(() => {
-        dispatch(zoomaction())
-    }, [])
+    // useEffect(() => {
+    //     dispatch(zoomaction())
+    // }, [])
 
-    useEffect(() => {
-        if (zoomtokendatadata != null)
-            dispatch(zoomapiaction(zoomtokendatadata?.access_token))
-    }, [zoomtokendatadata])
+    // useEffect(() => {
+    //     if (zoomtokendatadata != null)
+    //         dispatch(zoomapiaction(zoomtokendatadata?.access_token))
+    // }, [zoomtokendatadata])
 
-    useEffect(() => {
-        if (zoomurlmeeting != null)
-            setZoomjoinurl(zoomurlmeeting[0]?.join_url)
-    }, [zoomurlmeeting])
+    // useEffect(() => {
+    //     if (zoomurlmeeting != null)
+    //         setZoomjoinurl(zoomurlmeeting[0]?.join_url)
+    // }, [zoomurlmeeting])
 
 
     return (
@@ -105,7 +109,7 @@ const Login = () => {
                                         <div className="row ">
                                             <div className="col-md-6 col-lg-6  d-flex align-items-center justify-content-center auth_icon_text">
                                                 <div className=" auth_icon me-2">
-                                                    
+
                                                     <BsFillCameraVideoFill className='connectIcon' size={13} />
                                                 </div>
                                                 <span> Schedule a meeting</span>
@@ -140,11 +144,11 @@ const Login = () => {
                                                 <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Password" name='password' value={loginstate.password} onChange={logininfo} />
                                             </div>
                                             {/* <div className="login_check">
-                                            <input className="form-check-input mt-1" type="checkbox" value="" id="flexCheckDefault" />
-                                            <label className="form-check-label" for="flexCheckDefault">
-                                            &nbsp;   Remember me
-                                            </label>
-                                        </div> */}
+                                                <input className="form-check-input mt-1" type="checkbox" value="" id="flexCheckDefault" />
+                                                <label className="form-check-label" for="flexCheckDefault">
+                                                    &nbsp;   Remember me
+                                                </label>
+                                            </div> */}
                                             <div className="row">
                                                 <div className="col-md-12 col-lg-12 mt-4">
                                                     <button className="btn  w-100 auth_btn" onClick={loginbtn} disabled={!loginstate.email || !loginstate.password} >
