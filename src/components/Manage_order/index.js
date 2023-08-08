@@ -33,6 +33,7 @@ const Manage_order = () => {
     }
     const handleWriteResume = (order_number) => {
         const checkuserid = order_number
+        // const checkuserid = orderId * 45 + 'Y2F0ZWdvcnk9d'
         navigate(`/stepperform/${checkuserid}`)
     }
     useEffect(() => {
@@ -128,6 +129,7 @@ const Manage_order = () => {
                                                                     {items?.prdct_type == true ?
                                                                         <div className="d-flex questions_div ">
                                                                             <button className='questions_btn' onClick={() => handleWriteResume(items.order_number)}>Questionnaire </button>
+                                                                            {/* <button className='questions_btn' onClick={() => handleWriteResume(items.order_number)}>Questionnaire </button> */}
                                                                         </div>
                                                                         : null
                                                                     }

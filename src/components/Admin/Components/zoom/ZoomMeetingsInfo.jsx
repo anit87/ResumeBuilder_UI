@@ -6,7 +6,7 @@ import "react-data-table-component-extensions/dist/index.css";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import './adminMeetings.css'
-import { getAllMeets, approveStatus } from '../../../../redux/action/Action';
+import { getAllMeets, approveStatus, adminorderbyid } from '../../../../redux/action/Action';
 import Table from "react-data-table-component";
 import DataTableExtensions from "react-data-table-component-extensions";
 import CloseIcon from '@mui/icons-material/Close';
@@ -54,9 +54,9 @@ const Orderinfo = () => {
     const toggleState = useSelector((state) => state.togglingReducer.togglingAll)
     const zoomMeetinList = useSelector((state) => state.zoomMeeting.meetingList)
     const meetStatusMessage = useSelector((state) => state.zoomMeeting.meetStatusMessage)
-
+    const adminorderbyidreducerdata = useSelector((state) => state.adminallorderbyidreducer.adminorderallbyid)
     const [newMeetingDate, setNewMeetingDate] = useState("")
-
+    // console.log("11", adminorderbyidreducerdata);
     useEffect(() => {
         dispatch(getAllMeets(userid.id))
     }, [])
@@ -101,8 +101,8 @@ const Orderinfo = () => {
             selector: row => row.meeting_id,
             sortable: false,
             cell: (d) => d.approvedStatus === 1 ? <>
-                <button className={`${classes.chat} btn mx-2`} onClick={()=>window.open(`${d.start_url}`, '_blank', 'noopener,noreferrer')} >Join</button>
-                
+                <button className={`${classes.chat} btn mx-2`} onClick={() => window.open(`${d.start_url}`, '_blank', 'noopener,noreferrer')} >Join</button>
+
             </> :
                 [
                     <DoneIcon key='1' className={classes.edit_btn} onClick={() => dispatch(approveStatus({
@@ -141,10 +141,12 @@ const Orderinfo = () => {
                         </Box>
                         <Box style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <Typography variant="h5" component="h5" sx={{ marginBottom: '5px !important', fontSize: '19px' }}>
-                                Order Number : {zoomMeetinList.status ? `FR${zoomMeetinList.data[0]?.order_number}L` : null}
+                                {/* Order Number : {zoomMeetinList.status ? `FR${zoomMeetinList.data[0]?.order_number}L` : null} */}
+                                Order Number : {adminorderbyidreducerdata.length > 0 ? `FR${adminorderbyidreducerdata[0]?.order_number}L` : ""}
                             </Typography>
                             <Typography variant="h5" component="h5" sx={{ marginBottom: '20px !important', fontSize: '19px' }}>
-                                Order Date : {zoomMeetinList.status ? new Date(`${zoomMeetinList.data[0]?.order_created_at}`).toLocaleString() : null}
+                                {/* Order Date : {zoomMeetinList.status ? new Date(`${zoomMeetinList.data[0]?.order_created_at}`).toLocaleString() : null} */}
+                                Order Date : {adminorderbyidreducerdata.length > 0 ? new Date(`${adminorderbyidreducerdata[0]?.order_created_at}`).toLocaleString() : null}
                             </Typography>
                         </Box>
 
@@ -153,10 +155,11 @@ const Orderinfo = () => {
                                 Customer Details
                             </Typography>
                             <Typography variant="h6" component="h6" sx={{ marginBottom: '20px !important', fontSize: '18px !important' }}>
-                                Name : {zoomMeetinList.status ? zoomMeetinList.data[0]?.cust_fname + ' ' + zoomMeetinList.data[0]?.cust_lname : null}
+                                {/* Name : {zoomMeetinList.status ? zoomMeetinList.data[0]?.cust_fname + ' ' + zoomMeetinList.data[0]?.cust_lname : null} */}
+                                Name : {adminorderbyidreducerdata.length > 0 ? adminorderbyidreducerdata[0]?.cust_fname + ' ' + adminorderbyidreducerdata[0]?.cust_lname : null}
                             </Typography>
                             <Typography variant="h6" component="h6" sx={{ marginBottom: '20px !important', fontSize: '18px !important' }}>
-                                Email : {zoomMeetinList.status ? zoomMeetinList.data[0]?.cust_email : null}
+                                Email : {adminorderbyidreducerdata.length > 0 ? adminorderbyidreducerdata[0]?.cust_email : null}
                             </Typography>
                         </Box>
 

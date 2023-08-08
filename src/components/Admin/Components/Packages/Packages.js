@@ -112,9 +112,9 @@ const Packages = () => {
     setData(getallbooksdatareducer)
   }, [getallbooksdatareducer])
 
-  useEffect(() => {
-    dispatch(allPackagesData())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(allPackagesData())
+  // }, [])
 
   useEffect(() => {
     dispatch(getallpackage())

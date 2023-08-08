@@ -237,6 +237,7 @@ const Steppers = () => {
 
   const IntakeSubmitMessage = useSelector((state) => state.GetmsgforuserIntakeForm.userintakeformData);
   const GetIntakeFrmDataId = useSelector((state) => state.GetUserIntakeFormById.getUserStepFormById)
+  // console.log("form by id ", IntakeSubmitMessage, "   ", GetIntakeFrmDataId);
 
   const handleNavigate = (data) => {
     if (data === 'next') {
@@ -360,7 +361,7 @@ const Steppers = () => {
   const handleSave = (data) => {
     if (data == 'save') {
       // dispatch(UserIntakeForm(getInputData))
-      dispatch(UserIntakeForm(getInputData)).then(() => { navigate(`/orderdetail/${url_auth}`) })
+      dispatch(UserIntakeForm(getInputData)).then(() => { navigate(`/order`) })
       // dispatch(IntakeForm(getInputData)) 
     }
   }
@@ -450,7 +451,7 @@ const Steppers = () => {
   }
 
   useEffect(() => {
-    if (IntakeSubmitMessage?.Status == '200' && statusIs == true) {
+    if (IntakeSubmitMessage?.Status === 200 && statusIs == true) {
       setTransformMsg("message_success")
     }
     let messageTime = setTimeout(() => {

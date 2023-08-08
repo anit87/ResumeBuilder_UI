@@ -32,6 +32,7 @@ const Orderdetails = () => {
         dispatch(UserIntakeFormById(order_ids)).then(() => navigate(`/editstepperform/${order_ids}`))
     }
     const handleWriteResume = (order_number) => {
+        const orderNumber = order_number * 45 + 'Y2F0ZWdvcnk9d'
         navigate(`/stepperform/${order_number}`)
     }
     useEffect(() => {

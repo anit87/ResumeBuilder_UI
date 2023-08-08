@@ -58,10 +58,10 @@ const Allbooks = () => {
       .then(() => Navigate(`/admin/editbooks/${id}`)) 
   };
 
-  const handleClose = () => {
-    setOpenEditPopUp(!openEditPopUp);
-    dispatch(allPackagesData())
-  }
+  // const handleClose = () => {
+  //   setOpenEditPopUp(!openEditPopUp);
+  //   dispatch(allPackagesData())
+  // }
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -118,9 +118,9 @@ const Allbooks = () => {
     setData(getallbooksimagedatareducer)
   }, [getallbooksimagedatareducer])
 
-  useEffect(() => {
-    dispatch(allPackagesData())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(allPackagesData())
+  // }, [])
 
   useEffect(() => {
     setTableData((state) => {

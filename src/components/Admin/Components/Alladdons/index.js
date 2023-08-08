@@ -116,9 +116,9 @@ const Alladdons = () => {
             setData(addondatafromreducer)
         },[addondatafromreducer])
          
-        useEffect(()=>{
-          dispatch(allPackagesData())
-        },[])
+        // useEffect(()=>{
+        //   dispatch(allPackagesData())
+        // },[])
   
   
         useEffect(()=>{

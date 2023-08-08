@@ -314,7 +314,7 @@ const Editbooks = () => {
 
   useEffect(() => {
     if (getmsgbooksave?.length != 0 && preventfromstart == true) {
-      setStatus(getmsgbooksave?.Status)
+      setStatus(getmsgbooksave?.status)
       setShow(true)
       setCompletedmessage(getmsgbooksave?.message)
       setPreventfromstart(false)
@@ -343,7 +343,13 @@ const Editbooks = () => {
             {show == true ?
               <div style={{ marginBottom: '25px' }}>
                 <Stack spacing={1}>
-                  <Alert className='updatesuccessmsg_stack_alert' sx={{ width: '100% important' }} severity={status == 200 ? "success" : "error"}>{completedmessage}</Alert>
+                  <Alert
+                    className='updatesuccessmsg_stack_alert'
+                    sx={{ width: '100% important' }}
+                    severity={status == 200 ? "success" : "error"}
+                  >
+                    {completedmessage}
+                  </Alert>
                 </Stack>
               </div>
               : null}

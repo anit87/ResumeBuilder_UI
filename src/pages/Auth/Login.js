@@ -9,13 +9,10 @@ import { loginaction, lengthcartaction } from '../../redux/action/Action'
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import Loom from '../../components/Loom/loom';
-// import { zoomaction, zoomapiaction } from '../../redux/action/Action';
-
 
 const Login = () => {
     const [loginboleanstate, setLoginboleanstate] = useState(false)
     const [errormsg, setErrormsg] = useState(false)
-    const [zoomjoinurl, setZoomjoinurl] = useState()
     const [loginstate, setLoginstate] = useState({
         email: "",
         password: ''
@@ -26,9 +23,6 @@ const Login = () => {
     const dispatch = useDispatch()
 
     let frontlogindata = useSelector((state) => state.frontendloginreducer.frontloginmsg)
-    // let zoomtokendatadata = useSelector((state) => state.zoomtoken.zoomtokenno)
-    // let zoomurlmeeting = useSelector((state) => state.zoommeetingurl.zoomurl)
-
 
     const logininfo = (e) => {
         const { name, value } = e.target
@@ -39,10 +33,6 @@ const Login = () => {
             }
         })
     }
-
-    // const zoomredirect = (URL) => {
-    //     window.open(`${URL}`, '_blank', 'noopener,noreferrer');
-    // }
 
     const loginbtn = () => {
         if (loginstate.email === "abc123@gmail.com" && loginstate.password === "abc123") {
@@ -73,21 +63,6 @@ const Login = () => {
             dispatch(lengthcartaction(localStorage?.getItem("frontuserid")))
         }
     }, [loginbtn])
-
-    // useEffect(() => {
-    //     dispatch(zoomaction())
-    // }, [])
-
-    // useEffect(() => {
-    //     if (zoomtokendatadata != null)
-    //         dispatch(zoomapiaction(zoomtokendatadata?.access_token))
-    // }, [zoomtokendatadata])
-
-    // useEffect(() => {
-    //     if (zoomurlmeeting != null)
-    //         setZoomjoinurl(zoomurlmeeting[0]?.join_url)
-    // }, [zoomurlmeeting])
-
 
     return (
         <Layout >
@@ -159,13 +134,11 @@ const Login = () => {
                                             <div className="user mt-3">
                                                 <div className="row">
                                                     <div className='col-md-6 col-lg-6 span_link '>New User? <NavLink to='/register' className='user_link'>Register</NavLink></div>
+                                                    <div className='col-md-6 col-lg-6 span_link '>Login As <NavLink to='/Admin' className='user_link'>Admin</NavLink></div>
                                                     {/* <div className='col-md-6 col-lg-6   forget_password'><i><a href=""> Forget your password</a></i></div> */}
                                                 </div>
                                             </div>
-                                            {/* <div className="social_media_icons text-center mt-3">
-                                            <a href="" className='me-2'> <SiMicrosoftoutlook size={40} /></a>
-                                            <a href="" className='me-2'><FcGoogle size={40} /></a>
-                                        </div> */}
+                                            
                                         </div>
                                     </div>
                                 </div>
