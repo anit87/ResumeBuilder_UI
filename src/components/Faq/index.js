@@ -18,8 +18,6 @@ const Faq = () => {
   const getFaqData = useSelector((state) => state.GetactiveFaqDataReducer.FaqAllactiveData)
   const dispatch = useDispatch()
 
-  //  console.log("getFaqData",getFaqData)
-
   const handleAccodion = (i) => {
     if (isFaqOpne === i) {
       return setisFaqOpen(null)
@@ -40,6 +38,7 @@ const Faq = () => {
     }
   }, [getFaqData])
   console.log("getFaqData", getFaqData);
+  
   return (
     <Layout>
       <div className="padding_div">
@@ -58,7 +57,7 @@ const Faq = () => {
                   <div className='col-sm-12 col-md-12 col-lg-12 col-xl-6 mt-4 '>
                     {loading ? <Loadingspinner /> : null}
 
-                    {getFaqData.map((elems, i) => {
+                    {getFaqData.length>0 && getFaqData.map((elems, i) => {
                       return (
                         <div className='  accodion mt-4' key={elems.faq_id} >
                           <div className="accodion_border" >
@@ -71,50 +70,6 @@ const Faq = () => {
                         </div>
                       )
                     })}
-
-
-
-                    {/* <div className='  accodion mt-4' key={"1"} >
-                        <div className="accodion_border" >
-                          <div className="accodion_content"  onClick={() => handleAccodion(1)} >
-                            <h3 style={{ color: isFaqOpne === 1 ? 'var(--orange)' : null, }}>What is Lorem Ipsum?</h3>
-                            {isFaqOpne === 1 ? <span><FaMinusCircle size={27} style={{ color: isFaqOpne === 1 ? 'var(--orange)' : null }} /></span> : <span><FaPlusCircle size={27} /></span>}
-                          </div>
-                          <p>{isFaqOpne === 1 ? "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," : null}</p>
-                        </div>
-                      </div>
-                      <div className='  accodion mt-4' key={"2"} >
-                        <div className="accodion_border" >
-                          <div className="accodion_content"  onClick={() => handleAccodion(2)} >
-                            <h3 style={{ color: isFaqOpne === 2 ? 'var(--orange)' : null, }}>What is Lorem Ipsum?</h3>
-                            {isFaqOpne === 2 ? <span><FaMinusCircle size={27} style={{ color: isFaqOpne === 2 ? 'var(--orange)' : null }} /></span> : <span><FaPlusCircle size={27} /></span>}
-                          </div>
-                          <p>{isFaqOpne === 2 ? "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," : null}</p>
-                        </div>
-                      </div>
-                      <div className='  accodion mt-4' key={"3"} >
-                        <div className="accodion_border" >
-                          <div className="accodion_content"  onClick={() => handleAccodion(3)} >
-                            <h3 style={{ color: isFaqOpne === 3 ? 'var(--orange)' : null, }}>What is Lorem Ipsum?</h3>
-                            {isFaqOpne === 3 ? <span><FaMinusCircle size={27} style={{ color: isFaqOpne === 3 ? 'var(--orange)' : null }} /></span> : <span><FaPlusCircle size={27} /></span>}
-                          </div>
-                          <p>{isFaqOpne === 3 ? "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," : null}</p>
-                        </div>
-                      </div>
-                      <div className='  accodion mt-4' key={"4"} >
-                        <div className="accodion_border" >
-                          <div className="accodion_content"  onClick={() => handleAccodion(4)} >
-                            <h3 style={{ color: isFaqOpne === 4 ? 'var(--orange)' : null, }}>What is Lorem Ipsum?</h3>
-                            {isFaqOpne === 4 ? <span><FaMinusCircle size={27} style={{ color: isFaqOpne === 4 ? 'var(--orange)' : null }} /></span> : <span><FaPlusCircle size={27} /></span>}
-                          </div>
-                          <p>{isFaqOpne === 4 ? "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," : null}</p>
-                        </div>
-                      </div> */}
-
-
-
-
-
                   </div>
                   <div className="col-sm-12 col-md-12 col-lg-12 col-xl-6 faq_img">
                     <img src="./assets/images/faq.png" alt="faq_img" className='img-fluid w-100' />

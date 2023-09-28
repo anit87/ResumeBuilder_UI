@@ -29,7 +29,9 @@ const Manage_order = () => {
     const viewfun = (order_id) => {
         console.log("order_id", order_id)
         const checkuserid = order_id * 45 + 'Y2F0ZWdvcnk9d'
-        dispatch(adminorderbyid(order_id)).then(() => navigate(`/orderdetail/${checkuserid}`))
+        // dispatch(adminorderbyid(order_id)).then(() => navigate(`/orderdetail/${checkuserid}`))
+        dispatch(adminorderbyid(order_id))
+        navigate(`/orderdetail/${checkuserid}`)
     }
     const handleWriteResume = (order_number) => {
         const checkuserid = order_number

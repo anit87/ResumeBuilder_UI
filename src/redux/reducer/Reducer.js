@@ -3,7 +3,7 @@ import { STATUSCHANGE, ADDCUSTOMERS, PACKAGEADDON } from '../actionType/Types'
 
 const initialadminaddonmsg = {
     adminaddonmsg: [], IntakeFormMsg: [], WriteResumePkgData: [], userintakeformData: [], getuserintakeformData: [],
-    getUserStepFormById: [], getUserStepFormUpdatedmsg: []
+    getUserStepFormById: [], getUserStepFormUpdatedmsg: [], loading:false
 }
 const initialadminpackagemsg = { adminpackagemsg: [] }
 const initialadminchatlinkimage = { adminchatlinkimagedata: [], chatFiledata: [], chatLinkData: [] }
@@ -16,7 +16,7 @@ const zoomRequestMeetingMessage = { message: "" }
 const zoomMeetings = { meetingList: "", meetStatusMessage:"" }
 const initialorder = {
     orderplace: [], orderall: [], adminorderall: [], adminorderallbyid: [], ManageOrderAll: [],
-    adminQuestionnaireData: [], adminQuestionnaireDataId: [], updatedOrderStatus: []
+    adminQuestionnaireData: [], adminQuestionnaireDataId: [], updatedOrderStatus: [], loading: false
 }
 const initialcart = { datacart: [], datacartlength: [], CartItemsLength: [] }
 const initialfrontlogin = { frontloginmsg: [] }
@@ -502,10 +502,16 @@ const adminallorderreducer = (state = initialorder, action) => {
 //adminallorderbyid
 const adminallorderbyidreducer = (state = initialorder, action) => {
     switch (action.type) {
+        case 'loadingTrue':
+            return {
+                ...state,
+                loading: true
+            }
         case 'adminallorderbyid':
             return {
                 ...state,
-                adminorderallbyid: action.payload
+                adminorderallbyid: action.payload,
+                loading: false
             }
         case 'adminUpdateOrderStatus':
             return {
@@ -942,10 +948,16 @@ const GetmsgforuserIntakeForm = (state = initialadminaddonmsg, action) => {
 //userintakeformdata
 const GetUserIntakeFormData = (state = initialadminaddonmsg, action) => {
     switch (action.type) {
+        case 'loadingTrue':
+            return {
+                ...state,
+                loading: true
+            }
         case 'userintakeformdata':
             return {
                 ...state,
-                getuserintakeformData: action.payload
+                getuserintakeformData: action.payload,
+                loading: false
             }
         default: return {
             ...state

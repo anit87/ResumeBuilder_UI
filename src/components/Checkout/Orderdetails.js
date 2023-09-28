@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../../Layout/Layout';
 import { adminorderbyid, WriteResumePkg, UserIntakeFormData, UserIntakeFormById } from '../../redux/action/Action';
 import './checkout.css'
-
+import Loadingspinner from '../Books/Loadingspinner';
 const Orderdetails = () => {
 
     const [subtotal, setSubtotal] = useState(0)
@@ -12,9 +12,10 @@ const Orderdetails = () => {
     const [discount, setDiscount] = useState(0)
 
     const adminorderbyidreducerdata = useSelector((state) => state.adminallorderbyidreducer.adminorderallbyid)
+    const isDataLoading = useSelector((state) => state.adminallorderbyidreducer.loading)
     const WriteResumeMsg = useSelector((state) => state.GetmsgforWriteResume.WriteResumePkgData)
     const GetIntakeFrmData = useSelector((state) => state.GetUserIntakeFormData.getuserintakeformData)
-    // console.log("GetIntakeFrmData", WriteResumeMsg, GetIntakeFrmData)
+    const isLoading = useSelector((state) => state.GetUserIntakeFormData.loading)
 
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -24,11 +25,11 @@ const Orderdetails = () => {
     const feact = feact1.replace("Y2F0ZWdvcnk9d", "")
     const feact2 = feact.trim() / 45;
     // console.log("userid", feact2)
-
+    // console.log("adminorderbyidreducerdata",adminorderbyidreducerdata1);
     const chatfun = () => {
         dispatch(adminorderbyid(feact2)).then(() => navigate(`/chatting/${userid.id}`))
     }
-    const IntakeFormById = (order_ids) => { 
+    const IntakeFormById = (order_ids) => {
         dispatch(UserIntakeFormById(order_ids)).then(() => navigate(`/editstepperform/${order_ids}`))
     }
     const handleWriteResume = (order_number) => {
@@ -57,6 +58,24 @@ const Orderdetails = () => {
     //     dispatch(WriteResumePkg(adminorderbyidreducerdata[0]?.order_number))
     // },[adminorderbyidreducerdata[0]?.order_number])
 
+    if (isDataLoading) {
+        return (
+            <>
+                <Layout >
+                    <Loadingspinner />
+                </Layout>
+            </>
+        )
+    }
+    if (isLoading) {
+        return (
+            <>
+                <Layout>
+                    <Loadingspinner />
+                </Layout>
+            </>
+        )
+    }
 
     return (
         <>
@@ -77,9 +96,10 @@ const Orderdetails = () => {
                                                 }
                                             </div>
                                         </div>
+
                                         <div className='customer-details'>
                                             {/* <h3>Customer Details</h3> */}
-                                            <h3>Order Date : {adminorderbyidreducerdata != [] ?new Date(`${adminorderbyidreducerdata[0]?.order_date}`).toDateString() : null}</h3>
+                                            <h3>Order Date : {adminorderbyidreducerdata != [] ? new Date(`${adminorderbyidreducerdata[0]?.order_date}`).toDateString() : null}</h3>
                                             {/* <h3>Order Date : {adminorderbyidreducerdata != [] ? adminorderbyidreducerdata[0]?.order_date : null}</h3> */}
                                         </div>
                                         <div className='customer-details-table'>
@@ -245,71 +265,7 @@ const Orderdetails = () => {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                        {/* <Box style={{ marginBottom: '20px', display: 'flex', justifyContent: 'space-between' }}>
-                            <Typography variant="h6" component="h6" sx={{ marginBottom: '20px !important', fontSize: '21px' }}>
-                                Order Number : {adminorderbyidreducerdata != [] ? adminorderbyidreducerdata[0]?.order_number : null}
-                            </Typography>
-                            <Box>
-                                <button className='btn chatdivchat' onClick={chatfun}>Chat</button>
-                            </Box>
-                        </Box>
-                        <Box style={{ marginBottom: '20px' }}>
-                            <Typography sx={{ marginBottom: '20px !important', fontSize: '18px' }}>
-                                Customer Details
-                            </Typography>
-                        </Box>
-
-                        <Paper elevation={0} className={classes.table}
-                        >
-                            <table className="table admin-order-table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">S.No</th>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Product Quantity</th>
-                                        <th scope="col">Product Price</th>
-                                        <th scope="col">Total Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {adminorderbyidreducerdata.map((item, i) => {
-                                        return (
-                                            <tr key={i}>
-                                                <th scope="row">{i + 1}</th>
-                                                <td>{item.order_item_product_name}</td>
-                                                <td>{item.order_item_qty}</td>
-                                                <td>{item.order_item_price}</td>
-                                                <td>{item.order_net_amount}</td>
-                                            </tr>
-                                        )
-                                    })}
-                                    <tr>
-                                        <th colSpan={4}></th>
-                                        <th>Sub total : {subtotal}</th>
-                                    </tr>
-                                    <tr>
-                                        <th colSpan={4}></th>
-                                        <th >Discount : {discount}</th>
-                                    </tr>
-                                    <tr>
-                                        <th colSpan={4}></th>
-                                        <th >Total : {parseFloat(subtotal - discount)}</th>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </Paper>
-                        <Box>
-                            <Button
-                                variant="contained"
-                                className='popup-update-btn'
-
-                            >
-                                Update Order Status
-                            </Button>
-                        </Box> */}
                     </div>
                 </div>
             </Layout>

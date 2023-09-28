@@ -98,7 +98,7 @@ const Book_purchase = () => {
         let product_id = getallbooksinnerdatareducer.product_id;
         let userId = localStorage.getItem("frontuserid")
         let Data = { "reviews": review, "customer_id": userId, "product_id": product_id, "review_rating": writereviewStar }
-       
+
         if (review.review_name && review.review_body && writereviewStar != '' && userEmail != null) {
             dispatch(AddReviews(Data))
             setReviewSubmitMessage(true)
@@ -246,30 +246,46 @@ const Book_purchase = () => {
         dispatch(GetThreeStarProductReview(getallbooksinnerdatareducer?.product_id))
         dispatch(GetTwoStarProductReview(getallbooksinnerdatareducer?.product_id))
         dispatch(GetOneStarProductReview(getallbooksinnerdatareducer?.product_id))
-        
+
         // },2000)
         // return ()=>{clearTimeout(timeId)}
 
     }, [getallbooksinnerdatareducer.product_id])
 
-    useEffect(() => {
-        let review_rating;
-        let timeId = setTimeout(() => {
-            if (typeof (GetPrdctReviewAllSum) == 'object') {
-                GetPrdctReviewAllSum?.map((items) => {
-                    review_rating = (items.review_rating / Reviewslength).toFixed(1)
-                    // console.log("review_rating", review_rating, Reviewslength);
-                    if (isNaN(review_rating)) {
-                        setReviewRatingData('0')
-                    } else {
-                        setReviewRatingData(review_rating)
+    // useEffect(() => {
+    //     let review_rating;
+    //     let timeId = setTimeout(() => {
+    //         if (typeof (GetPrdctReviewAllSum) == 'object') {
+    //             GetPrdctReviewAllSum?.map((items) => {
+    //                 review_rating = (parseInt(items.review_rating) / Reviewslength).toFixed(1)
+    //                 if (isNaN(review_rating)) {
+    //                     setReviewRatingData('0')
+    //                 } else {
+    //                     setReviewRatingData(review_rating)
 
-                    }
-                })
-            }
-        }, 2000)
-        return () => { clearTimeout(timeId) }
-    }, [GetPrdctReviewAllSum, reviewRatingData])
+    //                 }
+    //             })
+    //         }
+    //     }, 2000)
+    //     return () => { clearTimeout(timeId) }
+    // }, [GetPrdctReviewAllSum, reviewRatingData])
+
+    useEffect(() => {
+        let sumOfRatings = 0;
+
+        if (typeof GetPrdctReviewAllSum === 'object') {
+            GetPrdctReviewAllSum.forEach((item) => {
+                const rating = parseFloat(item.review_rating);
+                if (!isNaN(rating)) {
+                    sumOfRatings += rating;
+                }
+            });
+
+            const averageRating = (sumOfRatings / GetPrdctReviewAllSum.length).toFixed(1);
+
+            setReviewRatingData(averageRating);
+        }
+    }, [GetPrdctReviewAllSum, reviewRatingData]);
 
     useEffect(() => {
         let ReviewStarData = setTimeout(() => {
@@ -307,7 +323,6 @@ const Book_purchase = () => {
             setLoading(true)
         }
     }, [getallbooksinnerdatareducer])
-
 
     return (
         <Layout>
@@ -499,7 +514,7 @@ const Book_purchase = () => {
                                                     {/* <h4><span>All The Tips to get your Resume Noticed by</span> {getallbooksinnerdatareducer.product_book_author} </h4> */}
                                                     <h4>
                                                         <span className='review_book_title'>{getallbooksinnerdatareducer?.product_book_title} </span>
-                                                        <span className='review_auth_seprator'>by</span>
+                                                        <span className='review_auth_seprator'>{`by `}</span>
                                                         {getallbooksinnerdatareducer.product_book_author}
                                                     </h4>
                                                 </div>

@@ -405,7 +405,7 @@ export const savebooks = (booksData) => async dispatch => {
 }
 //Update Books
 export const updatebooks = (booksData) => async dispatch => {
-    console.log("booksData", booksData.booksData);
+    console.log("booksData", booksData);
     let formdata = new FormData();
     for (let i = 0; i < booksData?.linkedimages?.length; i++) {
         formdata.append(`file[]`, booksData?.linkedimages[i]);
@@ -425,7 +425,7 @@ export const updatebooks = (booksData) => async dispatch => {
     formdata.append('product_bookstock', booksData.booksData.product_bookstock)
     formdata.append('action', 'UpdateProductImage')
     // console.log("checking22",formdata.getAll("unlinkedimages[]"))
-    // console.log("FormData Entries Are",Object.fromEntries(formdata))
+    console.log("FormData Entries Are",Object.fromEntries(formdata))
     try {
         const res = await Axios.post(apiURL + 'admin/product_image', formdata)
         dispatch({
@@ -734,6 +734,10 @@ export const adminQuestionnaireById = (order_id) => async dispatch => {
 //admin order id
 export const adminorderbyid = (order_id) => async dispatch => {
     try {
+        dispatch({
+            type: 'loadingTrue',
+            payload: {loading: true},
+        })
         const res = await Axios.post(apiURL + 'admin/order_table', { "action": "AdminOrderInnerData", order_id });
         dispatch({
             type: 'adminallorderbyid',
@@ -1319,6 +1323,7 @@ export const UserIntakeFormUpdate = (data) => async dispatch => {
 export const UserIntakeFormData = (data) => async dispatch => {
     // console.log("data is:", data)
     try {
+        dispatch({type:"loadingTrue"})
         const res = await Axios.post(apiURL + 'cart/user_stepper_form_db', { "action": "getAllStepForm", ...data });
         dispatch({
             type: 'userintakeformdata',

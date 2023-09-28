@@ -237,7 +237,8 @@ const Steppers = () => {
 
   const IntakeSubmitMessage = useSelector((state) => state.GetmsgforuserIntakeForm.userintakeformData);
   const GetIntakeFrmDataId = useSelector((state) => state.GetUserIntakeFormById.getUserStepFormById)
-  // console.log("form by id ", IntakeSubmitMessage, "   ", GetIntakeFrmDataId);
+  const isLoading = useSelector((state) => state.GetUserIntakeFormById.loading)
+  // console.log("form by id ", "getUserStepFormById", "   ", isLoading);
 
   const handleNavigate = (data) => {
     if (data === 'next') {

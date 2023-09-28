@@ -20,9 +20,9 @@ const Paypalthankyou = () => {
   const userid = useParams()
 
   const orderfun = () => {
-    if (paypaldata.length != 0) {
-      const checkuserid = paypaldata * 45 + 'Y2F0ZWdvcnk9d'
-      dispatch(adminorderbyid(paypaldata)).then(() => navigate(`/orderdetail/${checkuserid}`))
+    if (paypalthankdata.length != 0) {
+      const checkuserid = paypalthankdata[0].order_id * 45 + 'Y2F0ZWdvcnk9d'
+      dispatch(adminorderbyid(paypalthankdata[0].order_id)).then(() => navigate(`/orderdetail/${checkuserid}`))
     }
     else {
       const checkuserid = newPaypalthankdata[0]?.order_id * 45 + 'Y2F0ZWdvcnk9d'
