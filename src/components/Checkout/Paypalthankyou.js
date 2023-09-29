@@ -3,17 +3,16 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Layout from '../../Layout/Layout';
-import { adminorderbyid, paypalthankyouidaction, UserIntakeFormById } from '../../redux/action/Action';
+import { adminorderbyid, paypalthankyouidaction } from '../../redux/action/Action';
 import './checkout.css'
 
 const Paypalthankyou = () => {
-  const [redirectbolean, setRedirectbolean] = useState(false)
-  const paypaldata = useSelector((state) => state.paypalorderreducer.paypalres)
+  // const paypaldata = useSelector((state) => state.paypalorderreducer.paypalres)
   const paypalthankdata = useSelector((state) => state.paypalthanyouidreducer.paypalthank)
 
   // console.log("paypalthankdata",paypaldata, " - ", paypalthankdata);
   let newPaypalthankdata = { ...paypalthankdata }
-  const GetIntakeFrmDataId = useSelector((state) => state.GetUserIntakeFormById.getUserStepFormById)
+  // const GetIntakeFrmDataId = useSelector((state) => state.GetUserIntakeFormById.getUserStepFormById)
 
   const navigate = useNavigate();
   const dispatch = useDispatch()
@@ -33,16 +32,11 @@ const Paypalthankyou = () => {
   const orderfunQuestionnaire = (order_number, order_id) => {
     let id = `${order_number}%2F${order_id}`
     navigate(`/stepperform/${id}`)
-    setRedirectbolean(true)
-
   }
 
   useEffect(() => {
     dispatch(paypalthankyouidaction(userid.id))
   }, [])
-  // useEffect(() => {
-  //   dispatch(UserIntakeFormById(newPaypalthankdata[0]?.order_number))
-  // }, [newPaypalthankdata[0]?.order_number], newPaypalthankdata[0]?.product_type_id)
 
   return (
     <Layout>
