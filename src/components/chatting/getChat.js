@@ -27,7 +27,7 @@ const GetChat = (props) => {
 
     const adminorderbyidreducerdata = useSelector((state) => state.adminallorderbyidreducer.adminorderallbyid)
     const GetDataAdminSend = useSelector((state) => state.GetCDatareducer.GetCDatadata)
-    const GetAllChattingData = useSelector((state) => state.Adminchatlinkimagereducer.adminchatlinkimagedata)
+    // const GetAllChattingData = useSelector((state) => state.Adminchatlinkimagereducer.adminchatlinkimagedata)
 
     const chatdatauser = useSelector((state) => state.Adminchatuserreducer.adminchatuserdata)
 

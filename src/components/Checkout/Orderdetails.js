@@ -7,7 +7,6 @@ import './checkout.css'
 import Loadingspinner from '../Books/Loadingspinner';
 const Orderdetails = () => {
 
-    const [subtotal, setSubtotal] = useState(0)
     const [subtotalproduct, setSubtotalproduct] = useState(0)
     const [discount, setDiscount] = useState(0)
 
@@ -42,7 +41,6 @@ const Orderdetails = () => {
             adminorderbyidreducerdata.map((item) => {
                 subtotal += parseFloat(item.order_subtotal)
             })
-            setSubtotal(subtotal)
             setSubtotalproduct(adminorderbyidreducerdata[0]?.order_subtotal)
         }
     }, [adminorderbyidreducerdata])

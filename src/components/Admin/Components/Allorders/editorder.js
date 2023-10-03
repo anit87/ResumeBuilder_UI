@@ -28,14 +28,14 @@ const useStyle = makeStyles((theme) => ({
 
 
 const Editorder = () => {
-    const [subtotal, setSubtotal] = useState(0)
+    // const [subtotal, setSubtotal] = useState(0)
     const [subtotalproduct, setSubtotalproduct] = useState(0)
     const [discount, setDiscount] = useState(0)
     const [statusValue, setStatusValue] = useState("")
 
     const toggleState = useSelector((state) => state.togglingReducer.togglingAll)
     const adminorderbyidreducerdata = useSelector((state) => state.adminallorderbyidreducer.adminorderallbyid)
-    const updatedOrderStatus = useSelector((state) => state.adminallorderbyidreducer.updatedOrderStatus)
+    // const updatedOrderStatus = useSelector((state) => state.adminallorderbyidreducer.updatedOrderStatus)
 
     const Navigate = useNavigate();
     const dispatch = useDispatch()
@@ -52,7 +52,7 @@ const Editorder = () => {
         adminorderbyidreducerdata.map((item) => {
             subtotal += parseInt(item.order_subtotal)
         })
-        setSubtotal(subtotal)
+        // setSubtotal(subtotal)
         setSubtotalproduct(adminorderbyidreducerdata[0]?.order_subtotal)
     }, [adminorderbyidreducerdata])
 

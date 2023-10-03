@@ -26,7 +26,7 @@ const Chatting = () => {
     const chatlinkimagealldata = useSelector((state) => state.Adminchatlinkimagereducer.adminchatlinkimagedata)
 
     const chatFilesAlldata = useSelector((state) => state.ChatFilereducer.chatFiledata)
-    const chatLinksAlldata = useSelector((state) => state.ChatLinksReducer.chatLinkData)
+    // const chatLinksAlldata = useSelector((state) => state.ChatLinksReducer.chatLinkData)
     const zoomMeetinList = useSelector((state) => state.zoomMeeting.meetingList)
     const zoomMessage = useSelector((state) => state.zoomMeetinReq.message)
 

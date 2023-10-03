@@ -12,7 +12,7 @@ const SendMessage = (props) => {
 
   const [attachFileData, setAttachFileData] = useState('')
   const [attachFilename, setAttachFilename] = useState([])
-  const [msg, setMsg] = useState([])
+  // const [msg, setMsg] = useState([])
   const [sendColor, setSendColor] = useState('#656565')
 
   const editorRef = useRef(null);
@@ -34,7 +34,7 @@ const SendMessage = (props) => {
   const sendMsg = () => {
     dispatch(GetCData('1'))
     MsgData = editorRef.current.getContent();
-    setMsg(MsgData);
+    // setMsg(MsgData);
     setSendColor('#656565');
     let Data = {
       chatting_msg: MsgData,

@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './faq.css';
 import { FaPlusCircle, FaMinusCircle } from 'react-icons/fa';
 import Layout from '../../Layout/Layout';
-import accodionData from '../api/Accodions'
 import MiniNav from '../MiniNav/MiniNav';
 import { useSelector, useDispatch } from 'react-redux'
 import { allactiveFaqData } from '../../redux/action/Action'
 import Loadingspinner from '../Books/Loadingspinner';
 
-
-
 const Faq = () => {
   const [isFaqOpne, setisFaqOpen] = useState(false)
-  const [firstFaqOpen, setfirstFaqOpen] = useState(0);
   const [loading, setLoading] = useState(false)
 
   const getFaqData = useSelector((state) => state.GetactiveFaqDataReducer.FaqAllactiveData)
@@ -23,11 +19,18 @@ const Faq = () => {
       return setisFaqOpen(null)
     }
     setisFaqOpen(i)
-
   }
+  // useEffect(() => {
+  //   dispatch(allactiveFaqData())
+  // }, [])
+
+  const dispatchAllActiveFaqData = useCallback(() => {
+    dispatch(allactiveFaqData());
+  }, [dispatch]);
+
   useEffect(() => {
-    dispatch(allactiveFaqData())
-  }, [])
+    dispatchAllActiveFaqData();
+  }, [dispatchAllActiveFaqData]);
 
   useEffect(() => {
     if (getFaqData.length != 0) {
@@ -37,8 +40,7 @@ const Faq = () => {
       setLoading(true)
     }
   }, [getFaqData])
-  console.log("getFaqData", getFaqData);
-  
+
   return (
     <Layout>
       <div className="padding_div">
@@ -57,7 +59,7 @@ const Faq = () => {
                   <div className='col-sm-12 col-md-12 col-lg-12 col-xl-6 mt-4 '>
                     {loading ? <Loadingspinner /> : null}
 
-                    {getFaqData.length>0 && getFaqData.map((elems, i) => {
+                    {getFaqData.length > 0 && getFaqData.map((elems, i) => {
                       return (
                         <div className='  accodion mt-4' key={elems.faq_id} >
                           <div className="accodion_border" >
